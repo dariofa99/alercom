@@ -19,18 +19,18 @@ use Illuminate\Support\Facades\Route;
 });
  */
 Route::group(['prefix'=>'v1','namespace'=>'App\Http\Controllers\Api'],function(){
-    Route::post('registro', 'AuthController@register');
+    Route::post('register', 'AuthController@register');
     Route::post('login', 'AuthController@authenticate')  ;
     Route::get('unauthenticated', function (){
-        return response()->json(['error' => 'unauthenticated']);
-    })->name('unauthenticated');;
+        return response()->json(['error' => 'No autorizado']);
+    })->name('unauthenticated');
  });
 
 Route::group(['prefix'=>'v1','middleware'=>['auth:api'],'namespace'=>'App\Http\Controllers\Api'],function(){
    
-    Route::resource('users','UsersController');
-
-    
+    Route::resource('users','UsersController');  
+    Route::resource('institutions','InstitutionsController'); 
+    Route::resource('events','EventsController');    
     Route::get('user','AuthController@getAuthenticatedUser');
    
 });

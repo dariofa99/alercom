@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTownsTable extends Migration
+class CreateEventTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateTownsTable extends Migration
      */
     public function up()
     {
-        Schema::create('towns', function (Blueprint $table) {
+        Schema::create('event_types', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->id();
-            $table->string('town_name');
-            $table->bigInteger('department_id')->unsigned();
-            $table->foreign('department_id')->references('id')->on('references')
-            ->onDelete('cascade')->onUpdate('cascade');
+            $table->string('event_type_description');
+            $table->string('event_type_name');
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ class CreateTownsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('towns');
+        Schema::dropIfExists('event_types');
     }
 }

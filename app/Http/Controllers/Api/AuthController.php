@@ -65,18 +65,23 @@ class AuthController extends Controller
                 return response()->json($validator->errors()->toArray(),400);
         }
 
-        $user = User::create([
-            
+        $user = User::create([            
             'lastname' => $request->lastname,
             'username' =>$request->username,          
             'name' => $request->get('name'),
             'email' => $request->get('email'),
             'password' => Hash::make($request->get('password')),
-        ]);
-
-        $token = JWTAuth::fromUser($user);
-
-        return response()->json(compact('user','token'),201);
+            'town_id'=> $request->get('town_id'),
+            'status_id'=>4
+          ]); 
+        $user->roles()->attach(1);  
+        $user = User::find($user->id);
+        $user->roles;
+        $user->roles->each(function($role){
+            $role->permissions;
+        });
+        $acces_token = JWTAuth::fromUser($user);      
+        return response()->json(compact('user','acces_token'),201);
     }
 
        /**

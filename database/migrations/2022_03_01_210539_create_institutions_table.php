@@ -24,6 +24,17 @@ class CreateInstitutionsTable extends Migration
         
             $table->timestamps();
         });
+
+        Schema::create('institutions_has_event_types', function (Blueprint $table) {   
+            $table->engine = 'InnoDB';         
+            $table->id();
+            $table->bigInteger('institution_id')->unsigned();
+            $table->foreign('institution_id')->references('id')->on('institutions')->onDelete('cascade')->onUpdate('cascade');
+            $table->bigInteger('event_type_id')->unsigned();
+            $table->foreign('event_type_id')->references('id')->on('event_types')->onDelete('cascade')->onUpdate('cascade');
+            $table->timestamps();
+        });
+
     }
 
     /**

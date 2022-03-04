@@ -1,0 +1,27 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Reference extends Model
+{
+    use HasFactory;
+    protected $table = 'references';
+    protected $fillable = [
+        'reference_name',
+        'category',
+        'table',
+        'section',
+        'is_active'
+    ];
+
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+        'table',
+        'section'
+    ]; 
+
+}

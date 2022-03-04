@@ -20,8 +20,8 @@ class CreateEventsAdquTable extends Migration
             $table->string('value_is_other');
             $table->bigInteger('aditional_question_id')->unsigned();
             $table->foreign('aditional_question_id')->references('id')->on('aditional_questions')->onDelete('cascade')->onUpdate('cascade');
-            $table->bigInteger('events_id')->unsigned();
-            $table->foreign('events_id')->references('id')->on('events')->onDelete('cascade')->onUpdate('cascade');          
+            $table->bigInteger('event_id')->unsigned();
+            $table->foreign('event_id')->references('id')->on('events')->onDelete('cascade')->onUpdate('cascade');          
             $table->bigInteger('question_option_id')->unsigned();
             $table->foreign('question_option_id')->references('id')->on('question_options')->onDelete('cascade')->onUpdate('cascade');
           
