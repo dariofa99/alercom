@@ -89,8 +89,11 @@ class UsersController extends Controller
     {
         try {
             $user = User::find($id);
-        $user->getAllPermissions();
-        return response()->json(compact('user'),201);
+            $user->roles;
+        return response()->json([
+            'user'=>$user,
+            'errors'=>[]
+        ],200);
         } catch (\Throwable $th) {
             return response()->json(["error"=>"Error de servidor"],501);
         }
@@ -108,24 +111,33 @@ class UsersController extends Controller
     {
         $user = User::find($id);
         $user->fill($request->all());
+        $user->roles;  
         if($request->get('password')){
             if (Hash::check($request->oldpassword, \Auth::user()->password)) {
                 if ($request->password == $request->confirpassword) {
                     $user->password = bcrypt($request->password);
                     $user->save();
-                    return response()->json($user);                    
+                    return response()->json([
+                       // 'user'=>$user,
+                        'errors'=>[]]);                    
                 } else {
-                   return response()->json(['error'=>'La nueva contraseña no coincide']);
+                   return response()->json([
+                   // 'user'=>$user,
+                    'errors'=>['La nueva contraseña no coincide']
+                   ]);
                 }
                 
             } else {
-                return response()->json(['error'=>'La contraseña de administrador o actual es incorrecta']);
+                return response()->json([
+                    //'user'=>$user,
+                    'errors'=>['La contraseña de administrador o actual es incorrecta']
+                ]);
             }
         }
       if($request->has('email')){      
             $messages = [
                 'username.unique' => 'El :attribute ya esta registrado',
-                'email.unique' => 'El :attribute  ya existe en otra cuentas.',
+                'email.unique' => 'El :attribute  ya existe en otra cuenta.',
                 'email.required' => 'El :attribute es requerido.',
 
             ];
@@ -149,7 +161,10 @@ class UsersController extends Controller
 
 
             if ($validator->fails()) {
-                return response()->json(['errors'=>$validator->errors()->all()]);
+                return response()->json([
+                   // 'user'=>$user,
+                    'errors'=>$validator->errors()->all()
+                ],201);
             }
 
       }
@@ -163,7 +178,10 @@ class UsersController extends Controller
             $user = User::find($id);    
             $user->roles;  
         }
-        return response()->json(compact('user'),201);
+        return response()->json([
+            'user'=>$user,
+            'errors'=>[]
+        ],200);
     }
 
     /**

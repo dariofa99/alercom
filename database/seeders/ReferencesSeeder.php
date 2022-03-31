@@ -142,6 +142,42 @@ class ReferencesSeeder extends Seeder
             'table' => 'institutions_contacts' ,                    
         ]);
 
+        DB::table('references')->insert([       
+          
+            'reference_name' => 'Entre 1 y 5',
+            'category' => 'affectations_number',
+            'table' => 'events' ,                    
+        ]);
+
+        DB::table('references')->insert([         
+            'reference_name' => 'Entre 6 y 10',
+            'category' => 'affectations_number',
+            'table' => 'events' ,                    
+        ]);
+
+        DB::table('references')->insert([         
+            'reference_name' => 'Entre 11 y 20',
+            'category' => 'affectations_number',
+            'table' => 'events' ,                    
+        ]);
+        DB::table('references')->insert([         
+            'reference_name' => 'Entre 21 y 50',
+            'category' => 'affectations_number',
+            'table' => 'events' ,                    
+        ]);
+        DB::table('references')->insert([         
+            'reference_name' => 'Entre 51 y 100',
+            'category' => 'affectations_number',
+            'table' => 'events' ,                    
+        ]);
+
+        DB::table('references')->insert([         
+            'reference_name' => 'Más de 100',
+            'category' => 'affectations_number',
+            'table' => 'events' ,                    
+        ]);
+
+
 
         //////////////////////////////////
 
@@ -164,6 +200,24 @@ class ReferencesSeeder extends Seeder
             
             'town_name' => 'Pasto',
             'department_id' => '2',                             
+        ]);
+
+        DB::table('towns')->insert([       
+            
+            'town_name' => 'Ipiales',
+            'department_id' => '2',                             
+        ]);
+
+        DB::table('towns')->insert([       
+            
+            'town_name' => 'Medellin',
+            'department_id' => '3',                             
+        ]);
+
+        DB::table('towns')->insert([       
+            
+            'town_name' => 'Bello',
+            'department_id' => '3',                             
         ]);
         
     }

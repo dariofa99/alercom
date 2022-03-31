@@ -91,7 +91,12 @@ class AuthController extends Controller
      */
     public function me()
     {
-        return response()->json(auth()->user());
+        $user = auth($this->guard)->user();
+        $user->roles;
+        return response()->json([
+            'user'=>$user,
+            'errors'=>[]
+        ],200);
     }
 
         /**

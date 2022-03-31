@@ -21,7 +21,7 @@ class Institution extends Model
      }
 
      public function event_types(){
-        return $this->belongsToMany(Institution::class,'institutions_has_event_types','event_id')
-        ->withPivot('id','institution_id','event_id','status_id')->withTimestamps(); 
+        return $this->belongsToMany(EventType::class,'institutions_has_event_types','institution_id','event_type_id')
+        ->withPivot('id','institution_id','event_type_id')->withTimestamps(); 
      }
 }

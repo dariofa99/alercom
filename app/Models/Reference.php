@@ -20,8 +20,7 @@ class Reference extends Model
     protected $hidden = [
         'created_at',
         'updated_at',
-        'table',
-        'section'
+        'table'       
     ]; 
 
 }

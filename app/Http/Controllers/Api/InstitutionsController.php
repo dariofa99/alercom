@@ -22,7 +22,7 @@ class InstitutionsController extends Controller
      */
     public function index()
     {
-        $institutions = Institution::all();
+        $institutions = Institution::all();//with('event_types')->with('contacts')->get();
         return response()->json(compact('institutions'),201);
     }
 
@@ -59,7 +59,16 @@ class InstitutionsController extends Controller
             }
 
         }
+        if($request->event_types and is_array($request->event_types)){
+            foreach ($request->event_types as $key => $event_type) {
+              //  return response()->json(compact('event_type'),201);
+                $institution->event_types()->attach($event_type);
+            }
+
+        }
+
         $institution->contacts;
+       // $institution->event_types;
 
         return response()->json(compact('institution'),201);
 
@@ -87,6 +96,7 @@ class InstitutionsController extends Controller
         try {
             $institution = Institution::find($id); 
             $institution->contacts;
+            $institution->event_types;
     
             return response()->json(compact('institution'),201);
         } catch (\Throwable $th) {

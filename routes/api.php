@@ -22,15 +22,23 @@ Route::group(['prefix'=>'v1','namespace'=>'App\Http\Controllers\Api'],function()
     Route::post('register', 'AuthController@register');
     Route::post('login', 'AuthController@authenticate')  ;
     Route::get('unauthenticated', function (){
-        return response()->json(['error' => 'No autorizado']);
+        return response()->json(['error' => 'No autorizado'],403);
     })->name('unauthenticated');
  });
 
 Route::group(['prefix'=>'v1','middleware'=>['auth:api'],'namespace'=>'App\Http\Controllers\Api'],function(){
    
     Route::resource('users','UsersController');  
+    Route::resource('event/types','EventTypesController');  
     Route::resource('institutions','InstitutionsController'); 
+    
     Route::resource('events','EventsController');    
     Route::get('user','AuthController@getAuthenticatedUser');
+    Route::get('user/me','AuthController@me');
    
+
+    Route::get('references/departments','ReferencesController@getDepartments'); 
+    Route::get('references/towns/{department}','ReferencesController@getTownsByDepId'); 
+    Route::get('references/affects/range','ReferencesController@getAffectsRange'); 
+
 });

@@ -16,13 +16,23 @@ class CreateEventsTable extends Migration
         Schema::create('events', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->id();
-            $table->string('event_description');
+            $table->string('event_description')->nullable();
+            $table->date('event_date')->nullable();
+            $table->string('event_place')->nullable();
+            $table->string('event_aditional_information')->nullable();
+            $table->boolean('affected_people')->default(0);
+            $table->boolean('affected_family')->default(0);
+            $table->boolean('affected_animals')->default(0);
+            $table->boolean('affected_infrastructure')->default(0);
+            $table->boolean('affected_livelihoods')->default(0);
             $table->bigInteger('event_type_id')->unsigned();
             $table->foreign('event_type_id')->references('id')->on('event_types')->onDelete('cascade')->onUpdate('cascade');
             $table->bigInteger('town_id')->unsigned();
             $table->foreign('town_id')->references('id')->on('towns')->onDelete('cascade')->onUpdate('cascade');           
             $table->bigInteger('status_id')->unsigned();
-            $table->foreign('status_id')->references('id')->on('references')->onDelete('cascade')->onUpdate('cascade');           
+            $table->foreign('status_id')->references('id')->on('references')->onDelete('cascade')->onUpdate('cascade');
+            $table->bigInteger('afectations_range_id')->unsigned();
+            $table->foreign('afectations_range_id')->references('id')->on('references')->onDelete('cascade')->onUpdate('cascade');           
             $table->timestamps();
         });
 

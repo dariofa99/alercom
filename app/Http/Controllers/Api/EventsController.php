@@ -26,7 +26,7 @@ class EventsController extends Controller
     {
         $event_reports = EventReport::with('town')->get();
 
-        return response()->json(compact('event_reports'),201);
+        return response()->json(compact('event_reports'),200);
     }
 
     
@@ -48,29 +48,38 @@ class EventsController extends Controller
         ],$messages);
 
         if($validator->fails()){
-                return response()->json(["errors"=>$validator->errors()->all()],400);
+                return response()->json([
+                    "errors"=>$validator->errors()->all()
+                ],201);
+                
         }
         $request['status_id'] = 11;
         $event = EventReport::create($request->all()); 
 
-       $institutions = Institution::with('contacts')->join('institutions_has_event_types','institutions_has_event_types.institution_id','=','institutions.id')
+       $institutions = Institution::with('contacts')
+       ->join('institutions_has_event_types','institutions_has_event_types.institution_id','=','institutions.id')
        ->where('event_type_id',$request->event_type_id)->get();
 
+       //return response()->json(['institution'=>$institutions],201);
        if(count($institutions)>0){
            foreach ($institutions as $key => $institution) {           
             if(count($institution->contacts)>0){               
                 foreach ($institution->contacts as $key => $contact) {
-                    Mail::to($contact->institution_contact)->send(new SendEventMail());                  
-                  
+                    Mail::to($contact->institution_contact)->send(new SendEventMail());           
                 }
-            }
+            }            
+            $event->institutions()->attach($institution->institution_id,['status_id'=>11]);
            }
        }
 
       
-        $event->town->department;
+        //$event->town->department;
+        //$event->institutions;
 
-        return response()->json(compact('institutions'),201);
+
+        return response()->json([
+            "event"=>$event,
+            "errors"=>[]],200);
 
     }
 
