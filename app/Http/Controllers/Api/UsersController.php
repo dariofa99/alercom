@@ -117,12 +117,10 @@ class UsersController extends Controller
                 if ($request->password == $request->confirpassword) {
                     $user->password = bcrypt($request->password);
                     $user->save();
-                    return response()->json([
-                       // 'user'=>$user,
+                    return response()->json([                      
                         'errors'=>[]]);                    
                 } else {
-                   return response()->json([
-                   // 'user'=>$user,
+                   return response()->json([                   
                     'errors'=>['La nueva contraseña no coincide']
                    ]);
                 }
@@ -162,8 +160,7 @@ class UsersController extends Controller
 
             if ($validator->fails()) {
                 return response()->json([
-                   // 'user'=>$user,
-                    'errors'=>$validator->errors()->all()
+                  'errors'=>$validator->errors()->all()
                 ],201);
             }
 

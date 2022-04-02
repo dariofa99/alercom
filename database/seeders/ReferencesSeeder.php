@@ -177,6 +177,12 @@ class ReferencesSeeder extends Seeder
             'table' => 'events' ,                    
         ]);
 
+        DB::table('references')->insert([         
+            'reference_name' => 'Ninguno',
+            'category' => 'affectations_number',
+            'table' => 'events' ,                    
+        ]);
+
 
 
         //////////////////////////////////
@@ -184,13 +190,14 @@ class ReferencesSeeder extends Seeder
         DB::table('event_types')->insert([       
            
             'event_type_description' => 'Es la violencia basada en genero',
-            'event_type_name' => 'VBG',                               
+            'event_type_name' => 'VBG',     
+            'category_id'=>1                        
         ]);
 
-        DB::table('event_types')->insert([       
-             
-            'event_type_description' => 'Es un porblema ambiental',
-            'event_type_name' => 'AMBIENTAL',                               
+        DB::table('event_types')->insert([             
+            'event_type_description' => 'Es un problema ambiental',
+            'event_type_name' => 'AMBIENTAL',  
+            'category_id'=>1                               
         ]);
 
 

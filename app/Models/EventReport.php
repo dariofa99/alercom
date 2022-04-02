@@ -2,13 +2,15 @@
 
 namespace App\Models;
 
+use App\Traits\UploadFile;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class EventReport extends Model
 {
-    use HasFactory;
+    use HasFactory, UploadFile;
     protected $table = 'events';
+    public $disk = 'event';
     protected $fillable = [
         'event_description',
         "event_date",
@@ -39,5 +41,10 @@ class EventReport extends Model
       return $this->belongsToMany(Institution::class,'events_has_institutions','event_id','institution_id')
       ->withPivot('id','institution_id','event_id','status_id')->withTimestamps(); 
    }
+
+   public function files(){
+      return $this->belongsToMany(File::class,'events_files','event_id')
+      ->withPivot('id','file_id','user_id','status_id','type_id')->withTimestamps(); 
+   } 
 
 }

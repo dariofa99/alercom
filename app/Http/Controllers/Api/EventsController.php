@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\EventReport;
 use App\Models\Institution;
 use DB;
+use App\Http\Requests\FilesDecodeBase64;
 use Illuminate\Support\Facades\Auth;
 use Validator;
 use Illuminate\Support\Facades\Notification;
@@ -39,6 +40,11 @@ class EventsController extends Controller
      */
     public function store(Request $request)
     {
+       return response()->json([
+            "request"=>$request->all(),
+            "errors"=>[]],200);
+
+
         $messages = [
             'event_description.min' => 'La descripcion debe tener al menos 10 caracteres!', 
             'event_description.required' => 'La descripcion es requerida!',            
@@ -54,7 +60,16 @@ class EventsController extends Controller
                 
         }
         $request['status_id'] = 11;
+
+        
+
         $event = EventReport::create($request->all()); 
+        $file = $event->uploadFile($request->image_compressed,'event_'.$event->id);
+        $event->files()->attach($file->id,[
+            'user_id'=>auth()->user()->id,
+            'status_id'=>$request->status_id,
+            'type_id'=>1
+        ]);
 
        $institutions = Institution::with('contacts')
        ->join('institutions_has_event_types','institutions_has_event_types.institution_id','=','institutions.id')
