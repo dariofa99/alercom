@@ -23,6 +23,7 @@ class CreateFilesTable extends Migration
             $table->timestamps();
         });
         Schema::create('events_files', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->bigIncrements('id');
             $table->string('activo')->default(0); 
 
@@ -30,7 +31,7 @@ class CreateFilesTable extends Migration
             $table->foreign('file_id')->references('id')->on('files')
             ->onDelete('cascade')->onUpdate('cascade');
 
-            $table->integer('event_id')->unsigned();
+            $table->bigInteger('event_id')->unsigned();
             $table->foreign('event_id')->references('id')->on('events')
             ->onDelete('cascade')->onUpdate('cascade');
 
