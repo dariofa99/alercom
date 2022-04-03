@@ -40,11 +40,12 @@ class EventsController extends Controller
      */
     public function store(Request $request)
     {
-       return response()->json([
-            "request"=>$request->all(),
+      return response()->json([
+            "request"=>$request->image_event,
             "errors"=>[]],200);
 
 
+$request['event_description'] = "Credadd de sde lalaraad";
         $messages = [
             'event_description.min' => 'La descripcion debe tener al menos 10 caracteres!', 
             'event_description.required' => 'La descripcion es requerida!',            
@@ -60,11 +61,14 @@ class EventsController extends Controller
                 
         }
         $request['status_id'] = 11;
-
+        $request['event_type_id'] = 1;
+        $request['town_id'] = 1;
+        $request['afectations_range_id'] = 1;
         
+      
 
-        $event = EventReport::create($request->all()); 
-        $file = $event->uploadFile($request->image_compressed,'event_'.$event->id);
+               $event = EventReport::create($request->all()); 
+        $file = $event->uploadFile($request->image_event,'event_'.$event->id);
         $event->files()->attach($file->id,[
             'user_id'=>auth()->user()->id,
             'status_id'=>$request->status_id,
