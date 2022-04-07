@@ -40,12 +40,12 @@ class EventsController extends Controller
      */
     public function store(Request $request)
     {
-      return response()->json([
-            "request"=>$request->image_event,
+    /* return response()->json([
+            "request"=>$request->all(),
             "errors"=>[]],200);
+*/
 
-
-$request['event_description'] = "Credadd de sde lalaraad";
+//$request['event_description'] = "Credadd de sde lalaraad";
         $messages = [
             'event_description.min' => 'La descripcion debe tener al menos 10 caracteres!', 
             'event_description.required' => 'La descripcion es requerida!',            
@@ -61,10 +61,10 @@ $request['event_description'] = "Credadd de sde lalaraad";
                 
         }
         $request['status_id'] = 11;
-        $request['event_type_id'] = 1;
+    /*    $request['event_type_id'] = 1;
         $request['town_id'] = 1;
         $request['afectations_range_id'] = 1;
-        
+       */ 
       
 
                $event = EventReport::create($request->all()); 
