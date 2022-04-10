@@ -184,25 +184,25 @@ class ReferencesSeeder extends Seeder
         ]);
 
 //////////////////////////////////////////////////////////////
-        DB::table('references_dinamyc')->insert([         
+        DB::table('references_dynamic')->insert([         
             'reference_name' => 'Naturales',
             'category' => 'event_category',
             'table' => 'events',                    
         ]);
 
-        DB::table('references_dinamyc')->insert([         
+        DB::table('references_dynamic')->insert([         
             'reference_name' => 'Socio-Naturales',
             'category' => 'event_category',
             'table' => 'events',                    
         ]);
 
-        DB::table('references_dinamyc')->insert([         
+        DB::table('references_dynamic')->insert([         
             'reference_name' => 'Tecnológicos',
             'category' => 'event_category',
             'table' => 'events',                    
         ]);
 
-        DB::table('references_dinamyc')->insert([         
+        DB::table('references_dynamic')->insert([         
             'reference_name' => 'Antrópicos',
             'category' => 'event_category',
             'table' => 'events',                    
