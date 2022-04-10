@@ -9,6 +9,7 @@ use App\Models\EventReport;
 use App\Models\Institution;
 use DB;
 use App\Http\Requests\FilesDecodeBase64;
+use App\Models\Reference;
 use Illuminate\Support\Facades\Auth;
 use Validator;
 use Illuminate\Support\Facades\Notification;
@@ -25,9 +26,10 @@ class EventsController extends Controller
      */
     public function index()
     {
-        $event_reports = EventReport::with('town')->get();
+        $alerts = EventReport::with('town.department')
+        ->get();
 
-        return response()->json(compact('event_reports'),200);
+        return response()->json(compact('alerts'),200);
     }
 
     
@@ -61,19 +63,16 @@ class EventsController extends Controller
                 
         }
         $request['status_id'] = 11;
-    /*    $request['event_type_id'] = 1;
-        $request['town_id'] = 1;
-        $request['afectations_range_id'] = 1;
-       */ 
-      
-
-               $event = EventReport::create($request->all()); 
-        $file = $event->uploadFile($request->image_event,'event_'.$event->id);
-        $event->files()->attach($file->id,[
-            'user_id'=>auth()->user()->id,
-            'status_id'=>$request->status_id,
-            'type_id'=>1
-        ]);
+        $event = EventReport::create($request->all()); 
+        if($request->has('image_event')){
+            $file = $event->uploadFile($request->image_event,'event_'.$event->id);
+            $event->files()->attach($file->id,[
+                'user_id'=>auth()->user()->id,
+                'status_id'=>$request->status_id,
+                'type_id'=>1
+            ]);
+        }
+        
 
        $institutions = Institution::with('contacts')
        ->join('institutions_has_event_types','institutions_has_event_types.institution_id','=','institutions.id')
@@ -92,7 +91,7 @@ class EventsController extends Controller
        }
 
       
-        //$event->town->department;
+        $event->town;
         //$event->institutions;
 
 
@@ -121,13 +120,27 @@ class EventsController extends Controller
      */
     public function edit($id)
     {
+       // $EventReport = EventReport::with(['town.department'])->find($id);
+
         try {
-            $EventReport = EventReport::find($id); 
-            $EventReport->contacts;
-    
-            return response()->json(compact('EventReport'),201);
+            $alert = EventReport::with(['town.department','status','files','event_type','affectation_range'])->find($id);   
+           if(count($alert->files)>0){
+            $alert->files->each(function ($file){
+                $file_path = url($file->path);
+                $file->real_path = $file_path;
+            });
+           }
+            $alert->files->each(function ($file){
+                $file_path = url($file->path);
+                $file->real_path = $file_path;
+            });
+            $ranges = Reference::where([
+                'category' => 'affectations_number',
+                'table' => 'events',
+             ])->get();   
+            return response()->json(compact('alert','ranges'),201);
         } catch (\Throwable $th) {
-            return response()->json(["error"=>"Error en el servidor"],501);
+            return response()->json(["errors"=>["Error en el servidor $th"]],501);
         }
         
     }

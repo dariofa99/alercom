@@ -4,35 +4,52 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\EventType;
+use App\Models\Reference;
+use App\Models\ReferenceDynamic;
+use App\Models\Town;
 use Illuminate\Http\Request;
 
-class EventTypesController extends Controller
+class ReferencesDynamicController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function getEventCategories()
     {
-        $events = EventType::get();
-        
-        return response()->json($events);
-
+        $categories = ReferenceDynamic::where([
+           'category' => 'event_category',
+           'table' => 'events' ,
+        ])->get();       
+        return response()->json([
+            "categories"=>$categories,
+            "errors"=>[]
+        ],200);
     }
-
-
-    public function getEventTypeByCatId($category){
-        $events = EventType::where([
-            'category_id' =>$category            
+/*
+    public function getTownsByDepId($department_id){
+        $towns = Town::with('department')->where([
+            'department_id' => $department_id            
          ])->get();   
          return response()->json([
-            "event_types"=>$events,
+            "towns"=>$towns,
             "errors"=>[]
         ],200);
     }
 
-    
+    public function getAffectsRange(){
+        $ranges = Reference::where([
+            'category' => 'affectations_number',
+            'table' => 'events',
+         ])->get();       
+         return response()->json([
+             "ranges"=>$ranges,
+             "errors"=>[]
+         ],200);
+    }
+
+    */
     /**
      * Store a newly created resource in storage.
      *

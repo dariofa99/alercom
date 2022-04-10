@@ -44,7 +44,7 @@ return [
 
         'event' => [
             'driver' => 'local',
-            'root' => storage_path('app/event/files'),
+            'root' => public_path('app/event/files'),
             'url' => 'app/event/files',            
         ],
 

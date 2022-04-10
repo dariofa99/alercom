@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEventTypesTable extends Migration
+class CreateReferencesDynamicTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,14 @@ class CreateEventTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('event_types', function (Blueprint $table) {
+        Schema::create('references_dynamic', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->id();
-            $table->string('event_type_description');
-            $table->string('event_type_name');
-            $table->bigInteger('category_id')->unsigned();
-            $table->foreign('category_id')->references('id')->on('references_dinamyc')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('reference_name');
+			$table->string('category');
+			$table->string('table');
+            $table->longText('section')->nullable();
+			$table->boolean('is_active')->default('1');            
             $table->timestamps();
         });
     }
@@ -31,6 +32,6 @@ class CreateEventTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('event_types');
+        Schema::dropIfExists('references_dynamic');
     }
 }

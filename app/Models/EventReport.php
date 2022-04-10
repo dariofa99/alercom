@@ -33,10 +33,12 @@ class EventReport extends Model
      public function town(){
         return $this->belongsTo(Town::class,'town_id'); 
      }
-     public function status(){
-        return $this->belongsTo(Reference::class,'status_id'); 
+     public function affectation_range(){
+        return $this->belongsTo(Reference::class,'afectations_range_id'); 
      }
-
+     public function status(){
+      return $this->belongsTo(Reference::class,'status_id'); 
+   }
      public function institutions(){
       return $this->belongsToMany(Institution::class,'events_has_institutions','event_id','institution_id')
       ->withPivot('id','institution_id','event_id','status_id')->withTimestamps(); 

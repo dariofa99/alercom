@@ -183,23 +183,56 @@ class ReferencesSeeder extends Seeder
             'table' => 'events' ,                    
         ]);
 
+//////////////////////////////////////////////////////////////
+        DB::table('references_dinamyc')->insert([         
+            'reference_name' => 'Naturales',
+            'category' => 'event_category',
+            'table' => 'events',                    
+        ]);
 
+        DB::table('references_dinamyc')->insert([         
+            'reference_name' => 'Socio-Naturales',
+            'category' => 'event_category',
+            'table' => 'events',                    
+        ]);
+
+        DB::table('references_dinamyc')->insert([         
+            'reference_name' => 'Tecnológicos',
+            'category' => 'event_category',
+            'table' => 'events',                    
+        ]);
+
+        DB::table('references_dinamyc')->insert([         
+            'reference_name' => 'Antrópicos',
+            'category' => 'event_category',
+            'table' => 'events',                    
+        ]);
 
         //////////////////////////////////
 
-        DB::table('event_types')->insert([       
-           
-            'event_type_description' => 'Es la violencia basada en genero',
-            'event_type_name' => 'VBG',     
-            'category_id'=>1                        
-        ]);
-
-        DB::table('event_types')->insert([             
-            'event_type_description' => 'Es un problema ambiental',
-            'event_type_name' => 'AMBIENTAL',  
+        DB::table('event_types')->insert([    
+            'event_type_name' => 'Huracan',         
+            'event_type_description' => 'Es un problema de vientos fuerte',              
             'category_id'=>1                               
         ]);
 
+        DB::table('event_types')->insert([       
+            'event_type_name' => 'VBG', 
+            'event_type_description' => 'Es la violencia basada en genero',             
+            'category_id'=>2                      
+        ]);       
+
+        DB::table('event_types')->insert([    
+            'event_type_name' => 'Derrames',         
+            'event_type_description' => 'Es un problema riegos de sustancias nocivas para el medio ambiente',              
+            'category_id'=>3                               
+        ]);
+
+        DB::table('event_types')->insert([    
+            'event_type_name' => 'Atentado terrorista',         
+            'event_type_description' => 'Es un problema de atentado contra la integridad física de la población cívil',              
+            'category_id'=>4                               
+        ]);
 
         ///////////////////////////////////////////////////////////////////////
 

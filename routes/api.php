@@ -30,6 +30,7 @@ Route::group(['prefix'=>'v1','middleware'=>['auth:api'],'namespace'=>'App\Http\C
    
     Route::resource('users','UsersController');  
     Route::resource('event/types','EventTypesController');  
+    Route::get('event/category/types/{category}','EventTypesController@getEventTypeByCatId'); 
     Route::resource('institutions','InstitutionsController'); 
     
     Route::resource('events','EventsController');    
@@ -40,5 +41,7 @@ Route::group(['prefix'=>'v1','middleware'=>['auth:api'],'namespace'=>'App\Http\C
     Route::get('references/departments','ReferencesController@getDepartments'); 
     Route::get('references/towns/{department}','ReferencesController@getTownsByDepId'); 
     Route::get('references/affects/range','ReferencesController@getAffectsRange'); 
+
+    Route::get('references/event/categories','ReferencesDynamicController@getEventCategories'); 
 
 });

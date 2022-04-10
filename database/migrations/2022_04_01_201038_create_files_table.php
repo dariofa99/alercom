@@ -14,8 +14,8 @@ class CreateFilesTable extends Migration
     public function up()
     {
         Schema::create('files', function (Blueprint $table) {
-            //$table->engine = 'InnoDB';
-            $table->bigIncrements('id');
+            $table->engine = 'InnoDB';
+            $table->id('id');
             $table->string('original_name')->nullable();  
             $table->string('encrypt_name')->nullable();   
             $table->string('path')->nullable();  
@@ -24,7 +24,7 @@ class CreateFilesTable extends Migration
         });
         Schema::create('events_files', function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->bigIncrements('id');
+            $table->id('id');
             $table->string('activo')->default(0); 
 
             $table->bigInteger('file_id')->unsigned();
