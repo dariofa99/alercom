@@ -19,7 +19,7 @@ class CreateEventTypesTable extends Migration
             $table->string('event_type_description');
             $table->string('event_type_name');
             $table->bigInteger('category_id')->unsigned();
-            $table->foreign('category_id')->references('id')->on('references_dinamyc')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('category_id')->references('id')->on('references_dynamic')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
