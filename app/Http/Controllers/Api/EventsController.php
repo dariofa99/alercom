@@ -68,7 +68,7 @@ class EventsController extends Controller
             $file = $event->uploadFile($request->image_event,'event_'.$event->id);
             $event->files()->attach($file->id,[
                 'user_id'=>auth()->user()->id,
-                'status_id'=>$request->status_id,
+                'status_id'=>1,
                 'type_id'=>1
             ]);
         }
@@ -138,7 +138,7 @@ class EventsController extends Controller
                 'category' => 'affectations_number',
                 'table' => 'events',
              ])->get();   
-            return response()->json(compact('alert','ranges'),201);
+            return response()->json(compact('alert','ranges'),200);
         } catch (\Throwable $th) {
             return response()->json(["errors"=>["Error en el servidor $th"]],501);
         }
@@ -155,35 +155,34 @@ class EventsController extends Controller
     public function update(Request $request, $id)
     {
         
-        $EventReport = EventReport::find($id); 
+        $event = EventReport::find($id); 
         $messages = [
-            'EventReport_name.unique' => 'El nombre ya existe!', 
-            'EventReport_name.required' => 'El nombre es requerido!',            
+            'event_description.min' => 'La descripcion debe tener al menos 10 caracteres!', 
+            'event_description.required' => 'La descripcion es requerida!',            
         ];
         $validator = Validator::make($request->all(), [
-                'EventReport_name' => ['required', Rule::unique('EventReports')->ignore($EventReport->id)]
+            'event_description' => 'required|string|min:10',            
         ],$messages);
 
 
         if($validator->fails()){
                 return response()->json(["errors"=>$validator->errors()->all()],400);
         }
-       $EventReport->fill($request->all());
-       $EventReport->save();
-        if($request->contacts and is_array($request->contacts)){
-            foreach ($request->contacts as $key => $contact) {
-                $EventReportC = EventReportContact::find($request->contact_id[$key]);
-                $EventReportC->fill([
-                    'EventReport_contact'=>$contact,
-                    'contact_type_id'=>$request->contact_type_id[$key],                    
-                ]);
-                $EventReportC->save();
-            }
+       $event->fill($request->all());
+       $event->save();
+      // $request['status_id'] = 11;
+       if($request->has('image_event')){
+        $file = $event->uploadFile($request->image_event,'event_'.$event->id);
+        $event->files()->attach($file->id,[
+            'user_id'=>auth()->user()->id,
+            'status_id'=>1,
+            'type_id'=>1
+        ]);
+    }
 
-        }
-        $EventReport->contacts;
+       $event->contacts;
 
-        return response()->json(compact('EventReport'),201);
+        return response()->json(compact('event'),200);
     }
 
     /**
@@ -197,7 +196,7 @@ class EventsController extends Controller
       try {
         $EventReport = EventReport::find($id);
         $EventReport->delete();
-        return response()->json(compact('EventReport'),201);
+        return response()->json(compact('EventReport'),200);
       } catch (\Throwable $th) {
         return response()->json(["error"=>"Error en el servidor"],501);
       }

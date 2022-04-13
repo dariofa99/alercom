@@ -15,6 +15,8 @@ class EventReport extends Model
         'event_description',
         "event_date",
         "event_place",
+        "longitude",
+        "latitude",
         "event_aditional_information",
         "affected_people",
         "affected_family",
