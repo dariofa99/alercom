@@ -19,8 +19,8 @@ class CreateEventsTable extends Migration
             $table->string('event_description')->nullable();
             $table->date('event_date')->nullable();
             $table->string('event_place')->nullable();
-            $table->double('latitude')->nullable();
-            $table->double('longitude')->nullable();
+            $table->string('latitude')->default("0.0");
+            $table->string('longitude')->default("0.0");
             $table->string('event_aditional_information')->nullable();
             $table->boolean('affected_people')->default(0);
             $table->boolean('affected_family')->default(0);

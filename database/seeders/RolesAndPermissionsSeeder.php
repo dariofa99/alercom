@@ -85,6 +85,7 @@ class RolesAndPermissionsSeeder extends Seeder
 
 
         $role = Role::create(['name' => 'Admin']);
+       
         $role->givePermissionTo(Permission::all());
         $user = User::create([
             'name' => 'Admin',
@@ -96,5 +97,6 @@ class RolesAndPermissionsSeeder extends Seeder
             'status_id'=>4
         ]);
         $user->roles()->attach($role);
+        $role = Role::create(['name' => 'Invitado']);
     }
 }

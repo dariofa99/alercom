@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Notification;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\File; 
 
 class EventsController extends Controller
 {
@@ -172,6 +173,13 @@ class EventsController extends Controller
        $event->save();
       // $request['status_id'] = 11;
        if($request->has('image_event')){
+        if(count($event->files)>0){
+        $file = $event->files()->first();
+        if(File::exists(public_path($file->path))){
+            File::delete(public_path($file->path));
+            $file->delete();
+           }           
+        }
         $file = $event->uploadFile($request->image_event,'event_'.$event->id);
         $event->files()->attach($file->id,[
             'user_id'=>auth()->user()->id,

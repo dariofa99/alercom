@@ -50,7 +50,7 @@ class UsersController extends Controller
         ],$messages);
 
         if($validator->fails()){
-                return response()->json(["errors"=>$validator->errors()->all()],400);
+                return response()->json(["errors"=>$validator->errors()->all()],201);
         }
         $request['status_id'] = 4;
         $user = User::create($request->all()); 
@@ -109,29 +109,35 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
+        
         $user = User::find($id);
-        $user->fill($request->all());
+        $user->fill($request->except(['password']));
         $user->roles;  
-        if($request->get('password')){
+        if($request->has('password') and $request->get('password')!=null and $request->get('password')!=''){
+          
             if (Hash::check($request->oldpassword, \Auth::user()->password)) {
                 if ($request->password == $request->confirpassword) {
                     $user->password = bcrypt($request->password);
                     $user->save();
-                    return response()->json([                      
-                        'errors'=>[]]);                    
+                                   
                 } else {
                    return response()->json([                   
                     'errors'=>['La nueva contraseña no coincide']
-                   ]);
+                   ],201);
                 }
                 
             } else {
                 return response()->json([
                     //'user'=>$user,
                     'errors'=>['La contraseña de administrador o actual es incorrecta']
-                ]);
+                ],201);
             }
+        }elseif($request->has('password') and ($request->password==null || $request->password=='')){
+            return response()->json([                   
+                'errors'=>['La contraseña no puede ser vacia']
+               ],201);
         }
+      
       if($request->has('email')){      
             $messages = [
                 'username.unique' => 'El :attribute ya esta registrado',

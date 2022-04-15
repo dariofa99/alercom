@@ -3,11 +3,14 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Mail\SendEventMail;
 use App\Models\User;
-
+use App\Notifications\UserRegisterNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Validator;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Tymon\JWTAuth\Exceptions\TokenExpiredException;
@@ -53,16 +56,28 @@ class AuthController extends Controller
     public function register(Request $request)
     {
 
-      //  dd($request->all());
-        Log::info($request);
+             
+        $messages = [
+            'name.required' => 'El nombre es requerido',
+            'lastname.required' => 'El apellido es requerido',
+            'email.required' => 'El :attribute es requerido',
+            'username.required' => 'El nombre de usuario es requerido',
+            'password.required' => 'El :attribute es requerido',
+
+            'email.unique' => 'El :attribute ya existe en otra cuenta',
+            'username.unique' => 'El :attribute ya esta registrado',
+            'password.confirmed' => 'El :attribute no coincide',
+        ];
         $validator = Validator::make($request->all(), [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6',
-        ]);
+            'name' => ['required','max:255'],
+            'lastname' => ['required','max:255'],
+            'email' => ['required','email','max:255','unique:users'],
+            'username' => ['required','unique:users','min:3'],          
+            'password' => ['required','min:3','confirmed'],
+        ],$messages);
 
         if($validator->fails()){
-                return response()->json($validator->errors()->toArray(),400);
+                return response()->json(["errors"=>$validator->errors()->all()],201);
         }
 
         $user = User::create([            
@@ -70,8 +85,9 @@ class AuthController extends Controller
             'username' =>$request->username,          
             'name' => $request->get('name'),
             'email' => $request->get('email'),
+            'phone_number' => $request->get('phone_number'),
             'password' => Hash::make($request->get('password')),
-            'town_id'=> $request->get('town_id'),
+            'town_id'=> 1,
             'status_id'=>4
           ]); 
         $user->roles()->attach(1);  
@@ -80,8 +96,12 @@ class AuthController extends Controller
         $user->roles->each(function($role){
             $role->permissions;
         });
-        $acces_token = JWTAuth::fromUser($user);      
-        return response()->json(compact('user','acces_token'),201);
+        $user->notify(new UserRegisterNotification());
+             
+        return response()->json([
+            'user'=>$user,
+            'errors'=>[]
+        ],200);
     }
 
        /**
@@ -133,7 +153,7 @@ class AuthController extends Controller
         return response()->json([
             'access_token' => $token,
             'token_type' => 'bearer',
-            'expires_in' => auth($this->guard)->factory()->getTTL() * 60,
+            'expires_in' => auth($this->guard)->factory()->getTTL() * 120,
             'user'=>auth($this->guard)->user(),
             'permissions'=>auth($this->guard)->user()->getAllPermissions(),            
         ]);
