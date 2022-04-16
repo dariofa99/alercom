@@ -27,7 +27,17 @@ Route::group(['prefix'=>'v1','namespace'=>'App\Http\Controllers\Api'],function()
  });
 
 Route::group(['prefix'=>'v1','middleware'=>['auth:api'],'namespace'=>'App\Http\Controllers\Api'],function(){
-   
+    Route::resource('admin/roles','AdminRolesAndPermissionsController');
+    Route::post('admin/sync/rol/permissions','AdminRolesAndPermissionsController@syncRolPermissions');
+    Route::get('admin/role','AdminRolesAndPermissionsController@adminRoles');
+    Route::post('admin/role','AdminRolesAndPermissionsController@storeRole');
+    Route::put('admin/role/{id}','AdminRolesAndPermissionsController@updateRole');
+    Route::delete('admin/role/{id}','AdminRolesAndPermissionsController@deleteRole'); 
+    Route::get('admin/permission','AdminRolesAndPermissionsController@adminPermissions');
+    Route::post('admin/permission','AdminRolesAndPermissionsController@storePermission');
+    Route::put('admin/permission/{id}','AdminRolesAndPermissionsController@updatePermission');
+    Route::delete('admin/permission/{id}','AdminRolesAndPermissionsController@deletePermission');
+
     Route::resource('users','UsersController');  
     Route::resource('event/types','EventTypesController');  
     Route::get('event/category/types/{category}','EventTypesController@getEventTypeByCatId'); 

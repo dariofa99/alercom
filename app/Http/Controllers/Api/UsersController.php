@@ -24,7 +24,10 @@ class UsersController extends Controller
         //->where('id','<>',\Auth::user()->id)
         ->get();
         
-        return response()->json($users);
+        return response()->json([
+            'user'=>$users,
+            'errors'=>[]
+        ],200);
 
     }
 
@@ -64,7 +67,10 @@ class UsersController extends Controller
             $user = User::find($user->id);    
             $user->roles;  
         }        
-        return response()->json(compact('user'),201);
+        return response()->json([
+            'user'=>$user,
+            'errors'=>[]
+        ],200);
 
     }
 
