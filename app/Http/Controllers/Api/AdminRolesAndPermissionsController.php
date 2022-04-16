@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Permission;
 use App\Models\Role;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class AdminRolesAndPermissionsController extends Controller
 {
@@ -96,15 +97,17 @@ class AdminRolesAndPermissionsController extends Controller
 
 
         try {
+            $role = Role::find($id);
             $messages = [
                 'name.unique' => 'El nombre ya existe',
+                'name.required' => 'El nombre es requerido',
                 
             ];
             $validator = Validator::make($request->all(), [
-                'name' => 'required|string|max:255|unique:roles'                
-            ],$messages);    
+                'name' => ['required', Rule::unique('roles')->ignore($role->id)]  
+                ],$messages);    
         if($validator->fails())return response()->json(["errors"=>$validator->errors()->all()],201);
-            $role = Role::find($id);
+            
             $role->fill($request->all());
             $role->save();
             $roles = Role::all();
@@ -175,12 +178,14 @@ class AdminRolesAndPermissionsController extends Controller
     public function updatePermission(Request $request,$id){
 
         try {
-            $messages = ['name.unique' => 'El nombre ya existe'];
+            $permission = Permission::find($id);
+            $messages = ['name.unique' => 'El nombre ya existe',
+                            'name.required'=>"El nombre es requerido"];
             $validator = Validator::make($request->all(), [
-                'name' => 'required|string|max:255|unique:permissions'                
-            ],$messages); 
+                'name' => ['required', Rule::unique('permissions')->ignore($permission->id)]  
+                ],$messages);  
             if($validator->fails())return response()->json(["errors"=>$validator->errors()->all()],201);
-        $permission = Permission::find($id);
+       
         $permission->fill($request->all());
         $permission->save();
         $permissions = Permission::all();
