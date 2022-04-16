@@ -76,6 +76,7 @@ class AdminRolesAndPermissionsController extends Controller
         try {
             $messages = [
                 'name.unique' => 'El nombre ya existe',
+                'name.required'=>"El nombre es requerido"
                 
             ];
             $validator = Validator::make($request->all(), [
@@ -156,6 +157,7 @@ class AdminRolesAndPermissionsController extends Controller
         try {
             $messages = [
                 'name.unique' => 'El nombre ya existe',
+                'name.required'=>"El nombre es requerido"
                 
             ];
             $validator = Validator::make($request->all(), [

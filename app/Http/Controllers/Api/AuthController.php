@@ -90,17 +90,17 @@ class AuthController extends Controller
             'town_id'=> 1,
             'status_id'=>4
           ]); 
-        $user->roles()->attach(1);  
+       // $user->roles()->attach(1);  
         $user = User::find($user->id);
-        $user->roles;
-        $user->roles->each(function($role){
+       // $user->roles;
+       /* $user->roles->each(function($role){
             $role->permissions;
-        });
+        });*/
         $user->notify(new UserRegisterNotification());
              
         return response()->json([
             'user'=>$user,
-            'errors'=>[]
+            'messages'=>["Se ha enviado un correo de confirmación a ".$user->email]
         ],200);
     }
 

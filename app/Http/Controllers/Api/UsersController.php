@@ -7,10 +7,12 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use DB;
 use Illuminate\Support\Facades\Auth;
-use Validator;
+
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+
 class UsersController extends Controller
 {
     /**
@@ -41,36 +43,39 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        $messages = [
-            'email.unique' => 'El :attribute ya existe en otra cuenta',
-            'username.unique' => 'El :attribute ya esta registrado',
-        ];
-        $validator = Validator::make($request->all(), [
-            'username' => 'required|string|max:255|unique:users',
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6',
-        ],$messages);
-
-        if($validator->fails()){
-                return response()->json(["errors"=>$validator->errors()->all()],201);
-        }
-        $request['status_id'] = 4;
-        $user = User::create($request->all()); 
-
-          if($request->get('role_id')){
-            if(count($user->roles)<=0){
-                $user->roles()->attach($request->role_id);  
-            }else{
-                $user->roles()->sync($request->role_id);
+        try {
+            $messages = $this->validatorMessages();
+            $validator = Validator::make($request->all(), [
+                'name' => ['required','max:255'],
+                'lastname' => ['required','max:255'],
+                'email' => ['required','email','max:255','unique:users'],
+                'username' => ['required','unique:users','min:3'],          
+                'password' => ['required','min:3','confirmed'],
+            ],$messages);
+    
+            if($validator->fails()){
+                    return response()->json(["errors"=>$validator->errors()->all()],201);
             }
-            $user = User::find($user->id);    
-            $user->roles;  
-        }        
-        return response()->json([
-            'user'=>$user,
-            'errors'=>[]
-        ],200);
+            $request['status_id'] = 4;
+            $user = User::create($request->all()); 
+    
+              if($request->has('role_id')){
+                if(count($user->roles)<=0){
+                    $user->roles()->attach($request->role_id);  
+                }else{
+                    $user->roles()->sync($request->role_id);
+                }
+                $user = User::find($user->id);    
+                $user->roles;  
+            }        
+            return response()->json([
+                'user'=>$user,
+                'errors'=>[]
+            ],200);
+        } catch (\Throwable $th) {
+            return response()->json(["errors"=>$th],201);
+        }
+       
 
     }
 
@@ -121,7 +126,7 @@ class UsersController extends Controller
         $user->roles;  
         if($request->has('password') and $request->get('password')!=null and $request->get('password')!=''){
           
-            if (Hash::check($request->oldpassword, \Auth::user()->password)) {
+            if (Hash::check($request->oldpassword, Auth::user()->password)) {
                 if ($request->password == $request->confirpassword) {
                     $user->password = bcrypt($request->password);
                     $user->save();
@@ -145,13 +150,11 @@ class UsersController extends Controller
         }
       
       if($request->has('email')){      
-            $messages = [
-                'username.unique' => 'El :attribute ya esta registrado',
-                'email.unique' => 'El :attribute  ya existe en otra cuenta.',
-                'email.required' => 'El :attribute es requerido.',
-
-            ];
+            $messages =  $messages = $this->validatorMessages();;
             $validator = Validator::make($request->all(), [
+                'name' => [
+                    'required'                     
+                  ],
                 'username' => [
                   'required',
                     Rule::unique('users')->ignore($user->id)
@@ -204,5 +207,20 @@ class UsersController extends Controller
         $user = User::find($id);
         $user->delete();
         return response()->json(compact('user'),201);
+    }
+
+    private function validatorMessages() : Array {
+
+        return [
+            'name.required' => 'El nombre es requerido',
+            'lastname.required' => 'El apellido es requerido',
+            'email.required' => 'El :attribute es requerido',
+            'username.required' => 'El nombre de usuario es requerido',
+            'password.required' => 'El :attribute es requerido',
+
+            'email.unique' => 'El :attribute ya existe en otra cuenta',
+            'username.unique' => 'El :attribute ya esta registrado',
+            'password.confirmed' => 'El :attribute no coincide',
+        ];
     }
 }
