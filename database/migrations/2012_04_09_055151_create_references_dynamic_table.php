@@ -17,6 +17,7 @@ class CreateReferencesDynamicTable extends Migration
             $table->engine = 'InnoDB';
             $table->id();
             $table->string('reference_name');
+            $table->string('reference_description')->nullable();
 			$table->string('category');
 			$table->string('table');
             $table->longText('section')->nullable();

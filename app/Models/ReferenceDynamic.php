@@ -11,6 +11,7 @@ class ReferenceDynamic extends Model
     protected $table = 'references_dynamic';
     protected $fillable = [
         'reference_name',
+        'reference_description',
         'category',
         'table',
         'section',

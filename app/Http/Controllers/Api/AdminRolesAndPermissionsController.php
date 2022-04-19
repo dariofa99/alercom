@@ -20,11 +20,13 @@ class AdminRolesAndPermissionsController extends Controller
     public function index(Request $request){
 
         try {
-            $roles = Role::all();
+            $roles = Role::with('permissions')->get();
+            
             $permissions = Permission::all();
             return response()->json([
                 'roles'=>$roles,
                 'permissions'=>$permissions,
+                
                 'errors'=>[]
             ],200);
         } catch (\Throwable $th) {

@@ -11,12 +11,12 @@ use DB;
 use App\Http\Requests\FilesDecodeBase64;
 use App\Models\Reference;
 use Illuminate\Support\Facades\Auth;
-use Validator;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\File; 
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Validator;
 
 class EventsController extends Controller
 {

@@ -11,6 +11,7 @@ class Reference extends Model
     protected $table = 'references';
     protected $fillable = [
         'reference_name',
+        'reference_description',
         'category',
         'table',
         'section',

@@ -22,7 +22,7 @@ class ReferencesController extends Controller
            'table' => 'towns' ,
         ])->get();       
         return response()->json([
-            "departments"=>$departments,
+            "references"=>$departments,
             "errors"=>[]
         ],200);
     }
@@ -43,7 +43,7 @@ class ReferencesController extends Controller
             'table' => 'events',
          ])->get();       
          return response()->json([
-             "ranges"=>$ranges,
+             "references"=>$ranges,
              "errors"=>[]
          ],200);
     }

@@ -23,7 +23,7 @@ class ReferencesDynamicController extends Controller
            'table' => 'events' ,
         ])->get();       
         return response()->json([
-            "categories"=>$categories,
+            "references"=>$categories,
             "errors"=>[]
         ],200);
     }

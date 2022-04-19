@@ -185,28 +185,31 @@ class ReferencesSeeder extends Seeder
 
 //////////////////////////////////////////////////////////////
         DB::table('references_dynamic')->insert([         
-            'reference_name' => 'Naturales',
+            'reference_name' => 'Evento de salud',
+            'reference_description' => 'Se trata de eventos de salud publica que afectan a las personas del territorio',
             'category' => 'event_category',
             'table' => 'events',                    
         ]);
 
         DB::table('references_dynamic')->insert([         
-            'reference_name' => 'Socio-Naturales',
+            'reference_name' => 'Evento ambiental',
+            'reference_description' => 'Se trata de eventos relacionados a diferentes tipos de riesgos y amenazas de origen natural',
             'category' => 'event_category',
             'table' => 'events',                    
         ]);
 
         DB::table('references_dynamic')->insert([         
-            'reference_name' => 'Tecnológicos',
+            'reference_name' => 'Evento comunitario',
+            'reference_description' => 'Se trata de eventos comunitarios con afectaciones al bienestar colectivo, a las dinámicas sociales y culturales',
             'category' => 'event_category',
             'table' => 'events',                    
         ]);
-
+/*
         DB::table('references_dynamic')->insert([         
             'reference_name' => 'Antrópicos',
             'category' => 'event_category',
             'table' => 'events',                    
-        ]);
+        ]);*/
 
         //////////////////////////////////
 
