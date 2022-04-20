@@ -27,7 +27,8 @@ class EventsController extends Controller
      */
     public function index()
     {
-        $alerts = EventReport::with('town.department')
+        $alerts = EventReport::with(['town.department',
+        'status','event_type'])
         ->get();
 
         return response()->json(compact('alerts'),200);

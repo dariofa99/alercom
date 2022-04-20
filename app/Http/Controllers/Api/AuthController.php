@@ -7,6 +7,7 @@ use App\Mail\SendEventMail;
 use App\Models\User;
 use App\Notifications\UserRegisterNotification;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
@@ -20,7 +21,7 @@ class AuthController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['authenticate','register']]);
+        $this->middleware('auth:api', ['except' => ['authenticate','register','AnonimusAuthenticate']]);
         $this->guard = "api";
     }
 
@@ -35,6 +36,21 @@ class AuthController extends Controller
           return response()->json(['error' => 'No se pudo conectar al servidor'], 500);
       }
       return $this->respondWithToken($token);
+    }
+
+    public function AnonimusAuthenticate(Request $request)
+    {
+       // 
+      $user = User::where('username','anonimus')->first();
+      try {
+          if (! $token = JWTAuth::fromUser($user)) {
+              return response()->json(['error' => 'Credenciales invalidas'], 400);          }
+      } catch (JWTException $e) {
+          return response()->json(['error' => 'No se pudo conectar al servidor'], 500);
+      }
+
+        Auth::login($user);
+        return $this->respondWithToken($token);
     }
 
     public function getAuthenticatedUser()

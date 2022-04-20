@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 Route::group(['prefix'=>'v1','namespace'=>'App\Http\Controllers\Api'],function(){
     Route::post('register', 'AuthController@register');
     Route::post('login', 'AuthController@authenticate')  ;
+    Route::post('login/anonimus', 'AuthController@AnonimusAuthenticate')  ;
     Route::get('unauthenticated', function (){
         return response()->json(['error' => 'No autorizado'],403);
     })->name('unauthenticated');

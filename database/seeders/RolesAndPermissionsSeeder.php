@@ -98,5 +98,14 @@ class RolesAndPermissionsSeeder extends Seeder
         ]);
         $user->roles()->attach($role);
         $role = Role::create(['name' => 'Invitado']);
+        $user = User::create([
+            'name' => 'Anonimo',           
+            'lastname' => "anonimo",
+            'username' => "anonimus",
+            'email' => 'anonimo@correo.com',
+            'password' => Hash::make('anonimo*123'),
+            'town_id'=>1,
+            'status_id'=>4
+        ]);
     }
 }
