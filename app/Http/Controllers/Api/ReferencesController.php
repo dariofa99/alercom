@@ -48,6 +48,17 @@ class ReferencesController extends Controller
          ],200);
     }
 
+    public function getContactTypes(){
+        $ranges = Reference::where([
+            'category' => 'contact_type',
+            'table' => 'institutions_contacts',
+         ])->get();       
+         return response()->json([
+             "references"=>$ranges,
+             "errors"=>[]
+         ],200);
+    }
+
     
     /**
      * Store a newly created resource in storage.
