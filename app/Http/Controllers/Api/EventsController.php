@@ -25,13 +25,18 @@ class EventsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $alerts = EventReport::with(['town.department',
-        'status','event_type'])
+        $events = EventReport::with(['town.department',
+        'status','event_type','user'])
+        ->where(function($query) use ($request){
+            if($request->has("data") and $request->data == 'my'){
+                return $query->where('user_id',auth()->user()->id);
+            }
+        })
         ->get();
 
-        return response()->json(compact('alerts'),200);
+        return response()->json(compact('events'),200);
     }
 
     
@@ -65,6 +70,7 @@ class EventsController extends Controller
                 
         }
         $request['status_id'] = 11;
+        $request['user_id'] = auth()->user()->id;
         $event = EventReport::create($request->all()); 
         if($request->has('image_event')){
             $file = $event->uploadFile($request->image_event,'event_'.$event->id);
@@ -85,7 +91,7 @@ class EventsController extends Controller
            foreach ($institutions as $key => $institution) {           
             if(count($institution->contacts)>0){               
                 foreach ($institution->contacts as $key => $contact) {
-                    Mail::to($contact->institution_contact)->send(new SendEventMail());           
+                  //  Mail::to($contact->institution_contact)->send(new SendEventMail());           
                 }
             }            
             $event->institutions()->attach($institution->institution_id,['status_id'=>11]);
@@ -125,7 +131,7 @@ class EventsController extends Controller
        // $EventReport = EventReport::with(['town.department'])->find($id);
 
         try {
-            $alert = EventReport::with(['town.department','status','files','event_type','affectation_range'])->find($id);   
+            $alert = EventReport::with(['town.department','status','files','event_type','affectation_range','user'])->find($id);   
            if(count($alert->files)>0){
             $alert->files->each(function ($file){
                 $file_path = url($file->path);
@@ -136,11 +142,10 @@ class EventsController extends Controller
                 $file_path = url($file->path);
                 $file->real_path = $file_path;
             });
-            $ranges = Reference::where([
-                'category' => 'affectations_number',
-                'table' => 'events',
-             ])->get();   
-            return response()->json(compact('alert','ranges'),200);
+              
+            return response()->json([
+                "event"=> $alert                
+            ],200);
         } catch (\Throwable $th) {
             return response()->json(["errors"=>["Error en el servidor $th"]],501);
         }
@@ -191,7 +196,9 @@ class EventsController extends Controller
 
        $event->contacts;
 
-        return response()->json(compact('event'),200);
+        return response()->json([
+            "event"=>$event
+        ],200);
     }
 
     /**
@@ -203,9 +210,9 @@ class EventsController extends Controller
     public function destroy($id)
     {
       try {
-        $EventReport = EventReport::find($id);
-        $EventReport->delete();
-        return response()->json(compact('EventReport'),200);
+        $event = EventReport::find($id);
+        $event->delete();
+        return response()->json(compact('event'),200);
       } catch (\Throwable $th) {
         return response()->json(["error"=>"Error en el servidor"],501);
       }

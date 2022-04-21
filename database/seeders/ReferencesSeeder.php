@@ -231,12 +231,12 @@ class ReferencesSeeder extends Seeder
             'category_id'=>3                               
         ]);
 
-        DB::table('event_types')->insert([    
+   /*     DB::table('event_types')->insert([    
             'event_type_name' => 'Atentado terrorista',         
             'event_type_description' => 'Es un problema de atentado contra la integridad física de la población cívil',              
             'category_id'=>4                               
         ]);
-
+*/
         ///////////////////////////////////////////////////////////////////////
 
         DB::table('towns')->insert([       

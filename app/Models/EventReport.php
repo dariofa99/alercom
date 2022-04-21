@@ -23,6 +23,7 @@ class EventReport extends Model
         "affected_animals",
         "affected_infrastructure",
         "affected_livelihoods",
+        "user_id",
         "event_type_id",
         "town_id",
         "status_id",
@@ -38,6 +39,10 @@ class EventReport extends Model
      public function affectation_range(){
         return $this->belongsTo(Reference::class,'afectations_range_id'); 
      }
+   public function user(){
+      return $this->belongsTo(User::class,'user_id'); 
+   }
+
      public function status(){
       return $this->belongsTo(Reference::class,'status_id'); 
    }
