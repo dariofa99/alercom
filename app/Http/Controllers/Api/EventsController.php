@@ -194,6 +194,24 @@ class EventsController extends Controller
         ]);
     }
 
+
+    if($event->status_id == 13){
+        $institutions = Institution::with('contacts')
+        ->join('institutions_has_event_types','institutions_has_event_types.institution_id','=','institutions.id')
+        ->where('event_type_id',$event->event_type_id)->get();
+         if(count($institutions)>0){
+            foreach ($institutions as $key => $institution) {           
+             if(count($institution->contacts)>0){               
+                 foreach ($institution->contacts as $key => $contact) {
+                     Mail::to($contact->institution_contact)->send(new SendEventMail());           
+                 }
+             }            
+             $event->institutions()->attach($institution->institution_id,['status_id'=>11]);
+            }
+        }
+    }
+
+
        $event->contacts;
 
         return response()->json([

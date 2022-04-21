@@ -121,9 +121,8 @@ class ReferencesSeeder extends Seeder
             'table' => 'events' ,                    
         ]);
 
-        DB::table('references')->insert([       
-           
-            'reference_name' => 'Enviado',
+        DB::table('references')->insert([               
+            'reference_name' => 'Aceptado',
             'category' => 'status_type',
             'table' => 'events' ,                    
         ]);
