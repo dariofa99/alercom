@@ -37,6 +37,14 @@ class ReferencesController extends Controller
         ],200);
     }
 
+    public function getTowns(){
+        $towns = Town::with('department')->get();   
+         return response()->json([
+            "towns"=>$towns,
+            "errors"=>[]
+        ],200);
+    }
+
     public function getAffectsRange(){
         $ranges = Reference::where([
             'category' => 'affectations_number',

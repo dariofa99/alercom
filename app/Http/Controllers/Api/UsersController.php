@@ -101,6 +101,8 @@ class UsersController extends Controller
         try {
             $user = User::find($id);
             $user->roles;
+            $user->town->department;
+            $user->status;
         return response()->json([
             'user'=>$user,
             'errors'=>[]
