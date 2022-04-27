@@ -23,6 +23,7 @@ class EventReport extends Model
         "affected_animals",
         "affected_infrastructure",
         "affected_livelihoods",
+        "affected_enviroment",
         "user_id",
         "event_type_id",
         "town_id",

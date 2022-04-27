@@ -23,6 +23,8 @@ class UsersController extends Controller
     public function index()
     {
         $users = User::with('roles')
+        ->with('town.department')
+        ->with('status')
         //->where('id','<>',\Auth::user()->id)
         ->get();
         

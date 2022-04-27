@@ -185,21 +185,21 @@ class ReferencesSeeder extends Seeder
 //////////////////////////////////////////////////////////////
         DB::table('references_dynamic')->insert([         
             'reference_name' => 'Evento de salud',
-            'reference_description' => 'Se trata de eventos de salud publica que afectan a las personas del territorio',
+            'reference_description' => 'Se trata de eventos de riesgos salud pública que afectan a las personas del territorio a nivel individual y colectivo',
             'category' => 'event_category',
             'table' => 'events',                    
         ]);
 
         DB::table('references_dynamic')->insert([         
             'reference_name' => 'Evento ambiental',
-            'reference_description' => 'Se trata de eventos relacionados a diferentes tipos de riesgos y amenazas de origen natural',
+            'reference_description' => 'Se trata de eventos de riesgos asociados a diferentes tipos de fenómenos de origen natural o antrópico (ocasionados por el hombre).',
             'category' => 'event_category',
             'table' => 'events',                    
         ]);
 
         DB::table('references_dynamic')->insert([         
             'reference_name' => 'Evento comunitario',
-            'reference_description' => 'Se trata de eventos comunitarios con afectaciones al bienestar colectivo, a las dinámicas sociales y culturales',
+            'reference_description' => 'Se trata de eventos de riesgo comunitario con afectaciones a bienes públicos, daños en infraestructura, animales, así como a las dinámicas del territorio y el bienestar de las comunidades.',
             'category' => 'event_category',
             'table' => 'events',                    
         ]);
@@ -213,29 +213,228 @@ class ReferencesSeeder extends Seeder
         //////////////////////////////////
 
         DB::table('event_types')->insert([    
-            'event_type_name' => 'Huracan',         
-            'event_type_description' => 'Es un problema de vientos fuerte',              
+            'event_type_name' => 'Vectores (malaria, fiebre amarilla, etc)',         
+            'event_type_description' => 'Salud',              
             'category_id'=>1                               
         ]);
 
+        DB::table('event_types')->insert([    
+            'event_type_name' => 'Covid 19',         
+            'event_type_description' => 'Salud',              
+            'category_id'=>1                               
+        ]);
+
+
+        DB::table('event_types')->insert([    
+            'event_type_name' => 'Planes de vacunación',         
+            'event_type_description' => 'Salud',              
+            'category_id'=>1                               
+        ]);
+
+
+
+        DB::table('event_types')->insert([    
+            'event_type_name' => 'Salud Mental y Prevención del suicidio',         
+            'event_type_description' => 'Salud',              
+            'category_id'=>1                               
+        ]);
+
+
+
+        DB::table('event_types')->insert([    
+            'event_type_name' => 'Seguridad Alimentaria y Nutrición',         
+            'event_type_description' => 'Salud',              
+            'category_id'=>1                               
+        ]);
+
+
+        DB::table('event_types')->insert([    
+            'event_type_name' => 'Sexualidad y Derechos Sexuales y Reproductivos',         
+            'event_type_description' => 'Salud',              
+            'category_id'=>1                               
+        ]);
+
+
+        DB::table('event_types')->insert([    
+            'event_type_name' => 'Salud materna, natal y prenatal ',         
+            'event_type_description' => 'Salud',              
+            'category_id'=>1                               
+        ]);
+        
+        DB::table('event_types')->insert([    
+            'event_type_name' => 'Salud Publica en Emergencias (siniestros y accidentes)',         
+            'event_type_description' => 'Salud',              
+            'category_id'=>1                               
+        ]);
+        
+        DB::table('event_types')->insert([    
+            'event_type_name' => 'Otro',         
+            'event_type_description' => 'Salud',              
+            'category_id'=>1                               
+        ]);
+
+
         DB::table('event_types')->insert([       
-            'event_type_name' => 'VBG', 
-            'event_type_description' => 'Es la violencia basada en genero',             
+            'event_type_name' => 'Salud ambiental', 
+            'event_type_description' => 'Ambiental',             
             'category_id'=>2                      
-        ]);       
+        ]);     
+        
+        DB::table('event_types')->insert([       
+            'event_type_name' => 'Huracanes', 
+            'event_type_description' => 'Ambiental',             
+            'category_id'=>2                      
+        ]);    
+
+        DB::table('event_types')->insert([       
+            'event_type_name' => 'Salud ambiental', 
+            'event_type_description' => 'Ambiental',             
+            'category_id'=>2                      
+        ]);    
+
+        DB::table('event_types')->insert([       
+            'event_type_name' => 'Vendavales', 
+            'event_type_description' => 'Ambiental',             
+            'category_id'=>2                      
+        ]);    
+
+        DB::table('event_types')->insert([       
+            'event_type_name' => 'Descargas eléctricas', 
+            'event_type_description' => 'Ambiental',             
+            'category_id'=>2                      
+        ]);    
+
+        DB::table('event_types')->insert([       
+            'event_type_name' => 'Sequías', 
+            'event_type_description' => 'Ambiental',             
+            'category_id'=>2                      
+        ]);    
+
+        DB::table('event_types')->insert([       
+            'event_type_name' => 'Inundaciones', 
+            'event_type_description' => 'Ambiental',             
+            'category_id'=>2                      
+        ]);    
+
+        DB::table('event_types')->insert([       
+            'event_type_name' => 'Sismos, temblores y terremotos', 
+            'event_type_description' => 'Ambiental',             
+            'category_id'=>2                      
+        ]);    
+
+
+        DB::table('event_types')->insert([       
+            'event_type_name' => 'Tsunami', 
+            'event_type_description' => 'Ambiental',             
+            'category_id'=>2                      
+        ]);    
+
+        DB::table('event_types')->insert([       
+            'event_type_name' => 'Maremotos', 
+            'event_type_description' => 'Ambiental',             
+            'category_id'=>2                      
+        ]);    
+
+        DB::table('event_types')->insert([       
+            'event_type_name' => 'Deslizamientos y derrumbes', 
+            'event_type_description' => 'Ambiental',             
+            'category_id'=>2                      
+        ]); 
+
+        DB::table('event_types')->insert([       
+            'event_type_name' => 'Incendios forestales', 
+            'event_type_description' => 'Ambiental',             
+            'category_id'=>2                      
+        ]); 
+
+        DB::table('event_types')->insert([       
+            'event_type_name' => 'Degradación de recursos naturales', 
+            'event_type_description' => 'Ambiental',             
+            'category_id'=>2                      
+        ]); 
+
+        DB::table('event_types')->insert([       
+            'event_type_name' => 'Creciente de ríos y mares', 
+            'event_type_description' => 'Ambiental',             
+            'category_id'=>2                      
+        ]); 
+
+        DB::table('event_types')->insert([       
+            'event_type_name' => 'Otro', 
+            'event_type_description' => 'Ambiental',             
+            'category_id'=>2                      
+        ]); 
+
 
         DB::table('event_types')->insert([    
             'event_type_name' => 'Derrames',         
-            'event_type_description' => 'Es un problema riegos de sustancias nocivas para el medio ambiente',              
+            'event_type_description' => 'Comunitario',              
+            'category_id'=>3                               
+        ]);
+     
+        DB::table('event_types')->insert([    
+            'event_type_name' => 'Fugas (gas, combustible, agua, etc)',         
+            'event_type_description' => 'Comunitario',              
+            'category_id'=>3                               
+        ]);
+        DB::table('event_types')->insert([    
+            'event_type_name' => 'Incendios',         
+            'event_type_description' => 'Comunitario',              
+            'category_id'=>3                               
+        ]);
+        DB::table('event_types')->insert([    
+            'event_type_name' => 'Explosiones',         
+            'event_type_description' => 'Comunitario',              
+            'category_id'=>3                               
+        ]);
+        DB::table('event_types')->insert([    
+            'event_type_name' => 'Accidentes en transporte',         
+            'event_type_description' => 'Comunitario',              
+            'category_id'=>3                               
+        ]);
+        DB::table('event_types')->insert([    
+            'event_type_name' => 'Aglomeraciones de personas',         
+            'event_type_description' => 'Comunitario',              
+            'category_id'=>3                               
+        ]);
+        DB::table('event_types')->insert([    
+            'event_type_name' => 'Abandono y maltrato animal',         
+            'event_type_description' => 'Comunitario',              
+            'category_id'=>3                               
+        ]);
+        DB::table('event_types')->insert([    
+            'event_type_name' => 'Daños en infraestructura pública',         
+            'event_type_description' => 'Comunitario',              
+            'category_id'=>3                               
+        ]);
+        DB::table('event_types')->insert([    
+            'event_type_name' => 'Daños en servicios públicos',         
+            'event_type_description' => 'Comunitario',              
+            'category_id'=>3                               
+        ]);
+        DB::table('event_types')->insert([    
+            'event_type_name' => 'Convivencia social',         
+            'event_type_description' => 'Comunitario',              
+            'category_id'=>3                               
+        ]);
+        DB::table('event_types')->insert([    
+            'event_type_name' => 'Violencias Basadas en Género',         
+            'event_type_description' => 'Comunitario',              
+            'category_id'=>3                               
+        ]);
+        DB::table('event_types')->insert([    
+            'event_type_name' => 'Viviendas en riesgo',         
+            'event_type_description' => 'Comunitario',              
             'category_id'=>3                               
         ]);
 
-   /*     DB::table('event_types')->insert([    
-            'event_type_name' => 'Atentado terrorista',         
-            'event_type_description' => 'Es un problema de atentado contra la integridad física de la población cívil',              
-            'category_id'=>4                               
+        DB::table('event_types')->insert([    
+            'event_type_name' => 'Otro',         
+            'event_type_description' => 'Comunitario',              
+            'category_id'=>3                               
         ]);
-*/
+
+        
         ///////////////////////////////////////////////////////////////////////
 
         DB::table('towns')->insert([       

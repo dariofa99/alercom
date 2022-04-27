@@ -27,6 +27,7 @@ class CreateEventsTable extends Migration
             $table->boolean('affected_animals')->default(0);
             $table->boolean('affected_infrastructure')->default(0);
             $table->boolean('affected_livelihoods')->default(0);
+            $table->boolean('affected_enviroment')->default(0);
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->bigInteger('event_type_id')->unsigned();
