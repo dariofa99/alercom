@@ -22,7 +22,7 @@ class InstitutionsController extends Controller
      */
     public function index()
     {
-        $institutions = Institution::all();//with('event_types')->with('contacts')->get();
+        $institutions = Institution::with('town.department')->get();//with('event_types')->with('contacts')->get();
         return response()->json(compact('institutions'),201);
     }
 
