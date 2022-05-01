@@ -17,10 +17,13 @@ class InstitutionContact extends Model
 
     protected $hidden = [
         'created_at',
-        'updated_at',
-       
+        'updated_at',       
     ]; 
 
+
+    public function contact_type(){
+        return $this->belongsTo(Reference::class,'contact_type_id'); 
+     }
     
 
 }
