@@ -74,7 +74,17 @@ class InstitutionalRoutesController extends Controller
      */
     public function edit($id)
     {
-        //
+        try {
+            $insti_route = InstitutionalRoute::find($id);
+            return response()->json([
+                'institutional_route'=>$insti_route,                       
+                'errors'=>[]
+            ],200);
+        } catch (\Throwable $th) {
+            return response()->json([                                    
+                'error'=>["Error en el servidor ".$th]
+            ],500);
+        }
     }
 
     /**
@@ -86,7 +96,19 @@ class InstitutionalRoutesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $insti_route = InstitutionalRoute::find($id);
+            $insti_route->fill($request->all());
+            $insti_route->save();
+            return response()->json([
+                'institutional_route'=>$insti_route,                       
+                'errors'=>[]
+            ],200);
+        } catch (\Throwable $th) {
+            return response()->json([                                    
+                'errors'=>[$th]
+            ],500);
+        }
     }
 
     /**
@@ -97,6 +119,17 @@ class InstitutionalRoutesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $insti_route = InstitutionalRoute::find($id);
+            $insti_route->delete();
+            return response()->json([
+                'institutional_route'=>$insti_route,                       
+                'errors'=>[]
+            ],200);
+        } catch (\Throwable $th) {
+            return response()->json([                                    
+                'errors'=>[$th]
+            ],500);
+        }
     }
 }

@@ -11,7 +11,8 @@ class EventType extends Model
     protected $table = 'event_types';
     protected $fillable = [
         'event_type_description',
-        'event_type_name',        
+        'event_type_name',      
+        "category_id"  
     ];
 
     protected $hidden = [
@@ -19,4 +20,7 @@ class EventType extends Model
         'updated_at',        
     ]; 
 
+    public function category(){
+        return $this->belongsTo(ReferenceDynamic::class,"category_id"); 
+     } 
 }

@@ -21,7 +21,8 @@ class ReferencesDynamicController extends Controller
         $categories = ReferenceDynamic::where([
            'category' => 'event_category',
            'table' => 'events' ,
-        ])->get();       
+        ])->get();   
+
         return response()->json([
             "references"=>$categories,
             "errors"=>[]
@@ -58,7 +59,19 @@ class ReferencesDynamicController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       
+        try {
+            $categorie = ReferenceDynamic::create($request->all());       
+            return response()->json([
+                "reference"=>$categorie,
+                "errors"=>[]
+            ],200);
+        } catch (\Throwable $th) {
+            return response()->json([
+                "error"=>["Error de servidor ".$th]
+            ],500);
+        }
+       
     }
 
     /**
@@ -80,7 +93,17 @@ class ReferencesDynamicController extends Controller
      */
     public function edit($id)
     {
-        //
+        try {
+            $categorie = ReferenceDynamic::find($id);    
+            return response()->json([
+                "reference"=>$categorie,
+                "errors"=>[]
+            ],200);
+        } catch (\Throwable $th) {
+            return response()->json([
+                "error"=>["Error de servidor ".$th]
+            ],500);
+        }
     }
 
     /**
@@ -92,7 +115,19 @@ class ReferencesDynamicController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $categorie = ReferenceDynamic::find($id);    
+            $categorie->fill($request->all());
+            $categorie->save();   
+            return response()->json([
+                "reference"=>$categorie,
+                "errors"=>[]
+            ],200);
+        } catch (\Throwable $th) {
+            return response()->json([
+                "error"=>["Error de servidor ".$th]
+            ],500);
+        }
     }
 
     /**
@@ -103,6 +138,17 @@ class ReferencesDynamicController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $categorie = ReferenceDynamic::find($id);
+            $categorie->delete();    
+            return response()->json([
+                "reference"=>$categorie,
+                "errors"=>[]
+            ],200);
+        } catch (\Throwable $th) {
+            return response()->json([
+                "error"=>["Error de servidor ".$th]
+            ],500);
+        }
     }
 }

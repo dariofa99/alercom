@@ -40,8 +40,10 @@ Route::group(['prefix'=>'v1','middleware'=>['auth:api'],'namespace'=>'App\Http\C
     Route::delete('admin/permission/{id}','AdminRolesAndPermissionsController@deletePermission');
 
     Route::resource('users','UsersController');  
+    
     Route::resource('event/types','EventTypesController');  
     Route::get('event/category/types/{category}','EventTypesController@getEventTypeByCatId'); 
+
     Route::resource('institutions','InstitutionsController'); 
     Route::post('events/{id}','EventsController@update');
     Route::resource('events','EventsController'); 
@@ -55,7 +57,10 @@ Route::group(['prefix'=>'v1','middleware'=>['auth:api'],'namespace'=>'App\Http\C
     Route::get('references/towns','ReferencesController@getTowns');
     Route::get('references/affects/range','ReferencesController@getAffectsRange'); 
     Route::get('references/contact/types','ReferencesController@getContactTypes');
+
+    Route::resource('references/event/categories','ReferencesDynamicController');  
     Route::get('references/event/categories','ReferencesDynamicController@getEventCategories'); 
+
     Route::resource('institutional/routes','InstitutionalRoutesController');  
 
 });

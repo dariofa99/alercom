@@ -15,7 +15,16 @@ class EventTypesController extends Controller
      */
     public function index()
     {
-        $events = EventType::get();
+        try {
+            $events = EventType::with("category")->get();   
+             return response()->json([
+                "event_types"=>$events,
+                "errors"=>[]
+            ],200);
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
+       
         
         return response()->json($events);
 
@@ -23,7 +32,8 @@ class EventTypesController extends Controller
 
 
     public function getEventTypeByCatId($category){
-        $events = EventType::where([
+        $events = EventType::with("category")
+        ->where([
             'category_id' =>$category            
          ])->get();   
          return response()->json([
@@ -41,7 +51,17 @@ class EventTypesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $event = EventType::create($request->all());   
+            return response()->json([
+                "event_type"=>$event,
+                "errors"=>[]
+            ],200);
+        } catch (\Throwable $th) {
+            return response()->json([
+               "error"=>["Error en el servidor ".$th]
+            ],500);
+        }
     }
 
     /**
@@ -63,7 +83,18 @@ class EventTypesController extends Controller
      */
     public function edit($id)
     {
-        //
+        try {
+            $event = EventType::with("category")
+            ->find($id);   
+            return response()->json([
+                "event_type"=>$event,
+                "errors"=>[]
+            ],200);
+        } catch (\Throwable $th) {
+            return response()->json([
+               "error"=>["Error en el servidor ".$th]
+            ],500);
+        }
     }
 
     /**
@@ -75,7 +106,19 @@ class EventTypesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            $event = EventType::find($id);   
+            $event->fill($request->all());
+            $event->save();
+            return response()->json([
+                "event_type"=>$event,
+                "errors"=>[]
+            ],200);
+        } catch (\Throwable $th) {
+            return response()->json([
+               "error"=>["Error en el servidor ".$th]
+            ],500);
+        }
     }
 
     /**
@@ -86,6 +129,17 @@ class EventTypesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $event = EventType::find($id);   
+            $event->delete();
+            return response()->json([
+                "event_type"=>$event,
+                "errors"=>[]
+            ],200);
+        } catch (\Throwable $th) {
+            return response()->json([
+               "error"=>["Error en el servidor ".$th]
+            ],500);
+        }
     }
 }
