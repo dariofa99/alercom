@@ -16,11 +16,17 @@ class InstitutionalRoutesController extends Controller
      */
     public function index()
     {
-        $institutional_routes = InstitutionalRoute::orderBy('created_at','desc')->get();
-
-        return response()->json([
-            'institutional_routes'=>$institutional_routes,            
-        ],200);
+        try {
+            $institutional_routes = InstitutionalRoute::orderBy('created_at','desc')->get();
+            return response()->json([
+                'institutional_routes'=>$institutional_routes,            
+            ],200);
+        } catch (\Throwable $th) {
+            return response()->json([                                    
+                'error'=>[$th]
+            ],501);
+        }
+        
     }
 
     /**
@@ -49,8 +55,8 @@ class InstitutionalRoutesController extends Controller
             ],200);
         } catch (\Throwable $th) {
             return response()->json([                                    
-                'errors'=>[$th]
-            ],500);
+                'error'=>[$th]
+            ],501);
         }
      
     }
@@ -83,7 +89,7 @@ class InstitutionalRoutesController extends Controller
         } catch (\Throwable $th) {
             return response()->json([                                    
                 'error'=>["Error en el servidor ".$th]
-            ],500);
+            ],501);
         }
     }
 
@@ -106,8 +112,8 @@ class InstitutionalRoutesController extends Controller
             ],200);
         } catch (\Throwable $th) {
             return response()->json([                                    
-                'errors'=>[$th]
-            ],500);
+                'error'=>[$th]
+            ],501);
         }
     }
 
@@ -128,8 +134,8 @@ class InstitutionalRoutesController extends Controller
             ],200);
         } catch (\Throwable $th) {
             return response()->json([                                    
-                'errors'=>[$th]
-            ],500);
+                'error'=>[$th]
+            ],501);
         }
     }
 }

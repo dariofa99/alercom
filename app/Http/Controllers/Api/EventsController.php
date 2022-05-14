@@ -27,7 +27,8 @@ class EventsController extends Controller
      */
     public function index(Request $request)
     {
-        $events = EventReport::with(['town.department',
+        try {
+            $events = EventReport::with(['town.department',
         'status','event_type','user'])
         ->where(function($query) use ($request){
             if($request->has("data") and $request->data == 'my'){
@@ -37,6 +38,10 @@ class EventsController extends Controller
         ->get();
 
         return response()->json(compact('events'),200);
+        } catch (\Throwable $th) {
+            return response()->json(["error"=>["Error en el servidor $th"]],501);
+        }
+        
     }
 
     
@@ -49,12 +54,8 @@ class EventsController extends Controller
      */
     public function store(Request $request)
     {
-    /* return response()->json([
-            "request"=>$request->all(),
-            "errors"=>[]],200);
-*/
-
-//$request['event_description'] = "Credadd de sde lalaraad";
+    try {
+        
         $messages = [
             'event_description.min' => 'La descripcion debe tener al menos 10 caracteres!', 
             'event_description.required' => 'La descripcion es requerida!',            
@@ -100,12 +101,13 @@ class EventsController extends Controller
 
       
         $event->town;
-        //$event->institutions;
-
-
         return response()->json([
             "event"=>$event,
             "errors"=>[]],200);
+            
+    } catch (\Throwable $th) {
+        return response()->json(["error"=>["Error en el servidor $th"]],501);
+    }
 
     }
 
@@ -147,7 +149,7 @@ class EventsController extends Controller
                 "event"=> $alert                
             ],200);
         } catch (\Throwable $th) {
-            return response()->json(["errors"=>["Error en el servidor $th"]],501);
+            return response()->json(["error"=>["Error en el servidor $th"]],501);
         }
         
     }
@@ -161,7 +163,8 @@ class EventsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+        try {
+          
         $event = EventReport::find($id); 
         $messages = [
             'event_description.min' => 'La descripcion debe tener al menos 10 caracteres!', 
@@ -211,12 +214,16 @@ class EventsController extends Controller
         }
     }
 
-
        $event->contacts;
 
         return response()->json([
-            "event"=>$event
+            "event"=>$event,
+            "errors"=>[]
         ],200);
+
+    } catch (\Throwable $th) {
+        return response()->json(["error"=>"Error en el servidor ".$th],501);
+    }
     }
 
     /**

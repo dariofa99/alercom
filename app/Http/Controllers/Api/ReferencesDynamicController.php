@@ -18,15 +18,22 @@ class ReferencesDynamicController extends Controller
      */
     public function getEventCategories()
     {
-        $categories = ReferenceDynamic::where([
-           'category' => 'event_category',
-           'table' => 'events' ,
-        ])->get();   
-
-        return response()->json([
-            "references"=>$categories,
-            "errors"=>[]
-        ],200);
+        try {
+            $categories = ReferenceDynamic::where([
+                'category' => 'event_category',
+                'table' => 'events' ,
+             ])->get();   
+     
+             return response()->json([
+                 "references"=>$categories,
+                 "errors"=>[]
+             ],200);
+        } catch (\Throwable $th) {
+            return response()->json([
+                "error"=>["Error de servidor ".$th]
+            ],501);
+        }
+       
     }
 /*
     public function getTownsByDepId($department_id){
@@ -69,7 +76,7 @@ class ReferencesDynamicController extends Controller
         } catch (\Throwable $th) {
             return response()->json([
                 "error"=>["Error de servidor ".$th]
-            ],500);
+            ],501);
         }
        
     }
@@ -102,7 +109,7 @@ class ReferencesDynamicController extends Controller
         } catch (\Throwable $th) {
             return response()->json([
                 "error"=>["Error de servidor ".$th]
-            ],500);
+            ],501);
         }
     }
 
@@ -126,7 +133,7 @@ class ReferencesDynamicController extends Controller
         } catch (\Throwable $th) {
             return response()->json([
                 "error"=>["Error de servidor ".$th]
-            ],500);
+            ],501);
         }
     }
 
@@ -148,7 +155,7 @@ class ReferencesDynamicController extends Controller
         } catch (\Throwable $th) {
             return response()->json([
                 "error"=>["Error de servidor ".$th]
-            ],500);
+            ],501);
         }
     }
 }

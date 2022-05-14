@@ -220,11 +220,11 @@ class UsersController extends Controller
             'lastname.required' => 'El apellido es requerido',
             'email.required' => 'El :attribute es requerido',
             'username.required' => 'El nombre de usuario es requerido',
-            'password.required' => 'El :attribute es requerido',
+            'password.required' => 'La contraseña es requerido',
 
             'email.unique' => 'El :attribute ya existe en otra cuenta',
-            'username.unique' => 'El :attribute ya esta registrado',
-            'password.confirmed' => 'El :attribute no coincide',
+            'username.unique' => 'El nombre de usuario ya esta registrado',
+            'password.confirmed' => 'La contraseña no coincide',
         ];
     }
 }

@@ -21,18 +21,22 @@ class EventTypesController extends Controller
                 "event_types"=>$events,
                 "errors"=>[]
             ],200);
+
         } catch (\Throwable $th) {
-            //throw $th;
+           return response()->json([
+                "error"=>["Error en el servidor ".$th]
+             ],501);
         }
        
         
-        return response()->json($events);
+       
 
     }
 
 
     public function getEventTypeByCatId($category){
-        $events = EventType::with("category")
+        try {
+            $events = EventType::with("category")
         ->where([
             'category_id' =>$category            
          ])->get();   
@@ -40,6 +44,12 @@ class EventTypesController extends Controller
             "event_types"=>$events,
             "errors"=>[]
         ],200);
+        } catch (\Throwable $th) {
+            return response()->json([
+                "error"=>["Error en el servidor ".$th]
+             ],501);
+        }
+       
     }
 
     
@@ -60,7 +70,7 @@ class EventTypesController extends Controller
         } catch (\Throwable $th) {
             return response()->json([
                "error"=>["Error en el servidor ".$th]
-            ],500);
+            ],501);
         }
     }
 

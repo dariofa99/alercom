@@ -117,9 +117,9 @@ class InstitutionsController extends Controller
     public function update(Request $request, $id)
     {
         
-        $institution = Institution::find($id); 
+       
         try {
-            //code...
+            $institution = Institution::find($id); 
         
         $messages = [
             'institution_name.unique' => 'El nombre ya existe!', 
