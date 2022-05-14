@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/prueba', function () {
-    return view('content.mails.event_report');
+    $user = User::find(1);
+    return view('content.mails.user_register',compact('user'));
 });

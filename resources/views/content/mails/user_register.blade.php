@@ -73,8 +73,9 @@ a[x-apple-data-detectors] {
        <table cellspacing="0" cellpadding="0" border="0" align="center" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;width:600px"> 
          <tr style="border-collapse:collapse"> 
           <td cellpadding="0" cellspacing="0" border="0" style="padding:0;Margin:0;line-height:1px;min-width:600px" height="0">
-            <img src="https://tmiyln.stripocdn.email/content/guids/CABINET_837dc1d79e3a5eca5eb1609bfe9fd374/images/41521605538834349.png" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;max-height:0px;min-height:0px;min-width:600px;width:600px" alt width="600" height="1"></td> 
-         </tr> 
+           
+          
+          </tr> 
        </table></td> 
      </tr> 
      <tr style="border-collapse:collapse"> 
@@ -116,8 +117,10 @@ a[x-apple-data-detectors] {
                    <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"> 
                      <tr style="border-collapse:collapse"> 
                       <td align="center" style="Margin:0;padding-left:10px;padding-right:10px;padding-top:25px;padding-bottom:25px;font-size:0">
-                        <img src="https://tmiyln.stripocdn.email/content/guids/CABINET_3df254a10a99df5e44cb27b842c2c69e/images/7331519201751184.png"
-                         alt style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic" width="40">
+                        <img src="{{asset('dist/img/conect_white.png')}}"
+                        alt style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic"
+                         width="70">
+
                       </td> 
                      </tr> 
                    </table></td> 
@@ -137,8 +140,10 @@ a[x-apple-data-detectors] {
                  <tr style="border-collapse:collapse"> 
                   <td valign="top" align="center" style="padding:0;Margin:0;width:600px"> 
                    <table style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:separate;border-spacing:0px;background-color:#ffffff;border-radius:4px" width="100%" cellspacing="0" cellpadding="0" bgcolor="#ffffff" role="presentation"> 
-                     <tr style="border-collapse:collapse"> 
-                      <td align="center" style="Margin:0;padding-bottom:5px;padding-left:30px;padding-right:30px;padding-top:35px"><h1 style="Margin:0;line-height:58px;mso-line-height-rule:exactly;font-family:lato, 'helvetica neue', helvetica, arial, sans-serif;font-size:48px;font-style:normal;font-weight:normal;color:#111111">
+                   
+                    <tr style="border-collapse:collapse"> 
+                      <td align="center" style="Margin:0;padding-bottom:5px;padding-left:30px;padding-right:30px;padding-top:35px">
+                        <h1 style="Margin:0;line-height:58px;mso-line-height-rule:exactly;font-family:lato, 'helvetica neue', helvetica, arial, sans-serif;font-size:43px;font-style:normal;font-weight:normal;color:#111111">
                         Bienvenido! <br>{{$user['name']}} {{$user['lastname']}}
                       </h1></td> 
                      </tr> 
@@ -168,8 +173,9 @@ a[x-apple-data-detectors] {
                   <td valign="top" align="center" style="padding:0;Margin:0;width:600px"> 
                    <table style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:separate;border-spacing:0px;border-radius:4px;background-color:#ffffff" width="100%" cellspacing="0" cellpadding="0" bgcolor="#ffffff" role="presentation"> 
                      <tr style="border-collapse:collapse"> 
-                      <td class="es-m-txt-l" bgcolor="#ffffff" align="left" style="Margin:0;padding-top:20px;padding-bottom:20px;padding-left:30px;padding-right:30px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:lato, 'helvetica neue', helvetica, arial, sans-serif;line-height:27px;color:#666666;font-size:18px">
-                        Estamos emocionados de que comiences. Primero, necesitas confirmar tu cuenta. Simplemente presione el botón de abajo.
+                      <td class="es-m-txt-l" bgcolor="#ffffff" align="justify" style="Margin:0;padding-top:20px;padding-bottom:20px;padding-left:30px;padding-right:30px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:lato, 'helvetica neue', helvetica, arial, sans-serif;line-height:27px;color:#666666;font-size:18px">
+                         Estamos emocionados por tu vinculación a Alercom.<br>
+                         Primero, necesitas confirmar tu cuenta, simplemente, presione el botón de abajo.
                       </p></td> 
                      </tr> 
                      <tr style="border-collapse:collapse"> 

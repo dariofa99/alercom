@@ -185,7 +185,7 @@ class ReferencesSeeder extends Seeder
 //////////////////////////////////////////////////////////////
         DB::table('references_dynamic')->insert([         
             'reference_name' => 'Evento de salud',
-            'reference_description' => 'Se trata de eventos de riesgos salud pública que afectan a las personas del territorio a nivel individual y colectivo',
+            'reference_description' => 'Se trata de eventos de riesgos de salud pública que afectan a las personas del territorio a nivel individual y colectivo',
             'category' => 'event_category',
             'table' => 'events',                    
         ]);
