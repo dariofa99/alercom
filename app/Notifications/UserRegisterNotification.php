@@ -47,7 +47,8 @@ class UserRegisterNotification extends Notification
         ->subject('Bienvenido a Alercom')
         ->from("alercom@gmail.com")
         ->view('content.mails.user_register',[
-            'user'=>$notifiable
+            'user'=>$notifiable,
+            "token"=>str_replace("/","",bcrypt(\Str::random(50)))
         ]);
     }
 

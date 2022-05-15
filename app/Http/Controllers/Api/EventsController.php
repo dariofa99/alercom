@@ -54,8 +54,7 @@ class EventsController extends Controller
      */
     public function store(Request $request)
     {
-    try {
-        
+    try {        
         $messages = [
             'event_description.min' => 'La descripcion debe tener al menos 10 caracteres!', 
             'event_description.required' => 'La descripcion es requerida!',            
@@ -215,7 +214,10 @@ class EventsController extends Controller
     }
 
        $event->contacts;
-
+       $event->town->department;
+       $event->status;
+       $event->event_type;
+       $event->user;    
         return response()->json([
             "event"=>$event,
             "errors"=>[]
