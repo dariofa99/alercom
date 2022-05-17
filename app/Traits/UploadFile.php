@@ -16,7 +16,7 @@ trait UploadFile{
         $complet_path = \Storage::disk($this->disk)->url($file_route);
 
         \Image::make($file_or->getRealPath())
-        ->resize(300,250, function ($constraint){ 
+        ->resize(600,400, function ($constraint){ 
             $constraint->aspectRatio();
         })
         ->save($complet_path,72);
