@@ -20,3 +20,10 @@ Route::get('/prueba', function () {
    $token = str_replace("/","",bcrypt(\Str::random(50)));
     return view('content.mails.user_register',compact('user','token'));
 });
+
+
+
+Route::get('/formulario',function(){
+
+    return view('formulario');
+});

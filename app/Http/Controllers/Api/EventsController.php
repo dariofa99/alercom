@@ -54,6 +54,8 @@ class EventsController extends Controller
      */
     public function store(Request $request)
     {
+        
+
     try {        
         $messages = [
             'event_description.min' => 'La descripcion debe tener al menos 10 caracteres!', 

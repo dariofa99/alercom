@@ -12,8 +12,14 @@ trait UploadFile{
         $file_route = $filePath.'/'.$file_name;     
         $size = $file_or->getSize();   
 
-        \Storage::disk($this->disk)->put($file_route, file_get_contents($file_or->getRealPath() ) );
+      //  \Storage::disk($this->disk)->put($file_route, file_get_contents($file_or->getRealPath() ) );
         $complet_path = \Storage::disk($this->disk)->url($file_route);
+
+        \Image::make($file_or->getRealPath())
+        ->resize(300,250, function ($constraint){ 
+            $constraint->aspectRatio();
+        })
+        ->save($complet_path,72);
 
         $file = new \App\Models\File();
         $file->original_name = $file_or->getClientOriginalName();   

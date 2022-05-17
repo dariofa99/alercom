@@ -64,3 +64,4 @@ Route::group(['prefix'=>'v1','middleware'=>['auth:api'],'namespace'=>'App\Http\C
     Route::resource('institutional/routes','InstitutionalRoutesController');  
 
 });
+ 
