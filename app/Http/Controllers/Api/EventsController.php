@@ -76,7 +76,6 @@ class EventsController extends Controller
         $event = EventReport::create($request->all()); 
         if($request->has('image_event')){
             $file = $event->uploadFile($request->image_event,'event_'.$event->id);
-           // return response()->json($file);
             $event->files()->attach($file->id,[
                 'user_id'=>auth()->user()->id,
                 'status_id'=>1,
@@ -88,8 +87,6 @@ class EventsController extends Controller
        $institutions = Institution::with('contacts')
        ->join('institutions_has_event_types','institutions_has_event_types.institution_id','=','institutions.id')
        ->where('event_type_id',$request->event_type_id)->get();
-
-       //return response()->json(['institution'=>$institutions],201);
        if(count($institutions)>0){
            foreach ($institutions as $key => $institution) {           
             if(count($institution->contacts)>0){               

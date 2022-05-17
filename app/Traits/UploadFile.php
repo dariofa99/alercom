@@ -13,7 +13,12 @@ trait UploadFile{
         $size = $file_or->getSize();   
 
       //  \Storage::disk($this->disk)->put($file_route, file_get_contents($file_or->getRealPath() ) );
+    
         $complet_path = \Storage::disk($this->disk)->url($file_route);
+        $complet_folder = \Storage::disk($this->disk)->url($filePath);
+        if (!file_exists($complet_folder)) {
+            mkdir($complet_folder, 0777, true);
+        }
        // return $complet_path;
         \Image::make($file_or->getRealPath())
         ->resize(300,250, function ($constraint){ 
