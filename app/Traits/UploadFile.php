@@ -19,8 +19,8 @@ trait UploadFile{
         ->resize(300,250, function ($constraint){ 
             $constraint->aspectRatio();
         })
-        ->save($complet_path,72);
-        return $complet_path;
+        ->save(public_path($complet_path),72);
+        
         $file = new \App\Models\File();
         $file->original_name = $file_or->getClientOriginalName();   
         $file->encrypt_name = $file_name;  
