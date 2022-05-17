@@ -76,8 +76,7 @@ class EventsController extends Controller
         $event = EventReport::create($request->all()); 
         if($request->has('image_event')){
             $file = $event->uploadFile($request->image_event,'event_'.$event->id);
-            return response()->json($file);
-
+           // return response()->json($file);
             $event->files()->attach($file->id,[
                 'user_id'=>auth()->user()->id,
                 'status_id'=>1,
