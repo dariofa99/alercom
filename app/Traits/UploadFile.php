@@ -13,13 +13,14 @@ trait UploadFile{
         $size = $file_or->getSize();   
 
       //  \Storage::disk($this->disk)->put($file_route, file_get_contents($file_or->getRealPath() ) );
-        $complet_path = public_path($file_route);      
+        $complet_path = \Storage::disk($this->disk)->url($file_route);
+        return $complet_path;
         \Image::make($file_or->getRealPath())
         ->resize(300,250, function ($constraint){ 
             $constraint->aspectRatio();
         })
         ->save($complet_path,72);
-       // return $complet_path;
+        return $complet_path;
         $file = new \App\Models\File();
         $file->original_name = $file_or->getClientOriginalName();   
         $file->encrypt_name = $file_name;  
