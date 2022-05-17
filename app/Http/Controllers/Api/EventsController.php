@@ -178,8 +178,7 @@ class EventsController extends Controller
                 return response()->json(["errors"=>$validator->errors()->all()],400);
         }
        $event->fill($request->all());
-       $event->save();
-      // $request['status_id'] = 11;
+       $event->save();     
        if($request->has('image_event')){
         if(count($event->files)>0){
         $file = $event->files()->first();
@@ -195,8 +194,6 @@ class EventsController extends Controller
             'type_id'=>1
         ]);
     }
-
-
     if($event->status_id == 13){
         $institutions = Institution::with('contacts')
         ->join('institutions_has_event_types','institutions_has_event_types.institution_id','=','institutions.id')
