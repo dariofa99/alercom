@@ -183,10 +183,10 @@ class EventsController extends Controller
         if(count($event->files)>0){
         $file = $event->files()->first();
         if(File::exists(public_path($file->path))){
-            File::delete(public_path($file->path));
-            $file->delete();
+            File::delete(public_path($file->path));         
            }           
         }
+        if($file)  $file->delete();
         $file = $event->uploadFile($request->image_event,'event_'.$event->id);
         $event->files()->attach($file->id,[
             'user_id'=>auth()->user()->id,
