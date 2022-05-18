@@ -179,14 +179,15 @@ class EventsController extends Controller
         }
        $event->fill($request->all());
        $event->save();     
-       if($request->has('image_event')){
+       if($request->has('image_event') and $request->get('image_event') !=null and $request->get('image_event') !='' ){
         if(count($event->files)>0){
         $file = $event->files()->first();
         if(File::exists(public_path($file->path))){
             File::delete(public_path($file->path));         
-           }           
+           }    
+        if($file)  $file->delete();       
         }
-        if($file)  $file->delete();
+       
         $file = $event->uploadFile($request->image_event,'event_'.$event->id);
         $event->files()->attach($file->id,[
             'user_id'=>auth()->user()->id,
