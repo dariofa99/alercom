@@ -287,12 +287,6 @@ class ReferencesSeeder extends Seeder
         ]);    
 
         DB::table('event_types')->insert([       
-            'event_type_name' => 'Salud ambiental', 
-            'event_type_description' => 'Ambiental',             
-            'category_id'=>2                      
-        ]);    
-
-        DB::table('event_types')->insert([       
             'event_type_name' => 'Vendavales', 
             'event_type_description' => 'Ambiental',             
             'category_id'=>2                      

@@ -179,7 +179,7 @@ class EventsController extends Controller
         }
        $event->fill($request->all());
        $event->save();     
-       if($request->has('image_event') and $request->get('image_event') !=null and $request->get('image_event') !='' ){
+       if($request->has('image_event') and $request->image_event !=null and $request->image_event !='' ){
         if(count($event->files)>0){
         $file = $event->files()->first();
         if(File::exists(public_path($file->path))){
