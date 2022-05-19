@@ -132,7 +132,7 @@ class EventsController extends Controller
        // $EventReport = EventReport::with(['town.department'])->find($id);
 
         try {
-            $alert = EventReport::with(['town.department','status','files','event_type','affectation_range','user'])->find($id);   
+            $alert = EventReport::with(['town.department','status','files','event_type.category','affectation_range','user'])->find($id);   
            if(count($alert->files)>0){
             $alert->files->each(function ($file){
                 $file_path = url($file->path);
