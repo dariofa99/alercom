@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Mail\SendEventMail;
+use App\Mail\SendUserResetPasswordMail;
 use App\Models\User;
 use App\Notifications\UserRegisterNotification;
 use Illuminate\Http\Request;
@@ -21,7 +22,8 @@ class AuthController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['authenticate','register','AnonimusAuthenticate']]);
+        $this->middleware('auth:api', ['except' => ['authenticate','register',
+        'AnonimusAuthenticate','confirmAccount','resetPassword','resetPasswordMail']]);
         $this->guard = "api";
     }
 
@@ -30,11 +32,13 @@ class AuthController extends Controller
        // 
       $credentials = $request->only('username', 'password');
       try {
-          if (! $token = JWTAuth::attempt($credentials)) {
-              return response()->json(['error' => 'Credenciales invalidas'], 400);          }
+          if (! $token = JWTAuth::attempt($credentials)) {              
+              return response()->json(['errors' => ['Credenciales invalidas']], 201);  
+            }
       } catch (JWTException $e) {
           return response()->json(['error' => 'No se pudo conectar al servidor'], 500);
       }
+      if(auth()->user()->status_id == 5) return response()->json(['errors' => ['Esta cuenta no esta activa.']], 201);  
       return $this->respondWithToken($token);
     }
 
@@ -44,13 +48,96 @@ class AuthController extends Controller
       $user = User::where('username','anonimus')->first();
       try {
           if (! $token = JWTAuth::fromUser($user)) {
-              return response()->json(['error' => 'Credenciales invalidas'], 400);          }
+              return response()->json(['errors' => ['Credenciales invalidas']], 201);          }
       } catch (JWTException $e) {
           return response()->json(['error' => 'No se pudo conectar al servidor'], 500);
       }
 
         Auth::login($user);
         return $this->respondWithToken($token);
+    }
+
+    public function confirmAccount(Request $request)
+    {
+     
+      $user = User::where('remember_token',$request->remember_token)->first();
+      try {
+          if (!$user) {
+              return response()->json(['errors' => ['Token invalido']], 201);          }
+      } catch (JWTException $e) {
+          return response()->json(['error' => 'No se pudo conectar al servidor'], 500);
+      }
+      $user->status_id = 4;
+      $user->remember_token = '';
+      $user->email_verified_at = date("Y-m-d H:i:s");
+      $user->save();
+        
+        return response()->json([
+            'messages'=>["Tu cuenta se activó con éxito!"]
+        ],200);
+    }
+
+    public function resetPasswordMail(Request $request)
+    {
+        $messages = [            
+            'email.required' => 'El :attribute es requerido',            
+        ];
+        $validator = Validator::make($request->all(), [            
+            'email' => ['required','email','max:255'],            
+        ],$messages);
+
+        if($validator->fails()){
+                return response()->json(["errors"=>$validator->errors()->all()],201);
+        }
+      $user = User::where(['email'=>$request->email,'status_id'=>4])->first();
+      try {
+          if (!$user) {
+              return response()->json(['errors' => ['Correo electrónico no encontrado.']], 201);          }
+      } catch (JWTException $e) {
+          return response()->json(['error' => 'No se pudo conectar al servidor'], 500);
+      }
+      $token = str_replace("/","",bcrypt(\Str::random(50)));
+      $user->remember_token = $token;
+      $user->save();
+
+      Mail::to($user->email)->send(new SendUserResetPasswordMail($user));             
+      return response()->json([
+         'messages'=>["Hemos enviado la confirmación a su correo electrónico, por favor consulte su bandeja de entrada o correo no deseado y culmine su cambio."
+          ]
+      ],200);
+    }
+
+    public function resetPassword(Request $request)
+    {
+        $messages = [            
+            'email.required' => 'El :attribute es requerido',
+            'remember_token.required' => 'El :attribute es requerido',     
+            'password.required' => 'La contraseña es requerida', 
+            'password.confirmed' => 'La contraseña no coincide',      
+        ];
+        $validator = Validator::make($request->all(), [            
+            'email' => ['required','email','max:255'], 
+            'remember_token' => ['required','string','max:255'],   
+            'password' => ['required','min:3','confirmed'],         
+        ],$messages);
+
+        if($validator->fails()){
+                return response()->json(["errors"=>$validator->errors()->all()],201);
+        }
+      $user = User::where(['email'=>$request->email,'remember_token'=>$request->remember_token,'status_id'=>4])->first();
+      try {
+          if (!$user) {
+              return response()->json(['errors' => ['Datos invalidos.']], 201);          }
+      } catch (JWTException $e) {
+          return response()->json(['error' => 'No se pudo conectar al servidor'], 500);
+      }
+      $password = bcrypt($request->password);
+      $user->password = $password;
+      $user->remember_token = null;
+      $user->save();                  
+      return response()->json([
+           'messages'=>["Tu contraseña se ha restablecido con éxito."]
+      ],200);
     }
 
     public function getAuthenticatedUser()
@@ -94,7 +181,7 @@ class AuthController extends Controller
         if($validator->fails()){
                 return response()->json(["errors"=>$validator->errors()->all()],201);
         }
-
+        $token = str_replace("/","",bcrypt(\Str::random(50)));
         $user = User::create([            
             'lastname' => $request->lastname,
             'username' =>$request->username,          
@@ -103,10 +190,11 @@ class AuthController extends Controller
             'phone_number' => $request->get('phone_number'),
             'password' => Hash::make($request->get('password')),
             'town_id'=> 1,
-            'status_id'=>4
+            'status_id'=>5,
+            'remember_token'=>$token
           ]); 
        // $user->roles()->attach(1);  
-        $user = User::find($user->id);
+       // $user = User::find($user->id);
        // $user->roles;
        /* $user->roles->each(function($role){
             $role->permissions;
@@ -114,8 +202,7 @@ class AuthController extends Controller
         $user->notify(new UserRegisterNotification());             
         return response()->json([
             'user'=>$user,
-            'messages'=>["Hemos enviado la confirmación de registro a su correo electrónico, 
-            por favor consulte su bandeja de entrada o correo no deseado y culmine su registro"
+            'messages'=>["Hemos enviado la confirmación de registro a su correo electrónico, por favor consulte su bandeja de entrada o correo no deseado y culmine su registro"
             ]
         ],200);
     }

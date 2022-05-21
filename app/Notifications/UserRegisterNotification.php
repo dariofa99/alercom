@@ -48,7 +48,7 @@ class UserRegisterNotification extends Notification
         ->from("alercom@gmail.com")
         ->view('content.mails.user_register',[
             'user'=>$notifiable,
-            "token"=>str_replace("/","",bcrypt(\Str::random(50)))
+            "token"=>$notifiable->remember_token
         ]);
     }
 
@@ -61,7 +61,7 @@ class UserRegisterNotification extends Notification
     public function toArray($notifiable)
     {
         return [
-            'type_notification'=>'Notificación de usuario',          
+            'type_notification'=>'Registro de usuario',          
             'message'=>($notifiable['name'])." se ha registrado",
             'url'=>"/admin/users/".$notifiable['id']."/edit",
             'created_at'=>date("Y-m-d H:i:s"),

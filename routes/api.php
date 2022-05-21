@@ -20,6 +20,9 @@ use Illuminate\Support\Facades\Route;
  */
 Route::group(['prefix'=>'v1','namespace'=>'App\Http\Controllers\Api'],function(){
     Route::post('register', 'AuthController@register');
+    Route::post('confirm/account', 'AuthController@confirmAccount');
+    Route::post('reset/password/mail', 'AuthController@resetPasswordMail');
+    Route::post('reset/password', 'AuthController@resetPassword');
     Route::post('login', 'AuthController@authenticate')  ;
     Route::post('login/anonymous', 'AuthController@AnonimusAuthenticate')  ;
     Route::get('unauthenticated', function (){
