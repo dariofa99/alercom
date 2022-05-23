@@ -188,12 +188,12 @@ a[x-apple-data-detectors] {
                      </tr> 
                      <tr style="border-collapse:collapse"> 
                       <td class="es-m-txt-l" align="left" style="padding:0;Margin:0;padding-top:20px;padding-left:30px;padding-right:30px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:lato, 'helvetica neue', helvetica, arial, sans-serif;line-height:27px;color:#666666;font-size:18px">
-                        Si eso no funciona, copie y pegue el siguiente enlace en su navegador:</p></td> 
+                        <small> Si eso no funciona, copie y pegue el siguiente enlace en su navegador:</small></p></td> 
                      </tr> 
                      <tr style="border-collapse:collapse"> 
                       <td class="es-m-txt-l" align="left" style="padding:0;Margin:0;padding-top:20px;padding-left:30px;padding-right:30px">
                         <a target="_blank" href="{{('http://localhost:4200/confirm/account/'.$token)}}" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#FFA73B;font-size:18px">
-                            {{('http://localhost:4200/confirm/account/'.$token)}}</a>
+                          <small>  {{('http://localhost:4200/confirm/account/'.$token)}}</small></a>
                         </td> 
                      </tr> 
                      <tr style="border-collapse:collapse"> 
@@ -207,7 +207,7 @@ a[x-apple-data-detectors] {
                       <td class="es-m-txt-l" align="left" style="Margin:0;padding-top:20px;padding-left:30px;padding-right:30px;padding-bottom:40px">
                         <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:lato, 'helvetica neue', helvetica, arial, sans-serif;line-height:27px;color:#666666;font-size:18px">
                          </p><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:lato, 'helvetica neue', helvetica, arial, sans-serif;line-height:27px;color:#666666;font-size:18px">
-                          Alercom</p>
+                          <small>Alercom</small></p>
                         </td> 
                      </tr> 
                    </table></td> 

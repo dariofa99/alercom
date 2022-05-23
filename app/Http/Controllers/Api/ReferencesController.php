@@ -20,7 +20,7 @@ class ReferencesController extends Controller
         $departments = Reference::where([
            'category' => 'deparment_names',
            'table' => 'towns' ,
-        ])->get();       
+        ])->orderBy('reference_name','asc')->get();       
         return response()->json([
             "references"=>$departments,
             "errors"=>[]
@@ -30,7 +30,7 @@ class ReferencesController extends Controller
     public function getTownsByDepId($department_id){
         $towns = Town::with('department')->where([
             'department_id' => $department_id            
-         ])->get();   
+         ])->orderBy('town_name','asc')->get();   
          return response()->json([
             "towns"=>$towns,
             "errors"=>[]

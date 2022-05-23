@@ -454,6 +454,27 @@ class ReferencesSeeder extends Seeder
             'town_name' => 'Bello',
             'department_id' => '3',                             
         ]);
-        
+        /////////////////////////////////////////////////////////////////////
+        DB::table('institutional_routes')->insert([               
+            'route_name' => 'Migración',
+            'route_url' => 'https://colombia.iom.int/es',                             
+        ]);
+        DB::table('institutional_routes')->insert([               
+            'route_name' => 'VBG',
+            'route_url' => 'https://www.minsalud.gov.co/',                             
+        ]);
+        DB::table('institutional_routes')->insert([               
+            'route_name' => 'Víctimas, ley 1448',
+            'route_url' => 'https://www.fiscalia.gov.co/colombia/ruta-de-atencion-integral-a-victimas/',                             
+        ]);
+        DB::table('institutional_routes')->insert([               
+            'route_name' => 'Niñez y adolescencia',
+            'route_url' => 'https://www.icbf.gov.co/',                             
+        ]);
+        DB::table('institutional_routes')->insert([               
+            'route_name' => 'Salud mental',
+            'route_url' => 'https://www.municipiodeguatape.gov.co/publicaciones/747/rutas-de-atencion-integral-politica-publica-de-salud-mental/',                             
+        ]);
+
     }
 }

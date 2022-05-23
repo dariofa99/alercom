@@ -28,14 +28,23 @@ class EventsController extends Controller
     public function index(Request $request)
     {
         try {
+            
+
             $events = EventReport::with(['town.department',
-        'status','event_type','user'])
+        'status','event_type.category','user','files','affectation_range'])
         ->where(function($query) use ($request){
             if($request->has("data") and $request->data == 'my'){
                 return $query->where('user_id',auth()->user()->id);
             }
         })
         ->get();
+
+        $events->each(function($event){
+            $event->files->each(function ($file){
+                $file_path = url($file->path);
+                $file->real_path = $file_path;
+            });              
+        });
 
         return response()->json(compact('events'),200);
         } catch (\Throwable $th) {
@@ -89,17 +98,27 @@ class EventsController extends Controller
        ->where('event_type_id',$request->event_type_id)->get();
        if(count($institutions)>0){
            foreach ($institutions as $key => $institution) {           
-            if(count($institution->contacts)>0){               
+          /*   if(count($institution->contacts)>0){               
                 foreach ($institution->contacts as $key => $contact) {
                   //  Mail::to($contact->institution_contact)->send(new SendEventMail());           
                 }
-            }            
+            } */            
             $event->institutions()->attach($institution->institution_id,['status_id'=>11]);
            }
        }
 
       
-        $event->town;
+       $event->files->each(function ($file){
+        $file_path = url($file->path);
+        $file->real_path = $file_path;
+    });
+       
+       $event->affectation_range;
+       $event->town->department;
+       $event->files;
+       $event->status;
+       $event->event_type->category;
+       $event->user; 
         return response()->json([
             "event"=>$event,
             "errors"=>[]],200);
@@ -166,8 +185,8 @@ class EventsController extends Controller
           
         $event = EventReport::find($id); 
         $messages = [
-            'event_description.min' => 'La descripcion debe tener al menos 10 caracteres!', 
-            'event_description.required' => 'La descripcion es requerida!',            
+            'event_description.min' => 'La descripción debe tener al menos 10 caracteres!', 
+            'event_description.required' => 'La descripción es requerida!',            
         ];
         $validator = Validator::make($request->all(), [
             'event_description' => 'required|string|min:10',            
@@ -211,10 +230,16 @@ class EventsController extends Controller
         }
     }
 
-       $event->contacts;
+    $event->files->each(function ($file){
+        $file_path = url($file->path);
+        $file->real_path = $file_path;
+    });
+      
+       $event->affectation_range;
        $event->town->department;
+       $event->files;
        $event->status;
-       $event->event_type;
+       $event->event_type->category;
        $event->user;    
         return response()->json([
             "event"=>$event,

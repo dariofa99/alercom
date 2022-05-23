@@ -36,7 +36,7 @@ class AuthController extends Controller
               return response()->json(['errors' => ['Credenciales invalidas']], 201);  
             }
       } catch (JWTException $e) {
-          return response()->json(['error' => 'No se pudo conectar al servidor'], 500);
+          return response()->json(['error' => 'No se pudo conectar al servidor'], 501);
       }
       if(auth()->user()->status_id == 5) return response()->json(['errors' => ['Esta cuenta no esta activa.']], 201);  
       return $this->respondWithToken($token);
@@ -50,7 +50,7 @@ class AuthController extends Controller
           if (! $token = JWTAuth::fromUser($user)) {
               return response()->json(['errors' => ['Credenciales invalidas']], 201);          }
       } catch (JWTException $e) {
-          return response()->json(['error' => 'No se pudo conectar al servidor'], 500);
+          return response()->json(['error' => 'No se pudo conectar al servidor'], 501);
       }
 
         Auth::login($user);
@@ -65,7 +65,7 @@ class AuthController extends Controller
           if (!$user) {
               return response()->json(['errors' => ['Token invalido']], 201);          }
       } catch (JWTException $e) {
-          return response()->json(['error' => 'No se pudo conectar al servidor'], 500);
+          return response()->json(['error' => 'No se pudo conectar al servidor'], 501);
       }
       $user->status_id = 4;
       $user->remember_token = '';
@@ -94,7 +94,7 @@ class AuthController extends Controller
           if (!$user) {
               return response()->json(['errors' => ['Correo electrónico no encontrado.']], 201);          }
       } catch (JWTException $e) {
-          return response()->json(['error' => 'No se pudo conectar al servidor'], 500);
+          return response()->json(['error' => 'No se pudo conectar al servidor'], 501);
       }
       $token = str_replace("/","",bcrypt(\Str::random(50)));
       $user->remember_token = $token;
@@ -129,7 +129,7 @@ class AuthController extends Controller
           if (!$user) {
               return response()->json(['errors' => ['Datos invalidos.']], 201);          }
       } catch (JWTException $e) {
-          return response()->json(['error' => 'No se pudo conectar al servidor'], 500);
+          return response()->json(['error' => 'No se pudo conectar al servidor'], 501);
       }
       $password = bcrypt($request->password);
       $user->password = $password;
