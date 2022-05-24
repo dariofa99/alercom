@@ -18,7 +18,7 @@ Route::get('/prueba', function () {
     $user = User::find(1);
    // dd(str_replace("/","",bcrypt(\Str::random(50))));
    $token = str_replace("/","",bcrypt(\Str::random(50)));
-    return view('content.mails.reset_password',compact('user','token'));
+    return view('content.mails.event_report',compact('user','token'));
 });
 
 
