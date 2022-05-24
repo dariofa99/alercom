@@ -208,6 +208,14 @@ class EventsController extends Controller
             'status_id'=>1,
             'type_id'=>1
         ]);
+    }else{
+        if(count($event->files)>0){
+            $file = $event->files()->first();
+            if(File::exists(public_path($file->path))){
+                File::delete(public_path($file->path));       
+               }    
+            if($file)  $file->delete();       
+            }
     }
     if($event->status_id == 13){
         $institutions = Institution::with('contacts')
