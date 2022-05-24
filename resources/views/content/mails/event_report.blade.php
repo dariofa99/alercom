@@ -221,8 +221,9 @@
 																						<tr>
 																							<td class="text-btn-red" bgcolor="#ffffff" style="color:#d85d5c; font-family:'Quicksand', Arial,sans-serif; font-size:12px; line-height:16px; text-align:center; padding:11px 25px; border-radius:3px;">
 																								<multiline>
-																									<a href="{{url("/ver/alerta/100")}}" target="_blank" class="link" style="color:#d85d5c; text-decoration:none;"><span class="link" style="color:#d85d5c; text-decoration:none;">
-																										<strong>VER ALERTA</strong></span></a>
+																									<a href="{{url('http://localhost:4200/view/alert/'.$token)}}" target="_blank" class="link" style="color:#d85d5c; text-decoration:none;"><span class="link" style="color:#d85d5c; text-decoration:none;">
+																										<strong><small>  {{('http://localhost:4200/view/alert/'.$token)}}</small>/strong></span>
+																									</a>
 																								</multiline>
 																							</td>
 																						</tr>

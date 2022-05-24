@@ -13,6 +13,7 @@ class EventReport extends Model
     public $disk = 'event';
     protected $fillable = [
         'event_description',
+        'verification_token',
         "event_date",
         "event_place",
         "longitude",

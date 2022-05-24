@@ -131,20 +131,19 @@ class UsersController extends Controller
         if($request->has('password') and $request->get('password')!=null and $request->get('password')!=''){
           
             if (Hash::check($request->oldpassword, Auth::user()->password)) {
-                if ($request->password == $request->confirpassword) {
+                if ($request->password == $request->password_confirmation) {
                     $user->password = bcrypt($request->password);
-                    $user->save();
-                                   
+                    $user->save();                                   
                 } else {
                    return response()->json([                   
-                    'errors'=>['La nueva contraseña no coincide']
+                    'errors'=>['La nueva contraseña no coincide.']
                    ],201);
                 }
                 
             } else {
                 return response()->json([
                     //'user'=>$user,
-                    'errors'=>['La contraseña de administrador o actual es incorrecta']
+                    'errors'=>['La contraseña de administrador o actual es incorrecta.']
                 ],201);
             }
         }elseif($request->has('password') and ($request->password==null || $request->password=='')){
@@ -192,7 +191,7 @@ class UsersController extends Controller
                 $user->roles()->sync($request->role_id);
             }
             $user = User::find($id);    
-            $user->roles;  
+            $user->getAllPermissions();  
         }
         return response()->json([
             'user'=>$user,

@@ -71,7 +71,7 @@ class AuthController extends Controller
       $user->remember_token = '';
       $user->email_verified_at = date("Y-m-d H:i:s");
       $user->save();
-        
+      $user->roles()->attach(2);
         return response()->json([
             'messages'=>["Tu cuenta se activó con éxito!"]
         ],200);

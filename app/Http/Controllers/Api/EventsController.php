@@ -97,14 +97,9 @@ class EventsController extends Controller
        ->join('institutions_has_event_types','institutions_has_event_types.institution_id','=','institutions.id')
        ->where('event_type_id',$request->event_type_id)->get();
        if(count($institutions)>0){
-           foreach ($institutions as $key => $institution) {           
-          /*   if(count($institution->contacts)>0){               
-                foreach ($institution->contacts as $key => $contact) {
-                  //  Mail::to($contact->institution_contact)->send(new SendEventMail());           
-                }
-            } */            
-            $event->institutions()->attach($institution->institution_id,['status_id'=>11]);
-           }
+        foreach ($institutions as $key => $institution) {           
+           $event->institutions()->attach($institution->institution_id,['status_id'=>11]);
+        }
        }
 
       
@@ -222,7 +217,10 @@ class EventsController extends Controller
             foreach ($institutions as $key => $institution) {           
              if(count($institution->contacts)>0){               
                  foreach ($institution->contacts as $key => $contact) {
-                     Mail::to($contact->institution_contact)->send(new SendEventMail());           
+                     $verification_token = str_replace("/","",bcrypt(\Str::random(50)));
+                     $event->verification_token = $verification_token;
+                     $event->save();
+                     Mail::to($contact->institution_contact)->send(new SendEventMail($event->verification_token));           
                  }
              }            
              $event->institutions()->attach($institution->institution_id,['status_id'=>11]);

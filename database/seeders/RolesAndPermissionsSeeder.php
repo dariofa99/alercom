@@ -81,6 +81,12 @@ class RolesAndPermissionsSeeder extends Seeder
             'name' => 'cambiar_estado_usuario',
             'guard_name' => 'api',            
         ]);
+
+        DB::table('permissions')->insert([
+            'id'=>10,
+            'name' => 'cambiar_estado_alerta',
+            'guard_name' => 'api',            
+        ]);
         
 
 
@@ -101,7 +107,7 @@ class RolesAndPermissionsSeeder extends Seeder
         $user = User::create([
             'name' => 'Anonimo',           
             'lastname' => "anonimo",
-            'username' => "anonimus",
+            'username' => "anonymous",
             'email' => 'anonimo@correo.com',
             'password' => Hash::make('anonimo*123'),
             'town_id'=>1,

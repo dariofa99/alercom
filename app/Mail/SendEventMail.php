@@ -11,14 +11,15 @@ class SendEventMail extends Mailable
 {
     use Queueable, SerializesModels;
 
+    private $token;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($token)
     {
-       // $this->cuerpo = 
+        $this->token = $token; 
     }
 
     /**
@@ -30,10 +31,9 @@ class SendEventMail extends Mailable
     {
        // dd("hols");
         return $this->view('content.mails.event_report',[
-            'cuerpo'=>"msg"
+            'token'=>$this->token
         ])
         ->subject("Alercom: Alerta")
-        //->bcc('darioj99@gmail.com')
         ->from('djdchave@gmail.com', 'PENUR')
           ;
     }

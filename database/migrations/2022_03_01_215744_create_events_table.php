@@ -19,6 +19,7 @@ class CreateEventsTable extends Migration
             $table->string('event_description')->nullable();
             $table->date('event_date')->nullable();
             $table->string('event_place')->nullable();
+            $table->string('verification_token')->nullable();
             $table->string('latitude')->default("0.0");
             $table->string('longitude')->default("0.0");
             $table->string('event_aditional_information')->nullable();
@@ -32,7 +33,6 @@ class CreateEventsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->bigInteger('event_type_id')->unsigned();
             $table->foreign('event_type_id')->references('id')->on('event_types')->onDelete('cascade')->onUpdate('cascade');
-           
             $table->bigInteger('town_id')->unsigned();
             $table->foreign('town_id')->references('id')->on('towns')->onDelete('cascade')->onUpdate('cascade');           
             $table->bigInteger('status_id')->unsigned();
