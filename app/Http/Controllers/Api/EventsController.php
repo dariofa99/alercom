@@ -37,7 +37,7 @@ class EventsController extends Controller
                 return $query->where('user_id',auth()->user()->id);
             }
         })
-        ->paginate(20);
+        ->get();
 
         $events->each(function($event){
             $event->files->each(function ($file){
@@ -224,9 +224,7 @@ class EventsController extends Controller
          if(count($institutions)>0){
             
             foreach ($institutions as $key => $institution) {      
-           // return response()->json($institution->event_types);       
-             if(count($institution->contacts)>0){        
-                     
+            if(count($institution->contacts)>0){                     
                  foreach ($institution->contacts as $key => $contact) {
                      $verification_token = str_replace("/","",bcrypt(\Str::random(50)));
                      $event->verification_token = $verification_token;
