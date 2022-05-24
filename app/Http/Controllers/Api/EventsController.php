@@ -37,7 +37,7 @@ class EventsController extends Controller
                 return $query->where('user_id',auth()->user()->id);
             }
         })
-        ->get();
+        ->paginate(20);
 
         $events->each(function($event){
             $event->files->each(function ($file){
@@ -101,7 +101,6 @@ class EventsController extends Controller
            $event->institutions()->attach($institution->institution_id,['status_id'=>11]);
         }
        }
-
       
        $event->files->each(function ($file){
         $file_path = url($file->path);
@@ -220,10 +219,14 @@ class EventsController extends Controller
     if($event->status_id == 13){
         $institutions = Institution::with('contacts')
         ->join('institutions_has_event_types','institutions_has_event_types.institution_id','=','institutions.id')
-        ->where('event_type_id',$event->event_type_id)->get();
+        ->where('institutions_has_event_types.event_type_id',$event->event_type_id)
+        ->get();
          if(count($institutions)>0){
-            foreach ($institutions as $key => $institution) {           
-             if(count($institution->contacts)>0){               
+            
+            foreach ($institutions as $key => $institution) {      
+           // return response()->json($institution->event_types);       
+             if(count($institution->contacts)>0){        
+                     
                  foreach ($institution->contacts as $key => $contact) {
                      $verification_token = str_replace("/","",bcrypt(\Str::random(50)));
                      $event->verification_token = $verification_token;
@@ -231,7 +234,7 @@ class EventsController extends Controller
                      Mail::to($contact->institution_contact)->send(new SendEventMail($event->verification_token));           
                  }
              }            
-             $event->institutions()->attach($institution->institution_id,['status_id'=>11]);
+             //$event->institutions()->attach($institution->institution_id,['status_id'=>11]);
             }
         }
     }
