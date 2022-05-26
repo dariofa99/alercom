@@ -24,7 +24,8 @@ class InstitutionsController extends Controller
     public function index()
     {
         try {
-            $institutions = Institution::with('town.department')->get();//with('event_types')->with('contacts')->get();
+            $institutions = Institution::with('town.department')
+            ->where('category_id',24)->get();
             return response()->json([
                 'institutions'=>$institutions,
                 'errors'=>[]
@@ -35,6 +36,20 @@ class InstitutionsController extends Controller
       
     }
 
+    public function getInstitutionsInfo()
+    {
+        try {
+            $institutions = Institution::with('town.department')
+            ->where('category_id',25)->get();
+            return response()->json([
+                'institutions'=>$institutions,
+                'errors'=>[]
+            ],200);
+        } catch (\Throwable $th) {
+            return response()->json(["error"=>"Error en el servidor"],501);
+        }
+      
+    }
     
 
     /**
@@ -69,16 +84,12 @@ class InstitutionsController extends Controller
 
         }
         if($request->event_types and is_array($request->event_types)){
-            foreach ($request->event_types as $key => $event_type) {
-              //  return response()->json(compact('event_type'),201);
+            foreach ($request->event_types as $key => $event_type) {              
                 $institution->event_types()->attach($event_type);
             }
 
         }
-
         $institution->contacts;
-       // $institution->event_types;
-
         return response()->json(compact('institution'),201);
 
     }

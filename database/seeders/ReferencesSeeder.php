@@ -188,6 +188,18 @@ class ReferencesSeeder extends Seeder
             'table' => 'events' ,                    
         ]);
 
+        DB::table('references')->insert([               
+            'reference_name' => 'Revisor',
+            'category' => 'category',
+            'table' => 'institutions' ,                    
+        ]);
+
+        DB::table('references')->insert([               
+            'reference_name' => 'Informante',
+            'category' => 'category',
+            'table' => 'institutions'                  
+        ]);
+
 //////////////////////////////////////////////////////////////
         DB::table('references_dynamic')->insert([         
             'reference_name' => 'Evento de salud',

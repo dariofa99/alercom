@@ -13,7 +13,8 @@ class Institution extends Model
         'institution_name',
         'institution_address',
         'institution_phone',
-        'town_id'
+        'town_id',
+        'category_id'
     ];
 
     public function contacts(){

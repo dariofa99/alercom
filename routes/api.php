@@ -47,8 +47,10 @@ Route::group(['prefix'=>'v1','middleware'=>['auth:api'],'namespace'=>'App\Http\C
     
     Route::resource('event/types','EventTypesController');  
     Route::get('event/category/types/{category}','EventTypesController@getEventTypeByCatId'); 
-
+    
+    Route::get('institutions/information/','InstitutionsController@getInstitutionsInfo'); 
     Route::resource('institutions','InstitutionsController'); 
+    
     Route::post('events/{id}','EventsController@update');
     Route::resource('events','EventsController'); 
     

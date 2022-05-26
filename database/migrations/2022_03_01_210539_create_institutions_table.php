@@ -21,7 +21,9 @@ class CreateInstitutionsTable extends Migration
             $table->string('institution_phone');
             $table->bigInteger('town_id')->unsigned();
             $table->foreign('town_id')->references('id')->on('towns')->onDelete('cascade')->onUpdate('cascade');
-        
+            $table->bigInteger('category_id')->unsigned();
+            $table->foreign('category_id')->references('id')->on('references')->onDelete('cascade')->onUpdate('cascade');           
+           
             $table->timestamps();
         });
 
