@@ -9,7 +9,9 @@ use App\Models\EventReport;
 use App\Models\Institution;
 use DB;
 use App\Http\Requests\FilesDecodeBase64;
+use App\Models\InstitutionContact;
 use App\Models\Reference;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Validation\Rule;
@@ -23,7 +25,7 @@ class EventsController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['findByToken']]);
+        $this->middleware('auth:api', ['except' => ['findByToken','updateByToken']]);
       
     }
 
@@ -100,15 +102,29 @@ class EventsController extends Controller
             ]);
         }
         
+       /*  $contacts = InstitutionContact::join('institutions','institutions.id','=','institutions_contacts.institution_id')
+        ->join('institutions_has_event_types','institutions_has_event_types.institution_id','=','institutions.id')
+        ->where('institutions_has_event_types.event_type_id',$event->event_type_id)
+        ->where('category_id',24)
+        ->select('institutions_contacts.id as contact_id',
+        'institutions_contacts.institution_contact',
+        'institutions_contacts.institution_id'
+        )
+        ->get();
 
-       $institutions = Institution::with('contacts')
-       ->join('institutions_has_event_types','institutions_has_event_types.institution_id','=','institutions.id')
-       ->where('event_type_id',$request->event_type_id)->get();
-       if(count($institutions)>0){
-        foreach ($institutions as $key => $institution) {           
-           $event->institutions()->attach($institution->institution_id,['status_id'=>11]);
+        return response()->json([
+            "event"=>$contacts,
+            "errors"=>[]
+        ],200);
+        
+       if(count($contacts)>0){
+        foreach ($contacts as $key => $contact) {           
+           $event->institutions()->attach($contact->institution_id,[
+               'status_id'=>11,
+               'contact_id'=>$contact->contact_id
+            ]);
         }
-       }
+       } */
       
        $event->files->each(function ($file){
         $file_path = url($file->path);
@@ -225,25 +241,37 @@ class EventsController extends Controller
             }
     }
     if($event->status_id == 13){
-        $institutions = Institution::with(['contacts'])
-        ->leftjoin('institutions_has_event_types','institutions_has_event_types.institution_id','=','institutions.id')
+     
+
+        $contacts = InstitutionContact::join('institutions','institutions.id','=','institutions_contacts.institution_id')
+        ->join('institutions_has_event_types','institutions_has_event_types.institution_id','=','institutions.id')
         ->where('institutions_has_event_types.event_type_id',$event->event_type_id)
+        ->where('category_id',24)
+        ->select('institutions_contacts.id as contact_id',
+        'institutions_contacts.institution_contact',
+        'institutions_contacts.institution_id'
+        )
         ->get();
-         if(count($institutions)>0){
-            return response()->json($institutions);
-            foreach ($institutions as $key => $institution) {      
-            if(count($institution->contacts)>0){                     
-                 foreach ($institution->contacts as $key => $contact) {
+
+       /*  return response()->json([
+            "da"=>$contacts,
+            "errors"=>[]
+        ],200); */
+
+         if(count($contacts)>0){           
+            foreach ($contacts as $key => $contact) {           
                      $verification_token = str_replace("/","",bcrypt(\Str::random(50)));
-                     $event->verification_token = $verification_token;
-                     $event->save();
-                     Mail::to($contact->institution_contact)->send(new SendEventMail($event->verification_token));           
-                 }
-             }            
-             //$event->institutions()->attach($institution->institution_id,['status_id'=>11]);
-            }
+                     $event->institutions()->attach($contact->institution_id,[
+                         'status_id'=>11,
+                         'verification_token'=>$verification_token,
+                         'contact_id'=>$contact->contact_id
+                         
+                        ]);
+                Mail::to($contact->institution_contact)->send(new SendEventMail($verification_token));           
+            }            
         }
     }
+    
 
     $event->files->each(function ($file){
         $file_path = url($file->path);
@@ -287,17 +315,47 @@ class EventsController extends Controller
     }
 
     public function findByToken($token)
-    {
-        
-        try {
-            $event = EventReport::where("verification_token",$token)->first();
+    {     
 
+        try {
+            $institution = Institution::whereHas('events', function (Builder $query) use($token){
+                            $query->where('verification_token', $token);
+                    })->first();
+            
+            $institution->event = $institution->events()->where('verification_token', $token)->first();
+            $institution->event->status;
+            $institution->event->pivot->status = $institution->event_status()->where('verification_token', $token)->first();
+            return response()->json([
+                "institution"=>$institution,
+                "errors"=>[]
+            ],200);
+          } catch (\Throwable $th) {
+            return response()->json(["error"=>"Error en el servidor $th"],501);
+          }
+    }
+
+    public function updateByToken(Request $request,$token)
+    {     
+
+  
+
+        try {
+            $event = EventReport::whereHas('institutions', function (Builder $query) use($token){
+                $query->where('verification_token', $token);
+                })->first();           
+            $event->status_id = $request->status_id;
+            $event->save();   
+            $event->status;  
+            $event->institution = $event->institutions()->where('verification_token', $token)->first();            
+            $event->institution->pivot->status_id = $request->status_id;
+            $event->institution->pivot->save();
+            $event->institution->pivot->status = $event->institution_status()->where('verification_token', $token)->first();  ;
             return response()->json([
                 "event"=>$event,
                 "errors"=>[]
             ],200);
           } catch (\Throwable $th) {
-            return response()->json(["error"=>"Error en el servidor"],501);
+            return response()->json(["error"=>"Error en el servidor $th"],501);
           }
     }
 }

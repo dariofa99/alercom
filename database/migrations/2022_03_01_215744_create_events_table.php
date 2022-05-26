@@ -19,7 +19,7 @@ class CreateEventsTable extends Migration
             $table->string('event_description')->nullable();
             $table->date('event_date')->nullable();
             $table->string('event_place')->nullable();
-            $table->string('verification_token')->nullable();
+            //$table->string('verification_token')->nullable();
             $table->string('latitude')->default("0.0");
             $table->string('longitude')->default("0.0");
             $table->string('event_aditional_information')->nullable();
@@ -42,18 +42,7 @@ class CreateEventsTable extends Migration
             $table->timestamps();
         });
 
-        Schema::create('events_has_institutions', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-            $table->id();
-            $table->bigInteger('institution_id')->unsigned();
-            $table->foreign('institution_id')->references('id')->on('institutions')->onDelete('cascade')->onUpdate('cascade');
-            $table->bigInteger('event_id')->unsigned();
-            $table->foreign('event_id')->references('id')->on('events')->onDelete('cascade')->onUpdate('cascade');
-            $table->bigInteger('status_id')->unsigned();
-            $table->foreign('status_id')->references('id')->on('references')->onDelete('cascade')->onUpdate('cascade');
-        
-            $table->timestamps();
-        });
+      
         
     }
 

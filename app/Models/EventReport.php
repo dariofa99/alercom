@@ -12,8 +12,7 @@ class EventReport extends Model
     protected $table = 'events';
     public $disk = 'event';
     protected $fillable = [
-        'event_description',
-        'verification_token',
+        'event_description',        
         "event_date",
         "event_place",
         "longitude",
@@ -50,7 +49,12 @@ class EventReport extends Model
    }
      public function institutions(){
       return $this->belongsToMany(Institution::class,'events_has_institutions','event_id','institution_id')
-      ->withPivot('id','institution_id','event_id','status_id')->withTimestamps(); 
+      ->withPivot('id','verification_token','institution_id','event_id','status_id','contact_id')->withTimestamps(); 
+   }
+
+   public function institution_status(){
+      return $this->belongsToMany(Reference::class,'events_has_institutions','event_id','status_id')
+      ->withPivot('id','verification_token','institution_id','event_id','status_id','contact_id')->withTimestamps(); 
    }
 
    public function files(){

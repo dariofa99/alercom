@@ -29,6 +29,7 @@ Route::group(['prefix'=>'v1','namespace'=>'App\Http\Controllers\Api'],function()
         return response()->json(['error' => 'No autorizado'],403);
     })->name('unauthenticated');
     Route::get('events/verify/{token}','EventsController@findByToken');
+    Route::post('events/verify/{token}','EventsController@updateByToken');
  });
 
 Route::group(['prefix'=>'v1','middleware'=>['auth:api'],'namespace'=>'App\Http\Controllers\Api'],function(){
