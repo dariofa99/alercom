@@ -20,6 +20,14 @@ use Illuminate\Support\Facades\Validator;
 
 class EventsController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth:api', ['except' => ['findByToken']]);
+      
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -217,12 +225,12 @@ class EventsController extends Controller
             }
     }
     if($event->status_id == 13){
-        $institutions = Institution::with('contacts')
-        ->join('institutions_has_event_types','institutions_has_event_types.institution_id','=','institutions.id')
+        $institutions = Institution::with(['contacts'])
+        ->leftjoin('institutions_has_event_types','institutions_has_event_types.institution_id','=','institutions.id')
         ->where('institutions_has_event_types.event_type_id',$event->event_type_id)
         ->get();
          if(count($institutions)>0){
-            
+            return response()->json($institutions);
             foreach ($institutions as $key => $institution) {      
             if(count($institution->contacts)>0){                     
                  foreach ($institution->contacts as $key => $contact) {
@@ -269,9 +277,27 @@ class EventsController extends Controller
       try {
         $event = EventReport::find($id);
         $event->delete();
-        return response()->json(compact('event'),200);
+        return response()->json([
+            "event"=>$event,
+            "errors"=>[]
+        ],200);
       } catch (\Throwable $th) {
         return response()->json(["error"=>"Error en el servidor"],501);
       }
+    }
+
+    public function findByToken($token)
+    {
+        
+        try {
+            $event = EventReport::where("verification_token",$token)->first();
+
+            return response()->json([
+                "event"=>$event,
+                "errors"=>[]
+            ],200);
+          } catch (\Throwable $th) {
+            return response()->json(["error"=>"Error en el servidor"],501);
+          }
     }
 }

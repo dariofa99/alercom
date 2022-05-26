@@ -28,6 +28,7 @@ Route::group(['prefix'=>'v1','namespace'=>'App\Http\Controllers\Api'],function()
     Route::get('unauthenticated', function (){
         return response()->json(['error' => 'No autorizado'],403);
     })->name('unauthenticated');
+    Route::get('events/verify/{token}','EventsController@findByToken');
  });
 
 Route::group(['prefix'=>'v1','middleware'=>['auth:api'],'namespace'=>'App\Http\Controllers\Api'],function(){
@@ -50,7 +51,7 @@ Route::group(['prefix'=>'v1','middleware'=>['auth:api'],'namespace'=>'App\Http\C
     Route::resource('institutions','InstitutionsController'); 
     Route::post('events/{id}','EventsController@update');
     Route::resource('events','EventsController'); 
-   
+    
     Route::get('user','AuthController@getAuthenticatedUser');
     Route::get('user/me','AuthController@me');
    

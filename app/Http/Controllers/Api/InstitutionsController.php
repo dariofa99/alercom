@@ -23,8 +23,16 @@ class InstitutionsController extends Controller
      */
     public function index()
     {
-        $institutions = Institution::with('town.department')->get();//with('event_types')->with('contacts')->get();
-        return response()->json(compact('institutions'),201);
+        try {
+            $institutions = Institution::with('town.department')->get();//with('event_types')->with('contacts')->get();
+            return response()->json([
+                'institutions'=>$institutions,
+                'errors'=>[]
+            ],200);
+        } catch (\Throwable $th) {
+            return response()->json(["error"=>"Error en el servidor"],501);
+        }
+      
     }
 
     
