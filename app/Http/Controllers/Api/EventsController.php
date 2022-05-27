@@ -47,7 +47,7 @@ class EventsController extends Controller
                 return $query->where('user_id',auth()->user()->id);
             }
         })
-        ->orderBy("created_at","desc")
+        
         ->get();
 
         $events->each(function($event){
