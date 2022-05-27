@@ -45,7 +45,7 @@ class AuthController extends Controller
     public function AnonimusAuthenticate(Request $request)
     {
        // 
-      $user = User::where('username','anonimus')->first();
+      $user = User::where('username','anonymous')->first();
       try {
           if (! $token = JWTAuth::fromUser($user)) {
               return response()->json(['errors' => ['Credenciales invalidas']], 201);          }
