@@ -47,6 +47,7 @@ class EventsController extends Controller
                 return $query->where('user_id',auth()->user()->id);
             }
         })
+        ->orderBy("created_at","desc")
         ->get();
 
         $events->each(function($event){
@@ -232,13 +233,13 @@ class EventsController extends Controller
             'type_id'=>1
         ]);
     }else{
-        if(count($event->files)>0){
+        /* if(count($event->files)>0){
             $file = $event->files()->first();
             if(File::exists(public_path($file->path))){
                 File::delete(public_path($file->path));       
                }    
             if($file)  $file->delete();       
-            }
+            } */
     }
     if($event->status_id == 13){
      
