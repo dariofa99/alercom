@@ -46,8 +46,7 @@ class EventsController extends Controller
             if($request->has("data") and $request->data == 'my'){
                 return $query->where('user_id',auth()->user()->id);
             }
-        })
-        
+        })        
         ->get();
 
         $events->each(function($event){
@@ -325,7 +324,13 @@ class EventsController extends Controller
                     })->first();
             
             $institution->event = $institution->events()->where('verification_token', $token)->first();
+            $institution->event->status;            
+            $institution->event->affectation_range;
+            $institution->event->town->department;
+            $institution->event->files;
             $institution->event->status;
+            $institution->event->event_type->category;
+            $institution->event->user; 
             $institution->event->pivot->status = $institution->event_status()->where('verification_token', $token)->first();
             return response()->json([
                 "institution"=>$institution,
