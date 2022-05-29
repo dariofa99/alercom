@@ -121,7 +121,7 @@ class InstitutionsController extends Controller
     
             return response()->json(compact('institution'),201);
         } catch (\Throwable $th) {
-            return response()->json(["error"=>"Error en el servidor"],501);
+            return response()->json(["error"=>"Error en el servidor $th"],501);
         }
         
     }
