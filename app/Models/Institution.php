@@ -26,7 +26,7 @@ class Institution extends Model
         ->withPivot('id','institution_id','event_type_id')->withTimestamps(); 
      } 
 
-     public function events(){
+   public function events(){
       return $this->belongsToMany(EventReport::class,'events_has_institutions','institution_id','event_id')
       ->withPivot('id','verification_token','institution_id','event_id','status_id','contact_id')->withTimestamps(); 
    }
