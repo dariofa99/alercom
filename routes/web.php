@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/prueba', function () {
     $user = User::find(1);
+  // dd(env("APP_URL_PROD"));
    // dd(str_replace("/","",bcrypt(\Str::random(50))));
    $token = str_replace("/","",bcrypt(\Str::random(50)));
     return view('content.mails.event_report',compact('user','token'));

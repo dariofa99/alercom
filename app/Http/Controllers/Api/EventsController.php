@@ -50,7 +50,8 @@ class EventsController extends Controller
         ->get();
 
         $events->each(function($event){
-            $event->event_date = getShortDate($event->created_at);
+            $event->long_event_date= getShortDate($event->created_at);
+
             $event->files->each(function ($file){
                 $file_path = url($file->path);
                 $file->real_path = $file_path;

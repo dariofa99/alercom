@@ -221,7 +221,7 @@
 																						<tr>
 																							<td class="text-btn-red" bgcolor="#ffffff" style="color:#d85d5c; font-family:'Quicksand', Arial,sans-serif; font-size:12px; line-height:16px; text-align:center; padding:11px 25px; border-radius:3px;">
 																								<multiline>
-																									<a href="{{url('/view/alert/'.$token)}}" target="_blank" class="link" style="color:#d85d5c; text-decoration:none;"><span class="link" style="color:#d85d5c; text-decoration:none;">
+																									<a href="{{env("APP_URL_PROD")}}{{('/view/alert/'.$token)}}" target="_blank" class="link" style="color:#d85d5c; text-decoration:none;"><span class="link" style="color:#d85d5c; text-decoration:none;">
 																										<strong>Ver alerta</strong>
 																									</span>
 																									</a>

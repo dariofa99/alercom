@@ -119,7 +119,19 @@ class InstitutionsController extends Controller
             $institution->town;
             $institution->event_types;
     
-            return response()->json(compact('institution'),201);
+            return response()->json(compact('institution'),200);
+        } catch (\Throwable $th) {
+            return response()->json(["error"=>"Error en el servidor $th"],501);
+        }
+        
+    }
+    public function editInfo($id)
+    {
+        try {
+            $institution = Institution::find($id); 
+            
+    
+            return response()->json(compact('institution'),200);
         } catch (\Throwable $th) {
             return response()->json(["error"=>"Error en el servidor $th"],501);
         }

@@ -49,6 +49,7 @@ Route::group(['prefix'=>'v1','middleware'=>['auth:api'],'namespace'=>'App\Http\C
     Route::resource('event/types','EventTypesController');  
     Route::get('event/category/types/{category}','EventTypesController@getEventTypeByCatId'); 
     
+    Route::get('institutions/information/{id}/edit','InstitutionsController@editInfo'); 
     Route::get('institutions/information/','InstitutionsController@getInstitutionsInfo'); 
     Route::resource('institutions','InstitutionsController'); 
     
