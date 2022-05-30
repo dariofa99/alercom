@@ -149,7 +149,7 @@ class InstitutionsController extends Controller
     {
         
       //  return response()->json($id,200);
-      //  try {
+        try {
             $institution = Institution::find($id); 
         
         $messages = [
@@ -221,9 +221,9 @@ class InstitutionsController extends Controller
         $institution->town;
         $institution->event_types;
         return response()->json(compact('institution'),200);
-     // }  catch (\Throwable $th) {
-     //   return response()->json(["error"=>"Error en el servidor ".$th],501);
-      //  }
+      }  catch (\Throwable $th) {
+        return response()->json(["error"=>"Error en el servidor ".$th],501);
+        }
     }
 
     /**
