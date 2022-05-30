@@ -148,8 +148,8 @@ class InstitutionsController extends Controller
     public function update(Request $request, $id)
     {
         
-       
-        try {
+      //  return response()->json($id,200);
+      //  try {
             $institution = Institution::find($id); 
         
         $messages = [
@@ -168,13 +168,13 @@ class InstitutionsController extends Controller
        $institution->save();
 
      
+      
 
-
-        if($request->contacts and is_array($request->contacts)){
+        if($request->has('contacts') and is_array($request->contacts)){
             $insts_cont = InstitutionContact::where("institution_id",$institution->id)
             ->whereNotIn('id', $request->contact_id)
             ->delete();
-
+         
            
             foreach ($request->contacts as $key => $contact) {
                 if($request->contact_id[$key]!=0){
@@ -195,11 +195,15 @@ class InstitutionsController extends Controller
             }
 
         }
-
-        $event_types = $institution->event_types()
-        ->whereNotIn('event_type_id', $request->event_types)
-        ->delete();
        
+        if($request->has('event_types') and is_array($request->event_types)){
+            $event_types = $institution->event_types()
+            ->whereNotIn('event_type_id', $request->event_types)
+            ->delete();
+        }
+       
+       
+
         if($request->event_types and is_array($request->event_types)){
             foreach ($request->event_types as $key => $event_type) {
                 $event_types = $institution->event_types()
@@ -217,9 +221,9 @@ class InstitutionsController extends Controller
         $institution->town;
         $institution->event_types;
         return response()->json(compact('institution'),200);
-      }  catch (\Throwable $th) {
-        return response()->json(["error"=>"Error en el servidor ".$th],501);
-        }
+     // }  catch (\Throwable $th) {
+     //   return response()->json(["error"=>"Error en el servidor ".$th],501);
+      //  }
     }
 
     /**
