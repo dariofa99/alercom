@@ -37,17 +37,18 @@ class EventsController extends Controller
      */
     public function index(Request $request)
     {
+       
         try {
             
 
             $events = EventReport::with(['town.department',
-        'status','event_type.category','user','files','affectation_range'])
-        ->where(function($query) use ($request){
-            if($request->has("data") and $request->data == 'my'){
-                return $query->where('user_id',auth()->user()->id);
-            }
-        })        
-        ->get();
+            'status','event_type.category','user','files','affectation_range'])
+            ->filter($request)->where(function($query) use ($request){
+                if($request->has("data") and $request->data == 'my'){
+                    return $query->where('user_id',auth()->user()->id);
+                }
+            })        
+            ->paginate(5)->withQueryString();
 
         $events->each(function($event){
             $event->long_event_date= getShortDate($event->created_at);
@@ -57,8 +58,8 @@ class EventsController extends Controller
                 $file->real_path = $file_path;
             });              
         });
-
-        return response()->json(compact('events'),200);
+        return response()->json($events,200);
+        return response()->json(["paginator"=>$events,"errors"=>[]],200);
         } catch (\Throwable $th) {
             return response()->json(["error"=>["Error en el servidor $th"]],501);
         }

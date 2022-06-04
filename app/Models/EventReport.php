@@ -62,4 +62,18 @@ class EventReport extends Model
       ->withPivot('id','file_id','user_id','status_id','type_id')->withTimestamps(); 
    } 
 
+   public function scopeFilter($query,$request){
+
+         if($request->has("status_id")){
+            if($request->has("date_start")){
+               return $query->where('status_id',$request->status_id)
+               ->whereBetween('event_date',[$request->date_start,$request->date_end]);
+            }
+            return $query->where('status_id',$request->status_id);
+         }elseif($request->has("date_start")){
+            return $query->whereBetween('event_date',[$request->date_start,$request->date_end]);
+         }        
+      
+  }
+
 }
