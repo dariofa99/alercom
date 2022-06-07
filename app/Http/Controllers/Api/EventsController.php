@@ -59,7 +59,7 @@ class EventsController extends Controller
             });              
         });
         return response()->json($events,200);
-        return response()->json(["paginator"=>$events,"errors"=>[]],200);
+       
         } catch (\Throwable $th) {
             return response()->json(["error"=>["Error en el servidor $th"]],501);
         }

@@ -14,7 +14,7 @@ use Illuminate\Validation\Rule;
 class AdminRolesAndPermissionsController extends Controller
 {
     public function __construct(){
-        $this->middleware(['permission:crear_permisos']);
+        $this->middleware(['permission:crear_permisos'])->only(['storePermission']);
     }
    
     public function index(Request $request){

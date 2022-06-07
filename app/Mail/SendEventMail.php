@@ -34,7 +34,7 @@ class SendEventMail extends Mailable
             'token'=>$this->token
         ])
         ->subject("Alercom: Alerta")
-        ->from('djdchave@gmail.com', 'PENUR')
+        ->from('djdchave@gmail.com', 'PENUD')
           ;
     }
 }
