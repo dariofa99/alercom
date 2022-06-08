@@ -38,7 +38,9 @@ class ReferencesController extends Controller
     }
 
     public function getTowns(){
-        $towns = Town::with('department')->get();   
+        $towns = Town::with('department')
+        ->orderBy('town_name','asc')
+        ->get();   
          return response()->json([
             "towns"=>$towns,
             "errors"=>[]

@@ -7,15 +7,8 @@ use App\Mail\SendEventMail;
 use Illuminate\Http\Request;
 use App\Models\EventReport;
 use App\Models\Institution;
-use DB;
-use App\Http\Requests\FilesDecodeBase64;
 use App\Models\InstitutionContact;
-use App\Models\Reference;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Notification;
-use Illuminate\Validation\Rule;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
@@ -47,12 +40,12 @@ class EventsController extends Controller
                 if($request->has("data") and $request->data == 'my'){
                     return $query->where('user_id',auth()->user()->id);
                 }
-            })        
+            })
+            ->orderBy("created_at",'desc')        
             ->paginate(5)->withQueryString();
 
         $events->each(function($event){
             $event->long_event_date= getShortDate($event->created_at);
-
             $event->files->each(function ($file){
                 $file_path = url($file->path);
                 $file->real_path = $file_path;
@@ -80,8 +73,8 @@ class EventsController extends Controller
 
     try {        
         $messages = [
-            'event_description.min' => 'La descripcion debe tener al menos 10 caracteres!', 
-            'event_description.required' => 'La descripcion es requerida!',            
+            'event_description.min' => 'La descripción debe tener al menos 10 caracteres!', 
+            'event_description.required' => 'La descripción es requerida!',            
         ];
         $validator = Validator::make($request->all(), [
             'event_description' => 'required|string|min:10',            

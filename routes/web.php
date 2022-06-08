@@ -22,6 +22,10 @@ Route::get('/prueba', function () {
     return view('content.mails.event_report',compact('user','token'));
 });
 
+Route::get('/policy', function () {
+      return view('welcome');
+});
+
 
 
 Route::get('/formulario',function(){

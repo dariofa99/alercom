@@ -21,7 +21,7 @@ class ReferencesDynamicController extends Controller
         try {
             $categories = ReferenceDynamic::where([
                 'category' => 'event_category',
-                'table' => 'events' ,
+                'table' => 'events',
              ])->get();   
      
              return response()->json([
