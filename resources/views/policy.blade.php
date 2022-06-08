@@ -478,25 +478,7 @@
                     </div>
                 </div>
             </div>
-            
-            <footer class="footer py-2 bg-light d-flex flex-wrap align-items-center justify-content-center">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12 col-lg-12">
-                            <div class="row d-flex align-items-center">
-                                <div class="col-2"></div>
-                                <div class="col-4 d-flex justify-content-end">
-                                    <img class="img-thumbnail" style="width: 50%" src="./assets/logos/alianza.png " alt="Logo Alianza " />
-                                </div>
-                                <div class="col-4 flex justify-content-center">
-                                    <img class="img-thumbnail" style="width: 20%" src="./assets/logos/PNUD_azul.png " alt="Logo Alianza " />
-                                </div>
-                                <div class="col-2"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </footer>
+                    
             
        
         </div>
