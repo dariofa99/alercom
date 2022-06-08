@@ -269,10 +269,7 @@ class EventsController extends Controller
     }
     
 
-    $event->files->each(function ($file){
-        $file_path = url($file->path);
-        $file->real_path = $file_path;
-    });
+   
       
        $event->affectation_range;
        $event->town->department;
@@ -280,6 +277,12 @@ class EventsController extends Controller
        $event->status;
        $event->event_type->category;
        $event->user;    
+
+       $event->files->each(function ($file){
+        $file_path = url($file->path);
+        $file->real_path = $file_path;
+    });
+
         return response()->json([
             "event"=>$event,
             "errors"=>[]
@@ -322,10 +325,14 @@ class EventsController extends Controller
             $institution->event->status;            
             $institution->event->affectation_range;
             $institution->event->town->department;
-            $institution->event->files;
+            $institution->event->files; 
             $institution->event->status;
             $institution->event->event_type->category;
             $institution->event->user; 
+            $institution->event->files->each(function ($file){
+                $file_path = url($file->path);
+                $file->real_path = $file_path;
+            });
             $institution->event->pivot->status = $institution->event_status()->where('verification_token', $token)->first();
             return response()->json([
                 "institution"=>$institution,
