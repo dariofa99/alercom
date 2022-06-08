@@ -23,7 +23,7 @@ Route::get('/prueba', function () {
 });
 
 Route::get('/policy', function () {
-      return view('welcome');
+      return view('policy');
 });
 
 

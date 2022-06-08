@@ -19,7 +19,7 @@
             body {
                 font-family: 'Nunito', sans-serif;
             }
-            <>
+           
              .content {
         height: 100vh;
     }

@@ -4,13 +4,17 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>{{env('APP_NAME','Alercom')}}</title>
 
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
         <!-- Styles -->
         <style>
+                body {
+                font-family: 'Nunito', sans-serif;
+            }
              .content {
         height: 100vh;
     }
@@ -30,6 +34,15 @@
             height:200px;
         }
     }
+    @media (min-width: 246px) {
+        .card {
+           width: 100% ;
+           
+            
+        }
+
+
+    }
         </style>
     </head>
     <body>
@@ -40,14 +53,15 @@
                         <a href="/"><img class="card-img-top img-responsive" src="{{asset('/dist/img/conect.png')}}" alt="Logo Alianza"></a>
                     </div>
                     <div class="col-12 col-md-10 d-flex align-items-center text-center">
-                        <h2 class="pt-3 pb-3 mb-0">Sistema de Atención para detección temprana de Alertas en los departamentos de Nariño y Antioquia</h2>
+                        <h4 class="pt-3 pb-3 mb-0">Sistema de Atención para detección temprana de Alertas en los departamentos de Nariño
+                             y Antioquia</h4>
                     </div>
                 </div>
             
-                <div class="row pt-3 pb-3" style="background-color: #990099; color:white">
+                <div class="row pt-3 pb-3" style="background-color: #990099; color:black">
                     <div class="container d-flex flex-wrap justify-content-center align-items-center">
-                        <div class="card m-4">
-                            <div class="container p-4 text-center">
+                        <div class="card">
+                            <div class="container p-2 text-center">
                                 <div style="text-align: justify;">
                                     <p>
                                         <strong>SOBRE LA APP ALERCOM</strong>
@@ -418,14 +432,11 @@
                                         3. Comprenden que PENUD no se hará responsable de cualquier daño o perjuicio de cualquier naturaleza, que surja a partir de la atención dada por otras entidades o de actuaciones erróneas realizadas por usted.
                                     </p>
                                     <p>
-                                        4. Aceptan que PENUD brindará asesoría jurídica mas no representación judicial.
-                                    </p>
-                                    <p>
-                                        5. Se abstendrán de iniciar cualquier acción o reclamación contra la PENUD, derivada o relacionada con información, opinión, mensajes, afectación o cualquier otra acción que genere daño realizada por otra usuaria/o, o un tercero ajeno a PENUD y entidades
+                                        4. Se abstendrán de iniciar cualquier acción o reclamación contra la PENUD, derivada o relacionada con información, opinión, mensajes, afectación o cualquier otra acción que genere daño realizada por otra usuaria/o, o un tercero ajeno a PENUD y entidades
                                         aliadas a la plataforma. Usted entiende que, en caso de suceder esta situación, las actuaciones legales se deberán llevar a cabo, en contra del responsable directo.
                                     </p>
                                     <p>
-                                        6. No realizar ni ingresar comentarios, mensajes, información, o similares que contengan o promuevan contenido difamatorio, abusivo, discriminatorio, ofensivo, intimidatorio, contrario a la moral, buenas costumbres y orden público, que constituyan violencia,
+                                        7. No realizar ni ingresar comentarios, mensajes, información, o similares que contengan o promuevan contenido difamatorio, abusivo, discriminatorio, ofensivo, intimidatorio, contrario a la moral, buenas costumbres y orden público, que constituyan violencia,
                                         un delito o la comisión de un delito.
                                     </p>
                                     <p>
