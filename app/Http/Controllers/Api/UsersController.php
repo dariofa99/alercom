@@ -59,6 +59,7 @@ class UsersController extends Controller
                     return response()->json(["errors"=>$validator->errors()->all()],201);
             }
             $request['status_id'] = 4;
+            $request['password'] = bcrypt($request->password);
             $user = User::create($request->all()); 
     
               if($request->has('role_id')){

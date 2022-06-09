@@ -73,7 +73,7 @@
                                         <strong>POLÍTICA DE PRIVACIDAD</strong>
                                     </p>
                                     <p>
-                                        La presente Política de Privacidad establece los términos en que se usa y protege la información que es proporcionada por los usuarios y usuarias al momento de utilizar la aplicación Alercom y el sistema de atención de alertas. PENUD está comprometida
+                                        La presente Política de Privacidad establece los términos en que se usa y protege la información que es proporcionada por los usuarios y usuarias al momento de utilizar la aplicación Alercom y el sistema de atención de alertas. PNUD está comprometida
                                         con la seguridad de los datos de sus usuarias/os. Cuando le pedimos llenar los campos de información personal con la cual usted pueda ser identificada/o, lo hacemos asegurando que sólo se empleará de acuerdo con los términos
                                         de este documento y a lo establecido por la normatividad Colombiana vigente al momento de usar la aplicación.
                                     </p>
@@ -93,7 +93,7 @@
                                         brindar asesoría y buscar con diferentes entidades solución a la problemática detectada y si es necesario llevar el caso a los entes competentes para facilitar la pronta atención al evento.
                                     </p>
                                     <p>
-                                        Ante esto, PENUD no se hace responsable de lo que suceda en cada caso, entendido que está herramienta busca ser un medio para activar directamente su red de apoyo y no a la institucionalidad.
+                                        Ante esto, PNUD no se hace responsable de lo que suceda en cada caso, entendido que está herramienta busca ser un medio para activar directamente su red de apoyo y no a la institucionalidad.
                                     </p>
                                     <p>
                                         <strong>INFORMACIÓN RECOGIDA Y CONSIDERACIONES</strong>
@@ -108,7 +108,7 @@
                                         • El respeto a su intimidad y privacidad está totalmente garantizado.
                                     </p>
                                     <p>
-                                        • Con respecto a la publicación de la app Alercom en la play store, PENUD, es el único responsable de la aplicación y su contenido, No Google; los servicios y responsabilidades por parte de PENUD se aclaran en este documento.
+                                        • Con respecto a la publicación de la app Alercom en la play store, PNUD, es el único responsable de la aplicación y su contenido, No Google; los servicios y responsabilidades por parte de PNUD se aclaran en este documento.
                                     </p>
                                     <p>
                                         • El uso de la aplicación es voluntario.
@@ -123,7 +123,7 @@
                                         · La aplicación notificara a las entidades cuando se haya verificado la autenticidad del evento.
                                     </p>
                                     <p>
-                                        • Al activar una alerta esta queda registrada en los servidores de PENUD, con el único fin de verificar el estado y la relevancia del evento.
+                                        • Al activar una alerta esta queda registrada en los servidores de PNUD, con el único fin de verificar el estado y la relevancia del evento.
                                     </p>
                                     <p>
                                         • Para hacer uso de la aplicación se deberá contar con el consentimiento de uso de los permisos necesarios en el dispositivo.
@@ -195,7 +195,7 @@
                                         Los datos registrados al enviar una alerta son: fecha, lugar del evento, descripción del evento y personas que se vieron afectadas; dicho registro podrá ser verificado para establecer el estado y la veracidad del evento.
                                     </p>
                                     <p>
-                                        PENUD protegerá la información suministrada a esta aplicación y está no será facilitada a terceros, a menos que cuente con autorización expresa del titular de la cuenta, cuando medie una orden judicial o cuando la situación haga parte de las excepciones
+                                        PNUD protegerá la información suministrada a esta aplicación y está no será facilitada a terceros, a menos que cuente con autorización expresa del titular de la cuenta, cuando medie una orden judicial o cuando la situación haga parte de las excepciones
                                         presentes en la normatividad Colombia.
                                     </p>
                                     <p>
@@ -222,7 +222,7 @@
                                         Esta compañía no venderá, cederá ni distribuirá la información personal que es recopilada sin su consentimiento, salvo que sea requerido por un juez con una orden judicial.
                                     </p>
                                     <p>
-                                        PENUD se reserva el derecho de cambiar los términos de la presente Política de Privacidad en cualquier momento.
+                                        PNUD se reserva el derecho de cambiar los términos de la presente Política de Privacidad en cualquier momento.
                                     </p>
                                     <p>
                                         Está aplicación está conectada directamente con la plataforma web de recepción de alertas, razón por la cual al aceptar está política de privacidad también está aceptando los términos y condiciones de la plataforma web.
@@ -248,7 +248,7 @@
                                         y Condiciones, incluyendo las consecuencias de su uso indebido ocasionadas por las actuaciones que usted realice en ella.
                                     </p>
                                     <p>
-                                        Teniendo en cuenta los posibles cambios normativos o de funcionamiento de la plataforma web, PENUD podrá modificar estos Términos y Condiciones. Por ende, se le recomienda revisar periódicamente debido a la obligatoriedad de estos mismos.
+                                        Teniendo en cuenta los posibles cambios normativos o de funcionamiento de la plataforma web, PNUD podrá modificar estos Términos y Condiciones. Por ende, se le recomienda revisar periódicamente debido a la obligatoriedad de estos mismos.
                                     </p>
                                     <p>
                                         <strong>Información contenida en el Portal web</strong>
@@ -260,7 +260,7 @@
                                         <strong>1. Declaración de Privacidad</strong>
                                     </p>
                                     <p>
-                                        PENUD se compromete con las usuarias y usuarios a velar por su intimidad y privacidad, apegándose al debido proceso y a la legislación colombiana vigente como las disposiciones contenidas en la Ley Estatutaria del Hábeas Data (Ley 1581 de 2012), reglamentada
+                                        PNUD se compromete con las usuarias y usuarios a velar por su intimidad y privacidad, apegándose al debido proceso y a la legislación colombiana vigente como las disposiciones contenidas en la Ley Estatutaria del Hábeas Data (Ley 1581 de 2012), reglamentada
                                         mediante el decreto 1377 del 2013 y en la Ley de Privacidad o Habeas Data Colombiana (Ley 1266 de 2008), entre otras, con el fin de darle la debida diligencia a la información suministrada por las usuarias y usuarios en la
                                         plataforma web.
                                     </p>
@@ -276,7 +276,7 @@
                                         o actualizar la información suministrada en cualquier momento. Se aconseja mantener actualizada la información.
                                     </p>
                                     <p>
-                                        La información personal proporcionada está asegurada por una clave de acceso que sólo conoce la propietaria/o. Por ende, es la única/o responsable de mantener en secreto su clave. Ante esto, PENUD:
+                                        La información personal proporcionada está asegurada por una clave de acceso que sólo conoce la propietaria/o. Por ende, es la única/o responsable de mantener en secreto su clave. Ante esto, PNUD:
                                     </p>
                                     <p>
                                         1. Se compromete a no acceder ni pretender conocer dicha clave.
@@ -289,14 +289,14 @@
                                         autenticidad de la información asociada a los servicios que se ofrece.
                                     </p>
                                     <p>
-                                        PENUD, ha implementado todas las medidas de seguridad necesarias para proteger los datos personales que se requieren, con el fin de evitar la pérdida, alteración, mal uso, acceso no autorizado, robo de datos registrados o ataques de terceros. Sin embargo,
+                                        PNUD, ha implementado todas las medidas de seguridad necesarias para proteger los datos personales que se requieren, con el fin de evitar la pérdida, alteración, mal uso, acceso no autorizado, robo de datos registrados o ataques de terceros. Sin embargo,
                                         teniendo en cuenta que ninguna transmisión de internet es segura absolutamente, usted conoce, asume y acepta el hipotético riesgo que ello implica.
                                     </p>
                                     <p>
                                         <strong>3. Utilización de información personal</strong>
                                     </p>
                                     <p>
-                                        PENUD no utilizara, publicará, transferirá, utilizara o divulgará la información brindada mediante la plataforma Web sin autorización previa y expresa de la usuaria/o, excepto en los siguientes casos:
+                                        PNUD no utilizara, publicará, transferirá, utilizara o divulgará la información brindada mediante la plataforma Web sin autorización previa y expresa de la usuaria/o, excepto en los siguientes casos:
                                     </p>
                                     <p>
                                         1. Ser requerida por orden judicial.
@@ -314,7 +314,7 @@
                                         <strong>1. Condiciones de Uso</strong>
                                     </p>
                                     <p>
-                                        1. Al ingresar a esta plataforma, usted reconoce que PENUD tiene derecho a:
+                                        1. Al ingresar a esta plataforma, usted reconoce que PNUD tiene derecho a:
                                     </p>
                                     <p>
                                         a. Modificar los términos y condiciones en cualquier momento sin previo aviso.
@@ -327,20 +327,20 @@
                                     </p>
                                     <p>
                                         2. La plataforma remitirá información mediante correo electrónico a las entidades correspondientes a casos de eventos de salud, ambientales y comunitarios. Cabe resaltar que esta información se compartirá contando con la respectiva autorización y consentimiento
-                                        de la Usuaria (o) para fines jurídicos. Sin embargo, PENUD no se hace responsable por la disponibilidad, trato, administración o acceso a estos mismo. En caso de tener inconveniente en ellos, comuníquese directamente con la
+                                        de la Usuaria (o) para fines jurídicos. Sin embargo, PNUD no se hace responsable por la disponibilidad, trato, administración o acceso a estos mismo. En caso de tener inconveniente en ellos, comuníquese directamente con la
                                         encargada-o de cada entidad.
                                     </p>
                                     <p>
-                                        3. PENUD no se hace responsable de fallas o interrupciones que se puedan presentar en el funcionamiento de la plataforma. En caso de tener conocimiento previo de posibles fallas se advertirá con antelación a las usuarias/os.
+                                        3. PNUD no se hace responsable de fallas o interrupciones que se puedan presentar en el funcionamiento de la plataforma. En caso de tener conocimiento previo de posibles fallas se advertirá con antelación a las usuarias/os.
                                     </p>
                                     <p>
-                                        4. PENUD no garantiza ni se hace responsable por la ausencia de virus o cualquier otro elemento que pueda producir alteraciones en el sistema informático (Software y hardware) de la usuaria/o, o en los documentos electrónicos de su sistema informático.
+                                        4. PNUD no garantiza ni se hace responsable por la ausencia de virus o cualquier otro elemento que pueda producir alteraciones en el sistema informático (Software y hardware) de la usuaria/o, o en los documentos electrónicos de su sistema informático.
                                     </p>
                                     <p>
                                         5. La usuaria/o reconoce y acepta que las actuaciones que realice mediante la plataforma web son verídicas y se responsabiliza exclusivamente de la información, opinión, acción y omisión que se deriven de su registro y participación en ella.
                                     </p>
                                     <p>
-                                        6. La usuaria/o acepta y reconoce que las decisiones que tome a partir de la asesoría jurídica dada desde la plataforma, las toma bajo su voluntad y se hace responsable de las consecuencias que esta le puedan traer. PENUD no se hace responsable de las
+                                        6. La usuaria/o acepta y reconoce que las decisiones que tome a partir de la asesoría jurídica dada desde la plataforma, las toma bajo su voluntad y se hace responsable de las consecuencias que esta le puedan traer. PNUD no se hace responsable de las
                                         decisiones que usted tome.
                                     </p>
                                     <p>
@@ -368,7 +368,7 @@
                                         1. Utilizar este medio para publicitar, promocionar o exaltar empresas mercantiles, personas naturales o jurídicas, entre otros.
                                     </p>
                                     <p>
-                                        2. Utilizar este medio para agredir, abusar, acosar, amenazar, difamar, calumniar, intimidar, realizar cualquier acción que menoscabe derechos o referirse en términos irrespetuosos a otras usuarias/os, al equipo de trabajo de PENUD y entidades aliadas
+                                        2. Utilizar este medio para agredir, abusar, acosar, amenazar, difamar, calumniar, intimidar, realizar cualquier acción que menoscabe derechos o referirse en términos irrespetuosos a otras usuarias/os, al equipo de trabajo de PNUD y entidades aliadas
                                         o a otras personas naturales o jurídicas que no sean usuarias/os.
                                     </p>
                                     <p>
@@ -399,7 +399,7 @@
                                         11. Enviar correos electrónicos, documentos, mensajes o cualquier medio que transmita virus o códigos de naturaleza destructiva.
                                     </p>
                                     <p>
-                                        12. En caso de que la violación resulte en responsabilidad civil o penal, PENUD cooperará con cualquier autoridad competente para la debida investigación.
+                                        12. En caso de que la violación resulte en responsabilidad civil o penal, PNUD cooperará con cualquier autoridad competente para la debida investigación.
                                     </p>
                                     <p>
                                         <strong>
@@ -411,13 +411,13 @@
                                         1. Leer detenidamente los Términos y Condiciones y cualquier otro documento que se presente para su registro a esta plataforma.
                                     </p>
                                     <p>
-                                        2. Observar los videos de instrucciones de la plataforma web y su respectivo funcionamiento, enviados por PENUD.
+                                        2. Observar los videos de instrucciones de la plataforma web y su respectivo funcionamiento, enviados por PNUD.
                                     </p>
                                     <p>
                                         3. Responsabilizarse por cualquier actividad que se realice bajo su registro.
                                     </p>
                                     <p>
-                                        4. Conservar la confidencialidad de su contraseña. Usted se responsabiliza por el uso de su contraseña y en caso de existir un ingreso o registro no autorizado por usted, deberá notificar de inmediato a PENUD.
+                                        4. Conservar la confidencialidad de su contraseña. Usted se responsabiliza por el uso de su contraseña y en caso de existir un ingreso o registro no autorizado por usted, deberá notificar de inmediato a PNUD.
                                     </p>
                                     <p>
                                         <strong>Ante estos términos y condiciones las usuarias y usuarios:</strong>
@@ -426,13 +426,13 @@
                                         1. Reconocen y aceptan que son los únicos responsables por su información, actuación y participación en la plataforma.
                                     </p>
                                     <p>
-                                        2. Entienden que PENUD apoyará en la recepción y seguimiento de eventos, pero no será responsable de la duración de las actuaciones ni del trámite que le den las entidades competentes.
+                                        2. Entienden que PNUD apoyará en la recepción y seguimiento de eventos, pero no será responsable de la duración de las actuaciones ni del trámite que le den las entidades competentes.
                                     </p>
                                     <p>
-                                        3. Comprenden que PENUD no se hará responsable de cualquier daño o perjuicio de cualquier naturaleza, que surja a partir de la atención dada por otras entidades o de actuaciones erróneas realizadas por usted.
+                                        3. Comprenden que PNUD no se hará responsable de cualquier daño o perjuicio de cualquier naturaleza, que surja a partir de la atención dada por otras entidades o de actuaciones erróneas realizadas por usted.
                                     </p>
                                     <p>
-                                        4. Se abstendrán de iniciar cualquier acción o reclamación contra la PENUD, derivada o relacionada con información, opinión, mensajes, afectación o cualquier otra acción que genere daño realizada por otra usuaria/o, o un tercero ajeno a PENUD y entidades
+                                        4. Se abstendrán de iniciar cualquier acción o reclamación contra la PNUD, derivada o relacionada con información, opinión, mensajes, afectación o cualquier otra acción que genere daño realizada por otra usuaria/o, o un tercero ajeno a PNUD y entidades
                                         aliadas a la plataforma. Usted entiende que, en caso de suceder esta situación, las actuaciones legales se deberán llevar a cabo, en contra del responsable directo.
                                     </p>
                                     <p>
@@ -440,7 +440,7 @@
                                         un delito o la comisión de un delito.
                                     </p>
                                     <p>
-                                        <strong>PENUD ante estos términos y condiciones:</strong>
+                                        <strong>PNUD ante estos términos y condiciones:</strong>
                                     </p>
                                     <p>
                                         1. Pedirá autorización previa, a las entidades competentes, para activar ruta y remitir eventos.
