@@ -93,7 +93,7 @@ a[x-apple-data-detectors] {
                      <tr style="border-collapse:collapse"> 
                       <td class="es-infoblock es-m-txt-c" align="left" style="padding:0;Margin:0;line-height:14px;font-size:12px;color:#CCCCCC">
                         <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica\ neue', helvetica, sans-serif;line-height:14px;color:#CCCCCC;font-size:12px">
-                          alercom.com<br>
+                          alercom.org<br>
                         </p></td> 
                      </tr> 
                    </table></td> 

@@ -116,19 +116,18 @@ class ReferencesSeeder extends Seeder
 
         DB::table('references')->insert([       
                
-            'reference_name' => 'Denegado',
+            'reference_name' => 'Rechazado',
             'category' => 'status_type',
             'table' => 'events' ,                    
         ]);
 
         DB::table('references')->insert([               
-            'reference_name' => 'Aceptado',
+            'reference_name' => 'Validado',
             'category' => 'status_type',
-            'table' => 'events' ,                    
+            'table' => 'events',                    
         ]);
 
-        DB::table('references')->insert([       
-           
+        DB::table('references')->insert([            
             'reference_name' => 'Revisado',
             'category' => 'status_type',
             'table' => 'events' ,                    
@@ -198,6 +197,24 @@ class ReferencesSeeder extends Seeder
             'reference_name' => 'Informante',
             'category' => 'category',
             'table' => 'institutions'                  
+        ]);
+
+        DB::table('references')->insert([               
+            'reference_name' => 'Recibido',
+            'category' => 'status_type',
+            'table' => 'events' ,                    
+        ]);
+
+        DB::table('references')->insert([               
+            'reference_name' => 'En tramite',
+            'category' => 'status_type',
+            'table' => 'events' ,                    
+        ]);
+
+        DB::table('references')->insert([               
+            'reference_name' => 'Atendido',
+            'category' => 'status_type',
+            'table' => 'events' ,                    
         ]);
 
 //////////////////////////////////////////////////////////////
