@@ -268,7 +268,7 @@ a[x-apple-data-detectors] {
                      </tr> 
                      <tr style="border-collapse:collapse"> 
                       <td align="left" style="padding:0;Margin:0;padding-top:25px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:lato, 'helvetica neue', helvetica, arial, sans-serif;line-height:21px;color:#666666;font-size:14px">
-                       <small> By Amatai. Ingeniería informática SAS &copy; 2022</small></p></td> 
+                       <small>Powered by Amatai. Ingeniería informática SAS &copy; 2022</small></p></td> 
                      </tr> 
                    </table></td> 
                  </tr> 

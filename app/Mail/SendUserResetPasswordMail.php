@@ -35,7 +35,7 @@ class SendUserResetPasswordMail extends Mailable
         ])
         ->subject("Alercom: Cambio de contraseña")
         //->bcc('darioj99@gmail.com')
-        ->from('djdchave@gmail.com', 'PENUR')
+        ->from('djdchave@gmail.com', 'PNUD')
           ;
     }
 }
