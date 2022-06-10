@@ -65,7 +65,7 @@ Route::group(['prefix'=>'v1','middleware'=>['auth:api'],'namespace'=>'App\Http\C
     Route::get('references/towns','ReferencesController@getTowns');
     Route::get('references/affects/range','ReferencesController@getAffectsRange'); 
     Route::get('references/contact/types','ReferencesController@getContactTypes');
-
+    Route::get('references/event/status','ReferencesController@getEventStatus');
     Route::resource('references/event/categories','ReferencesDynamicController');  
     Route::get('references/event/categories','ReferencesDynamicController@getEventCategories'); 
 

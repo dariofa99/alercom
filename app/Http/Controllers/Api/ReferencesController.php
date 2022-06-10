@@ -69,7 +69,17 @@ class ReferencesController extends Controller
          ],200);
     }
 
-    
+    public function getEventStatus(){
+        $ranges = Reference::where([
+            'category' => 'status_type',
+            'table' => 'events',
+         ])->get();       
+         return response()->json([
+             "references"=>$ranges,
+             "errors"=>[]
+         ],200);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
