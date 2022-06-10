@@ -73,12 +73,11 @@
                                         <strong>POLÍTICA DE PRIVACIDAD</strong>
                                     </p>
                                     <p>
-                                        La presente Política de Privacidad establece los términos en que se usa y protege la información que es proporcionada por los usuarios y usuarias al momento de utilizar la aplicación Alercom y el sistema de atención de alertas. PNUD está comprometida
-                                        con la seguridad de los datos de sus usuarias/os. Cuando le pedimos llenar los campos de información personal con la cual usted pueda ser identificada/o, lo hacemos asegurando que sólo se empleará de acuerdo con los términos
-                                        de este documento y a lo establecido por la normatividad Colombiana vigente al momento de usar la aplicación.
-                                    </p>
+                                        La presente Política de Privacidad establece los términos en que se usa y protege la información que es proporcionada por los usuarios/as al momento de utilizar la aplicación Alercom y el sistema de atención de alertas. PNUD está comprometido con la seguridad de los datos de sus usuarias/os. Cuando le pedimos llenar los campos de información personal con la cual usted pueda ser identificada/o, lo hacemos asegurando que sólo se empleará de acuerdo con los términos de este documento y a lo establecido por la normatividad colombiana vigente al momento de usar la aplicación.  </p>
                                     <p>
-                                        Esta Política de Privacidad puede ser modificada o ser actualizada por lo que le recomendamos revisar continuamente esta página para asegurarse que está de acuerdo con dichos cambios.
+                                        
+                                        Esta Política de Privacidad puede ser modificada o ser actualizada, por lo que le recomendamos revisar continuamente esta página para asegurarse que está de acuerdo con dichos cambios.
+
                                     </p>
                                     <p>
                                         Está aplicación se utilizará bajo los "Términos y Condiciones" que se encuentran a continuación. En caso de no aceptar lo expuesto, no use la plataforma ni sus servicios. Mediante el uso de la plataforma web y la app se deduce su aceptación a estos Términos
@@ -93,7 +92,8 @@
                                         brindar asesoría y buscar con diferentes entidades solución a la problemática detectada y si es necesario llevar el caso a los entes competentes para facilitar la pronta atención al evento.
                                     </p>
                                     <p>
-                                        Ante esto, PNUD no se hace responsable de lo que suceda en cada caso, entendido que está herramienta busca ser un medio para activar directamente su red de apoyo y no a la institucionalidad.
+                                         
+                                        Ante esto, PNUD no se hace responsable de lo que suceda en cada caso, entendido que está herramienta busca ser un medio para activar directamente su red de apoyo.
                                     </p>
                                     <p>
                                         <strong>INFORMACIÓN RECOGIDA Y CONSIDERACIONES</strong>
@@ -181,15 +181,15 @@
                                     </p>
                                     <p>
                                         La información solicitada y los permisos requeridos sólo serán utilizados para las funciones de la aplicación Alercom y de la plataforma web.
-                                    </p>
+                                            </p>
                                     <p>
-                                        Datos personales:
+                                           <strong> a. Datos personales:</strong>
                                     </p>
                                     <p>
                                         Para acceder a la aplicación y a el sistema se solicitan los datos personales para verificar la autenticidad del evento.
                                     </p>
                                     <p>
-                                        Datos de evento registrado:
+                                        <strong>b. Datos de evento registrado:</strong>
                                     </p>
                                     <p>
                                         Los datos registrados al enviar una alerta son: fecha, lugar del evento, descripción del evento y personas que se vieron afectadas; dicho registro podrá ser verificado para establecer el estado y la veracidad del evento.
@@ -228,7 +228,8 @@
                                         Está aplicación está conectada directamente con la plataforma web de recepción de alertas, razón por la cual al aceptar está política de privacidad también está aceptando los términos y condiciones de la plataforma web.
                                     </p>
                                     <p>
-                                        Si tiene alguna pregunta sobre esta política o desea informar de cualquier violación puede enviar un mensaje al correo electrónico
+                                        Si tiene alguna pregunta sobre esta política o desea informar de cualquier violación puede enviar un mensaje al 
+                                        correo electrónico <strong> diana.hoyos@undp.org</strong>
                                     </p>
                                     <p>
                                         <strong>SOBRE LA PLATAFORMA WEB</strong>
@@ -239,13 +240,15 @@
                                     <p>
                                         Este documento debe ser leído atentamente por parte de las usuarias/os, ya que al registrarse deberá cumplir a cabalidad todos los términos y condiciones presentes.
                                     </p>
+
+                                    <p>Los contenidos son responsabilidad de PNUD y no reflejan necesariamente las opiniones de las entidades mencionadas anteriormente.</p>
                                     <p>
                                         El acceso, participación y uso del Portal es gratuito y está regido por los siguientes términos y condiciones, los cuales se presumen conocidos y aceptados por las y los usuarios(as) (en adelante la Usuaria/o) para el uso y consulta del Portal. Los términos
                                         "usted" o "usuaria/o", hacen referencia a todas las personas naturales o jurídicas o entidades de cualquier naturaleza que accedan a la plataforma web.
                                     </p>
                                     <p>
-                                        La plataforma web se utilizará bajo los "Términos y Condiciones" que se encuentran a continuación. En caso de no aceptar lo expuesto, no use la plataforma ni sus servicios. Mediante el uso de la plataforma web se deduce su aceptación a estos Términos
-                                        y Condiciones, incluyendo las consecuencias de su uso indebido ocasionadas por las actuaciones que usted realice en ella.
+                                        La plataforma web se utilizará bajo los "Términos y Condiciones" que se encuentran a continuación. En caso de no aceptar lo expuesto, no use la plataforma ni sus servicios. Mediante el uso de la plataforma web se deduce su aceptación a estos
+                                         Términos y Condiciones, incluyendo las consecuencias de su uso indebido ocasionadas por las actuaciones que usted realice en ella.
                                     </p>
                                     <p>
                                         Teniendo en cuenta los posibles cambios normativos o de funcionamiento de la plataforma web, PNUD podrá modificar estos Términos y Condiciones. Por ende, se le recomienda revisar periódicamente debido a la obligatoriedad de estos mismos.
@@ -260,9 +263,7 @@
                                         <strong>1. Declaración de Privacidad</strong>
                                     </p>
                                     <p>
-                                        PNUD se compromete con las usuarias y usuarios a velar por su intimidad y privacidad, apegándose al debido proceso y a la legislación colombiana vigente como las disposiciones contenidas en la Ley Estatutaria del Hábeas Data (Ley 1581 de 2012), reglamentada
-                                        mediante el decreto 1377 del 2013 y en la Ley de Privacidad o Habeas Data Colombiana (Ley 1266 de 2008), entre otras, con el fin de darle la debida diligencia a la información suministrada por las usuarias y usuarios en la
-                                        plataforma web.
+                                        PNUD se compromete con las usuarias y usuarios a velar por su intimidad y privacidad, apegándose al debido proceso y a la legislación colombiana vigente como las disposiciones contenidas en la Ley Estatutaria del Hábeas Data (Ley 1581 de 2012), reglamentada mediante el decreto 1377 del 2013 y en la Ley de Privacidad o Habeas Data Colombiana (Ley 1266 de 2008), entre otras, con el fin de darle la debida diligencia a la información suministrada por las usuarias y usuarios en la plataforma web.
                                     </p>
                                     <p>
                                         <strong>2. Recolección de información personal</strong>
@@ -271,10 +272,8 @@
                                         La plataforma web recolecta información personal de sus usuarias y usuarios como: nombre, dirección de correo electrónico, número telefónico, entre otros; los cuales tienen como fin garantizar el buen seguimiento de cada caso.
                                     </p>
                                     <p>
-                                        La usuaria/o reconoce que el ingreso de información personal, lo realiza de manera voluntaria y ante la solicitud de requerimientos específicos para realizar el informe de un evento de salud, ambiental o comunitario o para acceder a sus servicios. La
-                                        usuaria/o también comprende que los datos por ella o él consignados harán parte de un archivo y/o base de datos que podrá ser usado por la plataforma para efectos de surtir determinado proceso. La usuaria/o podrá modificar
-                                        o actualizar la información suministrada en cualquier momento. Se aconseja mantener actualizada la información.
-                                    </p>
+                                        La usuaria/o reconoce que el ingreso de información personal, lo realiza de manera voluntaria y ante la solicitud de requerimientos específicos para realizar el informe de un evento de salud, ambiental o comunitario o para acceder a sus servicios. La usuaria/o también comprende que los datos por ella o él consignados harán parte de un archivo y/o base de datos que podrá ser usado por la plataforma para efectos de surtir determinado proceso. La usuaria/o podrá modificar o actualizar la información suministrada en cualquier momento. Se aconseja mantener actualizada la información.
+                                       </p>
                                     <p>
                                         La información personal proporcionada está asegurada por una clave de acceso que sólo conoce la propietaria/o. Por ende, es la única/o responsable de mantener en secreto su clave. Ante esto, PNUD:
                                     </p>
@@ -299,13 +298,13 @@
                                         PNUD no utilizara, publicará, transferirá, utilizara o divulgará la información brindada mediante la plataforma Web sin autorización previa y expresa de la usuaria/o, excepto en los siguientes casos:
                                     </p>
                                     <p>
-                                        1. Ser requerida por orden judicial.
+                                        a. Ser requerida por orden judicial.
                                     </p>
                                     <p>
-                                        2. Colaborar dentro de un proceso judicial realizado dentro del servicio que brinda la plataforma web.
+                                        b. Colaborar dentro de un proceso judicial realizado dentro del servicio que brinda la plataforma web.
                                     </p>
                                     <p>
-                                        3. Cuando sea necesario salvaguardar los derechos de la usuaria/o en casos extremos.
+                                        c. Cuando sea necesario salvaguardar los derechos de la usuaria/o en casos extremos.
                                     </p>
                                     <p>
                                         <strong>Condiciones de Uso y Participación</strong>
@@ -326,34 +325,31 @@
                                         c. Utilizar información brindada a la plataforma según los términos y condiciones de esta misma.
                                     </p>
                                     <p>
-                                        2. La plataforma remitirá información mediante correo electrónico a las entidades correspondientes a casos de eventos de salud, ambientales y comunitarios. Cabe resaltar que esta información se compartirá contando con la respectiva autorización y consentimiento
-                                        de la Usuaria (o) para fines jurídicos. Sin embargo, PNUD no se hace responsable por la disponibilidad, trato, administración o acceso a estos mismo. En caso de tener inconveniente en ellos, comuníquese directamente con la
-                                        encargada-o de cada entidad.
+                                       2. La plataforma remitirá información mediante correo electrónico a las entidades correspondientes que puedan dar respuesta a eventos de salud, ambientales y comunitarios. Cabe resaltar que esta información se compartirá contando con la respectiva autorización y consentimiento de la Usuaria (o) para fines jurídicos. Sin embargo, PNUD no se hace responsable por la disponibilidad, trato, administración o acceso a estos mismos. En caso de tener inconveniente en ellos, comuníquese directamente con la encargada-o de cada entidad.
                                     </p>
                                     <p>
-                                        3. PNUD no se hace responsable de fallas o interrupciones que se puedan presentar en el funcionamiento de la plataforma. En caso de tener conocimiento previo de posibles fallas se advertirá con antelación a las usuarias/os.
+                                        3. La plataforma web y todos sus medios de comunicación relacionados, estarán abiertos las 24 horas del día, los 7 días de la semana, sin embargo, dependiendo del nivel en que se catalogue la alerta, esta se atenderá en diferentes tiempos. Es decir, PNUD no se hará responsable con la usuaria/o, o con terceros, por los daños o perjuicios de cualquier naturaleza que puedan ocasionarse mientras se realiza la atención en el sitio.
+                                      </p>
+                                    <p>
+                                        4. PNUD no se hace responsable de fallas o interrupciones que se puedan presentar en el funcionamiento de la plataforma. En caso de tener conocimiento previo de posibles fallas se advertirá con antelación a las usuarias/os.
+                                     </p>
+                                    <p>
+                                        5. PNUD no garantiza ni se hace responsable por la ausencia de virus o cualquier otro elemento que pueda producir alteraciones en el sistema informático (Software y hardware) de la usuaria/o, o en los documentos electrónicos de su sistema informático. </p>
+                                    <p>
+                                        6.  La usuaria/o reconoce y acepta que las actuaciones que realice mediante la plataforma web son verídicas y se responsabiliza exclusivamente de la información, opinión, acción y omisión que se deriven de su registro y participación en ella.
                                     </p>
                                     <p>
-                                        4. PNUD no garantiza ni se hace responsable por la ausencia de virus o cualquier otro elemento que pueda producir alteraciones en el sistema informático (Software y hardware) de la usuaria/o, o en los documentos electrónicos de su sistema informático.
+                                        7. . La usuaria/o acepta y reconoce que las decisiones que tome a partir de la asesoría jurídica dada desde la plataforma, las toma bajo su voluntad y se hace responsable de las consecuencias que esta le puedan traer. PNUD no se hace responsable de las decisiones que usted tome.
                                     </p>
                                     <p>
-                                        5. La usuaria/o reconoce y acepta que las actuaciones que realice mediante la plataforma web son verídicas y se responsabiliza exclusivamente de la información, opinión, acción y omisión que se deriven de su registro y participación en ella.
-                                    </p>
+                                         8. PNUD actuará de manera inmediata para cualquier tipo de consulta o informe que se presente. Sin embargo, el tiempo para las diferentes etapas del procedimiento, dependerá de la colaboración que se dé por parte de la usuaria o usuario. El correo y el número de celular de la plataforma responderán igualmente en horarios laborales.</p>
                                     <p>
-                                        6. La usuaria/o acepta y reconoce que las decisiones que tome a partir de la asesoría jurídica dada desde la plataforma, las toma bajo su voluntad y se hace responsable de las consecuencias que esta le puedan traer. PNUD no se hace responsable de las
-                                        decisiones que usted tome.
+                                        9. La información y los datos personales brindados a la plataforma serán guardados cómo prueba de la existencia de la recepción, sino existe la información necesaria para continuar con el procedimiento, será guardado y se le dará el tratamiento necesario respetando el derecho a la intimidad y otros relacionados según la norma.
                                     </p>
-                                    <p>
-                                        7. La información y los datos personales brindados a la plataforma serán guardados cómo prueba de la existencia de la recepción, sino existe la información necesaria para continuar con el procedimiento, será guardado y se le dará el tratamiento necesario
-                                        respetando el derecho a la intimidad y otros relacionados según la norma.
-                                    </p>
-                                    <p>
                                         <strong> 2. Uso del material</strong>
                                     </p>
                                     <p>
-                                        Todo el material presente en la plataforma es de propiedad de las entidades que hacen parte de la alianza mencionada anteriormente y está protegido por las leyes colombianas de derechos de autor como la ley 23 de 1982 y sus modificaciones posteriores,
-                                        entre otras según la situación y las leyes aplicables para el caso. Usted puede acceder a este material con fines personales, pero no podrá utilizarlo, difundirlo, modificarlo o venderlo sin autorización expresa y previa; en
-                                        caso de hacerlo, estaría infringiendo leyes colombianas.
+                                        Todo el material presente en la plataforma es de propiedad de las entidades que hacen parte de la alianza mencionada anteriormente y está protegido por las leyes colombianas de derechos de autor como la ley 23 de 1982 y sus modificaciones posteriores, entre otras según la situación y las leyes aplicables para el caso. Usted puede acceder a este material con fines personales, pero no podrá utilizarlo, difundirlo, modificarlo o venderlo sin autorización expresa y previa; en caso de hacerlo, estaría infringiendo leyes colombianas.
                                     </p>
                                     <p>
                                         <strong>3. Usos prohibidos de la plataforma web </strong>
@@ -368,8 +364,7 @@
                                         1. Utilizar este medio para publicitar, promocionar o exaltar empresas mercantiles, personas naturales o jurídicas, entre otros.
                                     </p>
                                     <p>
-                                        2. Utilizar este medio para agredir, abusar, acosar, amenazar, difamar, calumniar, intimidar, realizar cualquier acción que menoscabe derechos o referirse en términos irrespetuosos a otras usuarias/os, al equipo de trabajo de PNUD y entidades aliadas
-                                        o a otras personas naturales o jurídicas que no sean usuarias/os.
+                                        2.Utilizar este medio para agredir, abusar, acosar, amenazar, difamar, calumniar, intimidar, realizar cualquier acción que menoscabe derechos o referirse en términos irrespetuosos a otras usuarias/os, al equipo de trabajo de PNUD y entidades aliadas o a otras personas naturales o jurídicas que no sean usuarias/os.
                                     </p>
                                     <p>
                                         3. Usar este medio para desarrollar o apoyar actividades ilegales e ilícitas de acuerdo a la legislación colombiana y a la internacional.
@@ -436,7 +431,7 @@
                                         aliadas a la plataforma. Usted entiende que, en caso de suceder esta situación, las actuaciones legales se deberán llevar a cabo, en contra del responsable directo.
                                     </p>
                                     <p>
-                                        7. No realizar ni ingresar comentarios, mensajes, información, o similares que contengan o promuevan contenido difamatorio, abusivo, discriminatorio, ofensivo, intimidatorio, contrario a la moral, buenas costumbres y orden público, que constituyan violencia,
+                                        5. No realizar ni ingresar comentarios, mensajes, información, o similares que contengan o promuevan contenido difamatorio, abusivo, discriminatorio, ofensivo, intimidatorio, contrario a la moral, buenas costumbres y orden público, que constituyan violencia,
                                         un delito o la comisión de un delito.
                                     </p>
                                     <p>

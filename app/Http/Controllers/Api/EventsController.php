@@ -263,7 +263,7 @@ class EventsController extends Controller
                          'contact_id'=>$contact->contact_id
                          
                         ]);
-                Mail::to($contact->institution_contact)->send(new SendEventMail($verification_token));           
+                Mail::to($contact->institution_contact)->send(new SendEventMail($verification_token,$event));           
             }            
         }
     }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\EventReport;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
@@ -15,11 +16,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/prueba', function () {
-    $user = User::find(1);
+    $event = EventReport::find(10);
   // dd(env("APP_URL_PROD"));
    // dd(str_replace("/","",bcrypt(\Str::random(50))));
    $token = str_replace("/","",bcrypt(\Str::random(50)));
-    return view('content.mails.event_report',compact('user','token'));
+    return view('content.mails.event_report',compact('event','token'));
 });
 
 Route::get('/policy', function () {

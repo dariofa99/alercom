@@ -103,7 +103,7 @@
 																	<tr>
 																		<td class="text-top m-center" style="color:#7d7e80; font-family:'Quicksand', Arial,sans-serif; font-size:12px; line-height:24px; text-align:left;">
 																			<multiline>
-																				Alercom
+																				alercom.org
 																			</multiline>
 																		</td>
 																	</tr>
@@ -197,7 +197,7 @@
 															<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																
 																<tr>
-																	<td class="h1-1-white centered p-25-15" style="padding: 30px; color:#ffffff; font-family:'Barlow Condensed', Arial,sans-serif; font-size:44px; line-height:52px; text-align:center;" bgcolor="ORANGE">
+																	<td class="h1-1-white centered p-25-15" style="padding: 30px; color:#000000; font-family:'Barlow Condensed', Arial,sans-serif; font-size:44px; line-height:52px; text-align:center;" bgcolor="WHITE">
 																		<multiline>
 																			SE HA REGISTRADO UNA ALERTA!
 																		</multiline>
@@ -209,7 +209,14 @@
 																			<tr>
 																				<td class="text-4-white centered" style="padding-bottom: 30px; color:#ffffff; font-family:'Quicksand', Arial,sans-serif; font-size:22px; line-height:34px; text-align:center;">
 																					<multiline>
-																						Registrada desde el sistema<strong> Alercom</strong>
+																						Hemos recibido un reporte de alerta de la comunidad sucedido en {{$event->event_place}} <br>
+																						<i>
+																							"{{$event->event_description}}"
+																						</i>
+																						<br>
+																						 el cual se reporta como un evento de tipo <b> {{$event->event_type->event_type_name}}</b>
+																						 
+																						 
 																						 
 																					</multiline>
 																				</td>
@@ -219,10 +226,10 @@
 																					<!-- Button -->
 																					<table border="0" cellspacing="0" cellpadding="0">
 																						<tr>
-																							<td class="text-btn-red" bgcolor="#ffffff" style="color:#d85d5c; font-family:'Quicksand', Arial,sans-serif; font-size:12px; line-height:16px; text-align:center; padding:11px 25px; border-radius:3px;">
+																							<td class="text-btn-red" bgcolor="orange" style="color:#000000; font-family:'Quicksand', Arial,sans-serif; font-size:12px; line-height:16px; text-align:center; padding:11px 25px; border-radius:3px;">
 																								<multiline>
-																									<a href="{{env("APP_URL_PROD")}}{{('/view/alert/'.$token)}}" target="_blank" class="link" style="color:#d85d5c; text-decoration:none;"><span class="link" style="color:#d85d5c; text-decoration:none;">
-																										<strong>Ver alerta</strong>
+																									<a href="{{env("APP_URL_PROD")}}{{('/view/alert/'.$token)}}" target="_blank" class="link btn btn-success" style="color:#000000; text-decoration:none;"><span class="link" style="color:#000000; text-decoration:none;">
+																										<strong>Ver mas detalles de alerta</strong>
 																									</span>
 																									</a>
 																								</multiline>
@@ -326,7 +333,7 @@
 								<tr>
 									<td class="td" style="width:650px; min-width:650px; font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal;">
 										<table width="100%" border="0" cellspacing="0" cellpadding="0">
-											<tr>
+											{{-- <tr>
 												<td class="text-bottom centered plr-15" style="padding: 20px 30px; color:#898989; font-family:'Quicksand', Arial,sans-serif; font-size:12px; line-height:24px; text-align:center;">
 													¿Por qué estoy recibiendo este e-mail?<br />
 													Puedes <preferences class="link-3-u" style="color:#c5c5c5; text-decoration:underline;">
@@ -335,6 +342,14 @@
 															 <unsubscribe class="link-3-u" style="color:#c5c5c5;">
                                  <span class="link-3-u" style="color:#c5c5c5;">
                                   By Amatai Ingeniería Informática. SAS</span><br> &copy; 2022</unsubscribe>
+												</td>
+											</tr> --}}
+											<tr>
+												<td class="text-bottom centered plr-15" style="padding: 20px 30px; color:#898989; font-family:'Quicksand', Arial,sans-serif; font-size:12px; line-height:24px; text-align:center;">
+													
+															 <unsubscribe class="link-3-u" style="color:#c5c5c5;">
+                                 <span class="link-3-u" style="color:#c5c5c5;">
+                                  Powered by Amatai Ingeniería Informática. SAS</span><br> &copy; 2022</unsubscribe>
 												</td>
 											</tr>
 										</table>
